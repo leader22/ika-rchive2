@@ -1,0 +1,13 @@
+[ignore]
+.*/dist/.*
+
+[include]
+
+[libs]
+decls
+node_modules/mobx/lib/mobx.js.flow
+
+[options]
+esproposal.decorators=ignore
+munge_underscores=true
+suppress_comment= \\(.\\|\n\\)*\\flow-disable-line
