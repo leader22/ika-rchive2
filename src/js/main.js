@@ -1,28 +1,28 @@
 // @flow
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { extendObservable } from 'mobx';
+import bootWelcome from './welcome';
+import bootArchive from './archive';
 
 // eslint-disable-next-line
 const ver = __VERSION__;
 
-class Store {
-  foo: number;
 
-  constructor() {
-    extendObservable(this, {
-      foo: 1,
-    });
-  }
+// 環境チェック第一
+try {
+  localStorage.setItem('IA2_TEST', 'TEST');
+  localStorage.removeItem('IA2_TEST');
+} catch(err) {
+  // TODO:
+  location.href = './sorry.html';
 }
 
-const store = new Store();
+const data = localStorage.getItem('IA2');
 
-console.log(ver, store.foo);
-
-ReactDOM.render(
-  <h1>Hello, world! -> {store.foo}</h1>,
-  document.getElementById('jsApp')
-);
+// はじめての方
+if (data === null) {
+  bootWelcome(ver);
+}
+else {
+  // ver
+  // data
+  bootArchive();
+}
