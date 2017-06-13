@@ -7,7 +7,6 @@ import setting from './setting';
 import Store from './store';
 import Event from './event';
 import App from './component/app';
-import Entry from './component/entry';
 
 // eslint-disable-next-line
 const ver = __VERSION__;
@@ -55,20 +54,11 @@ if (typeof localStorage.getItem('IA2_USER') === 'string') {
 }
 // はじめての方
 else {
-  ReactDOM.render(
-    <Provider
-      setting={setting}
-    >
-      <Entry
-        onClickEntry={rate => {
-          localStorage.setItem('IA2_USER', JSON.stringify({
-            version: ver,
-            initRate: rate,
-          }));
-          location.reload(true);
-        }}
-      />
-    </Provider>,
-    document.getElementById('jsEntry')
-  );
+  const $start = document.getElementById('jsStartApp');
+  if ($start instanceof HTMLElement) {
+    $start.addEventListener('click', () => {
+      localStorage.setItem('IA2_USER', JSON.stringify({ ver }));
+      location.reload(true);
+    }, false);
+  }
 }
