@@ -6,10 +6,12 @@ import {
 
 import RecordStore from './store/record';
 import UserStore from './store/user';
+import UiStore from './store/ui';
 
 
 class Store {
   _storage: Storage;
+  ui: UiStore;
   user: UserStore;
   record: RecordStore;
 
@@ -21,6 +23,7 @@ class Store {
     // recordはない場合もあるので、その場合は空配列にする
     const recordData = this._storage.getItem('IA2_RECORD') || '[]';
 
+    this.ui = new UiStore();
     this.user = new UserStore(JSON.parse(userData));
     this.record = new RecordStore(JSON.parse(recordData));
 

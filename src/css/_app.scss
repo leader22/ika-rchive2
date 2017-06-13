@@ -1,0 +1,22 @@
+.react-tabs {
+  &__tab-list {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__tab {
+    flex: 1 1 auto;
+
+    &--selected {
+      color: green;
+    }
+  }
+}

@@ -4,10 +4,10 @@ import {
 } from 'mobx';
 
 
-class User {
+class UserStore {
   ver: string;
 
-  constructor(data: User) {
+  constructor(data: UserStore) {
     extendObservable(this, {
       ver: data.ver,
     });
@@ -18,4 +18,4 @@ class User {
   }
 }
 
-export default User;
+export default UserStore;

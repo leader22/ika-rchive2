@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 
 import Store from './store';
+import App from './component/app';
 
 // eslint-disable-next-line
 const ver = __VERSION__;
@@ -26,12 +27,13 @@ window.onerror = err => {
   location.href = './sorry.html';
 };
 
+// TODO: 下の画面見えるやつ
+
 // 常連の方
 if (typeof localStorage.getItem('IA2_USER') === 'string') {
   const store = new Store(ver, localStorage);
   if (isDev) { window.store = store; }
 
-  const App = () => <div>ArchiveApp!</div>;
   ReactDOM.render(
     <Provider
       {...store}
