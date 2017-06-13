@@ -1,3 +1,4 @@
+// @flow
 const webpack = require('webpack');
 const isProd = process.argv.indexOf('-p') !== -1;
 const pkg = require('./package.json');
