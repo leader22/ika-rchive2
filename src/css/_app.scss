@@ -1,3 +1,22 @@
+.app {
+  position: relative;
+}
+
+.input-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all .2s ease;
+  transform: translate3d(0, 150vh, 0);
+  background-color: #000;
+
+  &--opened {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .react-tabs {
   &__tab-list {
     position: fixed;
@@ -10,6 +29,7 @@
     justify-content: space-around;
     text-align: center;
     margin: 0;
+    background-color: #000;
   }
 
   &__tab {
@@ -18,5 +38,27 @@
     &--selected {
       color: green;
     }
+  }
+}
+
+.app-header {
+  position: relative;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: #000;
+  text-align: center;
+
+  &__title {
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  &__action {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    height: 40px;
   }
 }

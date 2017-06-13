@@ -3,7 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 
+import setting from './setting';
 import Store from './store';
+import Event from './event';
 import App from './component/app';
 
 // eslint-disable-next-line
@@ -32,11 +34,18 @@ window.onerror = err => {
 // 常連の方
 if (typeof localStorage.getItem('IA2_USER') === 'string') {
   const store = new Store(ver, localStorage);
-  if (isDev) { window.store = store; }
+  const event = new Event(store);
+
+  if (isDev) {
+    window.store = store;
+    window.event = event;
+  }
 
   ReactDOM.render(
     <Provider
       {...store}
+      event={event}
+      setting={setting}
     >
       <App />
     </Provider>,

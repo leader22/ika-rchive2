@@ -14,7 +14,6 @@ body {
 
 h1, h2, h3 {
   margin: 0;
-  text-align: center;
 }
 
 ul {
@@ -27,6 +26,6 @@ ul {
   src: url('../static/font/ikamodoki1_0.ttf') format('truetype');
 }
 
-.IkaFont {
+.ft-ika {
   font-family: 'ikamodoki';
 }

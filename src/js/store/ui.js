@@ -5,9 +5,16 @@ import {
 
 
 class UiStore {
+  isModalOpen: boolean;
+
   constructor() {
     extendObservable(this, {
+      isModalOpen: false,
     });
+  }
+
+  setModalOpen(bool: boolean): void {
+    this.isModalOpen = bool;
   }
 }
 
