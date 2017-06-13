@@ -5,16 +5,18 @@ import {
 
 
 class UserStore {
-  ver: string;
+  version: string;
+  initRate: number;
 
   constructor(data: UserStore) {
     extendObservable(this, {
-      ver: data.ver,
+      version: data.version,
+      initRate: data.initRate,
     });
   }
 
   migrate(nextVer: string): void {
-    this.ver = nextVer;
+    this.version = nextVer;
   }
 }
 
