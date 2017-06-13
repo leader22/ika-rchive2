@@ -21,6 +21,13 @@ ul {
   padding: 0;
 }
 
+button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+}
+
 @font-face {
   font-family: 'ikamodoki';
   src: url('../static/font/ikamodoki1_0.ttf') format('truetype');
