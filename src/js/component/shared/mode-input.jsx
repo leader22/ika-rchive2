@@ -29,4 +29,6 @@ const ModeInput = ({
 </div>
 );
 
-export default inject('setting')(observer(ModeInput));
+export default inject(
+  'setting',
+)(observer(ModeInput));

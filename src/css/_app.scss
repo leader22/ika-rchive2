@@ -71,6 +71,25 @@
   }
 }
 
+.multi-stage-input {
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & + & {
+      margin-top: 10px;
+    }
+
+    &__lane {
+      margin-right: 10px;
+    }
+  }
+}
+
+.stage-input {
+}
+
 .rate-input {
   display: flex;
   justify-content: center;

@@ -1,13 +1,12 @@
 // @flow
 import React from 'react';
-import { computed, extendObservable, reaction } from 'mobx';
+import { extendObservable, reaction } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
 
 class RateInput extends React.Component {
   _rank: number;
   _point: number;
-  _rate: number;
   _onRankChange: (SyntheticInputEvent) => void;
   _onPointChange: (SyntheticInputEvent) => void;
   _disposer: () => mixed;
@@ -25,9 +24,6 @@ class RateInput extends React.Component {
     extendObservable(this, {
       _rank: props.rank || 0,
       _point: props.point || 0,
-      _rate: computed(() => {
-        return this._rank + this._point;
-      })
     });
 
     this._onRankChange = (ev: SyntheticInputEvent) => {
@@ -49,8 +45,8 @@ class RateInput extends React.Component {
           onChange={this._onRankChange}
           value={this._rank}
         >
-          { Object.entries(setting.RANK).map((rank, idx) => (
-          <option key={idx} value={rank[1]}>{rank[0]}</option>
+          { Object.entries(setting.RANK).map((kv, idx) => (
+          <option key={idx} value={kv[1]}>{kv[0]}</option>
           )) }
         </select>
         <input
@@ -68,7 +64,7 @@ class RateInput extends React.Component {
 
   componentDidMount() {
     this._disposer = reaction(
-      () => this._rate,
+      () => this._rank + this._point,
       () => {
         if (typeof this.props.onChangeRate === 'function') {
           this.props.onChangeRate({ rank: this._rank, point: this._point });

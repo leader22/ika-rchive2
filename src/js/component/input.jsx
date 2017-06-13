@@ -4,6 +4,7 @@ import { computed, extendObservable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
 import ModeInput from './shared/mode-input';
+import MultiStageInput from './input/multi-stage-input';
 import RateInput from './shared/rate-input';
 
 import type UiStore from '../store/ui';
@@ -20,6 +21,7 @@ class InputPage extends React.Component {
   _point: number;
   _canAdd: boolean;
   _onChangeMode: (number) => void;
+  _onChangeStage: (number) => void;
   _onChangeRate: (Rate) => void;
   _onClickAdd: () => void;
 
@@ -33,11 +35,7 @@ class InputPage extends React.Component {
 
     extendObservable(this, {
       _mode: 1,
-      _stages: [1, 1, 1],
-      _stageLane: 0,
-      _stage: computed(() => {
-        return this._stages[this._stageLane];
-      }),
+      _stage: 1,
       _rate: computed(() => {
         return this._rank + this._point;
       }),
@@ -51,6 +49,9 @@ class InputPage extends React.Component {
 
     this._onChangeMode = mode => {
       this._mode = mode;
+    };
+    this._onChangeStage = stage => {
+      this._stage = stage;
     };
     this._onChangeRate = ({ rank, point }) => {
       this._rank = rank;
@@ -72,8 +73,8 @@ class InputPage extends React.Component {
       <div className={`input-modal ${ui.isModalOpen ? 'input-modal--opened' : ''}`}>
         <header className="app-header">
           <button
-            type="button"
             className="app-header__action"
+            type="button"
             onClick={event.onClickCloseInputPage}
           >
             <span className="ft-ika">キャンセル</span>
@@ -84,10 +85,9 @@ class InputPage extends React.Component {
             mode={this._mode}
             onChangeMode={this._onChangeMode}
           />
-          {/*<MultiStageInput
-            stage
+          <MultiStageInput
             onChangeStage={this._onChangeStage}
-          />*/}
+          />
           <RateInput
             rank={this._rank}
             point={this._point}
