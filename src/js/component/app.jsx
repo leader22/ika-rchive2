@@ -31,7 +31,7 @@ class App extends React.Component {
             className="app-header__action"
             onClick={onClickOpenInputPage}
           >
-            <span className="ft-ika">キロク</span>
+            <span className="ft-ika">キロクする</span>
           </button>
         </header>
         <Tabs>

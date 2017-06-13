@@ -5,7 +5,6 @@ import UiStore from './store/ui';
 
 
 class Store {
-  _storage: Storage;
   ui: UiStore;
   user: UserStore;
   record1: RecordStore;

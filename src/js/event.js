@@ -33,7 +33,7 @@ class Event {
     this.ui.setModalOpen(false);
   }
 
-  onClickAddLog(log: Log): void {
+  onClickAddLog(log: LogSeed): void {
     if (log.mode === 1) {
       this.record1.add(log);
     }
