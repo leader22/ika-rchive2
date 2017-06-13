@@ -1,14 +1,12 @@
 // @flow
-import {
-  extendObservable,
-} from 'mobx';
+import BaseStore from './base';
 
 
-class UiStore {
+class UiStore extends BaseStore {
   isModalOpen: boolean;
 
-  constructor() {
-    extendObservable(this, {
+  constructor(key: string) {
+    super(key, {
       // TODO: debug
       // isModalOpen: false,
       isModalOpen: true,

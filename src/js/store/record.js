@@ -1,22 +1,16 @@
 // @flow
-import {
-  extendObservable,
-} from 'mobx';
+import BaseStore from './base';
 
 import type { IObservableArray } from 'mobx';
 
 
-class RecordStore {
+class RecordStore extends BaseStore {
   items: IObservableArray<Log>;
 
-  constructor(record: Record) {
-    extendObservable(this, {
-      items: record,
+  constructor(key: string) {
+    super(key, {
+      items: [],
     });
-  }
-
-  migrate(nextVer: string): void {
-    nextVer;
   }
 
   add(): void {

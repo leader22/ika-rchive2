@@ -1,20 +1,14 @@
 // @flow
-import {
-  extendObservable,
-} from 'mobx';
+import BaseStore from './base';
 
 
-class UserStore {
+class UserStore extends BaseStore {
   ver: string;
 
-  constructor(data: UserStore) {
-    extendObservable(this, {
-      ver: data.ver,
+  constructor(key: string) {
+    super(key, {
+      ver: '',
     });
-  }
-
-  migrate(nextVer: string): void {
-    this.ver = nextVer;
   }
 }
 

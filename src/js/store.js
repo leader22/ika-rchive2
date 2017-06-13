@@ -1,9 +1,4 @@
 // @flow
-import {
-  reaction,
-  toJS,
-} from 'mobx';
-
 import RecordStore from './store/record';
 import UserStore from './store/user';
 import UiStore from './store/ui';
@@ -13,40 +8,25 @@ class Store {
   _storage: Storage;
   ui: UiStore;
   user: UserStore;
-  record: RecordStore;
+  record1: RecordStore;
+  record2: RecordStore;
+  record3: RecordStore;
 
-  constructor(ver: string, storage: Storage) {
-    this._storage = storage;
-
-    // ここにくる = userは存在する（が、Flowのために文字列をデフォルトでいれる）
-    const userData = this._storage.getItem('IA2_USER') || '{}';
-    // recordはない場合もあるので、その場合は空配列にする
-    const recordData = this._storage.getItem('IA2_RECORD') || '[]';
-
-    this.ui = new UiStore();
-    this.user = new UserStore(JSON.parse(userData));
-    this.record = new RecordStore(JSON.parse(recordData));
-
-    // TODO: パフォーマンスみてから
-    reaction(
-      () => toJS(this.user),
-      data => storage.setItem('IA2_USER', JSON.stringify(data))
-    );
-    reaction(
-      () => toJS(this.record),
-      data => storage.setItem('IA2_RECORD', JSON.stringify(data))
-    );
+  constructor(ver: string) {
+    this.user = new UserStore('IA2_USER');
+    this.ui = new UiStore('_');
+    this.record1 = new RecordStore('IA2_RECORD_AREA');
+    this.record2 = new RecordStore('IA2_RECORD_YAGURA');
+    this.record3 = new RecordStore('IA2_RECORD_HOKO');
 
     if (this.user.ver !== ver) {
       console.warn(`migrate from ${this.user.ver} to ${ver}`);
-
-      this.user.migrate(ver);
-      this.record.migrate(ver);
+      this.user.ver = ver;
     }
   }
 
   reset(): void {
-    this._storage.clear();
+    // this._storage.clear();
   }
 }
 
