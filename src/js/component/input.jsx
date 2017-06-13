@@ -94,7 +94,7 @@ class InputPage extends React.Component {
             onChangeRate={this._onChangeRate}
           />
           <button
-            className="add-button"
+            className="btn"
             type="button"
             onClick={this._onClickAdd}
             disabled={this._canAdd === false}
