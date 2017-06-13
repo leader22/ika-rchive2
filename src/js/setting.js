@@ -1,5 +1,10 @@
 // @flow
 
+const RESULT = {
+  '1': '勝ち',
+  '2': '負け',
+};
+
 const MODE = {
   '1': 'エリア',
   '2': 'ヤグラ',
@@ -30,6 +35,7 @@ const RANK = {
 };
 
 export default {
+  RESULT,
   MODE,
   STAGE,
   RANK,

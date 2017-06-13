@@ -4,6 +4,7 @@ declare var __DEV__: boolean;
 type MapObj = { [string]: string };
 
 declare type Setting = {
+  RESULT: MapObj,
   MODE: MapObj,
   RANK: MapObj,
   STAGE: MapObj,
@@ -15,9 +16,11 @@ declare type Rate = {
 };
 
 declare type Log = {
-  stage: number,
+  id: number,
   mode: number,
+  stage: number,
   rate: number,
+  result: number,
 };
 
 declare type Record = Array<Log>;

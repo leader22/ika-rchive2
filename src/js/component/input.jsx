@@ -6,6 +6,7 @@ import { inject, observer } from 'mobx-react';
 import ModeInput from './shared/mode-input';
 import MultiStageInput from './input/multi-stage-input';
 import RateInput from './shared/rate-input';
+import ResultInput from './shared/result-input';
 
 import type UiStore from '../store/ui';
 import type Event from '../event';
@@ -19,10 +20,12 @@ class InputPage extends React.Component {
   _rate: number;
   _rank: number;
   _point: number;
+  _result: number;
   _canAdd: boolean;
   _onChangeMode: (number) => void;
   _onChangeStage: (number) => void;
   _onChangeRate: (Rate) => void;
+  _onChangeResult: (number) => void;
   _onClickAdd: () => void;
 
   props: {|
@@ -41,6 +44,7 @@ class InputPage extends React.Component {
       }),
       _rank: 0,
       _point: 10,
+      _result: 1,
       _canAdd: computed(() => {
         if (isNaN(this._point)) { return false; }
         return true;
@@ -57,11 +61,15 @@ class InputPage extends React.Component {
       this._rank = rank;
       this._point = point;
     };
+    this._onChangeResult = result => {
+      this._result = result;
+    };
     this._onClickAdd = () => {
       this.props.event.onClickAddLog({
         mode: this._mode,
         stage: this._stage,
         rate: this._rate,
+        result: this._result,
       });
     };
   }
@@ -92,6 +100,10 @@ class InputPage extends React.Component {
             rank={this._rank}
             point={this._point}
             onChangeRate={this._onChangeRate}
+          />
+          <ResultInput
+            result={this._result}
+            onChangeResult={this._onChangeResult}
           />
           <button
             className="btn"

@@ -13,8 +13,10 @@ class RecordStore extends BaseStore {
     });
   }
 
-  add(): void {
-    console.log('add');
+  add(log: Log): void {
+    delete log.mode;
+    log.id = Date.now();
+    this.items.splice(0, 0, log);
   }
 }
 

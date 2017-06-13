@@ -6,6 +6,8 @@ import {
 } from 'mobx';
 // TODO: mock
 const storage = localStorage;
+// eslint-disable-next-line
+const isDev = __DEV__;
 
 
 class BaseStore {
@@ -26,7 +28,10 @@ class BaseStore {
     }
     reaction(
       () => toJS(this),
-      data => storage.setItem(key, JSON.stringify(data))
+      data => {
+        storage.setItem(key, JSON.stringify(data));
+        if (isDev) { console.log(data); }
+      }
     );
   }
 }
