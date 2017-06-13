@@ -3,8 +3,6 @@ import React from 'react';
 import { computed, extendObservable, reaction } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
-import type WelcomeEvent from '../../welcome/event';
-
 
 class RateInput extends React.Component {
   _rank: number;
@@ -17,9 +15,8 @@ class RateInput extends React.Component {
   props: {|
     rank?: number,
     point?: number,
-    // FIXME: type
-    setting: { RANK: { [string]: string } },
-    event: WelcomeEvent,
+    onChangeRate?: (Rate) => void,
+    setting: Setting,
   |};
 
   constructor(props) {
@@ -45,9 +42,10 @@ class RateInput extends React.Component {
     const { setting } = this.props;
 
     return (
-      <div>
+      <div className="rate-input">
         <select
           name="rank"
+          className="rate-input__rank"
           onChange={this._onRankChange}
           value={this._rank}
         >
@@ -56,9 +54,11 @@ class RateInput extends React.Component {
           )) }
         </select>
         <input
+          className="rate-input__point"
           type="number"
           name="point"
-          min="0" max="99"
+          maxLength={2}
+          min={0} max={99}
           value={this._point}
           onChange={this._onPointChange}
         />
@@ -69,7 +69,11 @@ class RateInput extends React.Component {
   componentDidMount() {
     this._disposer = reaction(
       () => this._rate,
-      rate => this.props.event.onChangeRate(rate)
+      () => {
+        if (typeof this.props.onChangeRate === 'function') {
+          this.props.onChangeRate({ rank: this._rank, point: this._point });
+        }
+      }
     );
   }
 
@@ -80,5 +84,4 @@ class RateInput extends React.Component {
 
 export default inject(
   'setting',
-  'event',
 )(observer(RateInput));

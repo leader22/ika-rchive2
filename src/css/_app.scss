@@ -62,3 +62,36 @@
     height: 40px;
   }
 }
+
+.mode-input {
+  text-align: center;
+
+  &__item {
+    padding: 0 5px;
+  }
+}
+
+.rate-input {
+  display: flex;
+  justify-content: center;
+
+  &__rank {
+    margin-right: 10px;
+  }
+  &__point {
+    padding: 0 5px;
+  }
+}
+
+.add-button {
+  display: block;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #FF6E00;
+  font-size: 1.3rem;
+
+  &[disabled] {
+    opacity: .5;
+  }
+}

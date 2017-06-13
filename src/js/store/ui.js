@@ -9,7 +9,9 @@ class UiStore {
 
   constructor() {
     extendObservable(this, {
-      isModalOpen: false,
+      // TODO: debug
+      // isModalOpen: false,
+      isModalOpen: true,
     });
   }
 

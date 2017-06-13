@@ -26,7 +26,11 @@ class App extends React.Component {
           <div className="app-header__title">
             <img className="app-header__title__icon" src="./static/img/icon.png" alt="ウデマエアーカイブ2" />
           </div>
-          <button className="app-header__action" onClick={onClickOpenInputPage}>
+          <button
+            type="button"
+            className="app-header__action"
+            onClick={onClickOpenInputPage}
+          >
             <span className="ft-ika">キロク</span>
           </button>
         </header>

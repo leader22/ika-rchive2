@@ -28,6 +28,10 @@ button {
   border: none;
 }
 
+select {
+  border-radius: 1px;
+}
+
 @font-face {
   font-family: 'ikamodoki';
   src: url('../static/font/ikamodoki1_0.ttf') format('truetype');

@@ -1,32 +1,111 @@
 // @flow
 import React from 'react';
+import { computed, extendObservable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
+import ModeInput from './shared/mode-input';
 import RateInput from './shared/rate-input';
 
 import type UiStore from '../store/ui';
 import type Event from '../event';
 
 
-const InputPage = ({
-  ui,
-  event,
-}: {
-  ui: UiStore,
-  event: Event,
-}) => (
-<div className={`input-modal ${ui.isModalOpen ? 'input-modal--opened' : ''}`}>
-  <header className="app-header">
-    <button className="app-header__action" onClick={event.onClickCloseInputPage}>
-      <span className="ft-ika">キャンセル</span>
-    </button>
-  </header>
-  <div>
-    Input
-    <RateInput />
-  </div>
-</div>
-);
+class InputPage extends React.Component {
+  _mode: number;
+  _stage: number;
+  _stages: Array<number>;
+  _stageLane: number;
+  _rate: number;
+  _rank: number;
+  _point: number;
+  _canAdd: boolean;
+  _onChangeMode: (number) => void;
+  _onChangeRate: (Rate) => void;
+  _onClickAdd: () => void;
+
+  props: {|
+    ui: UiStore,
+    event: Event,
+  |};
+
+  constructor(props) {
+    super(props);
+
+    extendObservable(this, {
+      _mode: 1,
+      _stages: [1, 1, 1],
+      _stageLane: 0,
+      _stage: computed(() => {
+        return this._stages[this._stageLane];
+      }),
+      _rate: computed(() => {
+        return this._rank + this._point;
+      }),
+      _rank: 0,
+      _point: 10,
+      _canAdd: computed(() => {
+        if (isNaN(this._point)) { return false; }
+        return true;
+      }),
+    });
+
+    this._onChangeMode = mode => {
+      this._mode = mode;
+    };
+    this._onChangeRate = ({ rank, point }) => {
+      this._rank = rank;
+      this._point = point;
+    };
+    this._onClickAdd = () => {
+      this.props.event.onClickAddLog({
+        mode: this._mode,
+        stage: this._stage,
+        rate: this._rate,
+      });
+    };
+  }
+
+  render() {
+    const { ui, event } = this.props;
+
+    return (
+      <div className={`input-modal ${ui.isModalOpen ? 'input-modal--opened' : ''}`}>
+        <header className="app-header">
+          <button
+            type="button"
+            className="app-header__action"
+            onClick={event.onClickCloseInputPage}
+          >
+            <span className="ft-ika">キャンセル</span>
+          </button>
+        </header>
+        <div>
+          <ModeInput
+            mode={this._mode}
+            onChangeMode={this._onChangeMode}
+          />
+          {/*<MultiStageInput
+            stage
+            onChangeStage={this._onChangeStage}
+          />*/}
+          <RateInput
+            rank={this._rank}
+            point={this._point}
+            onChangeRate={this._onChangeRate}
+          />
+          <button
+            className="add-button"
+            type="button"
+            onClick={this._onClickAdd}
+            disabled={this._canAdd === false}
+          >
+            <span className="ft-ika">トウロク</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default inject(
   'ui',

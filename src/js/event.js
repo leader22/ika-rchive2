@@ -20,6 +20,10 @@ class Event {
   onClickCloseInputPage(): void {
     this.ui.setModalOpen(false);
   }
+
+  onClickAddLog(log: Log): void {
+    console.log('add', log);
+  }
 }
 
 export default Event;

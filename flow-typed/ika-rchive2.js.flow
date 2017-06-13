@@ -1,2 +1,23 @@
 declare var __VERSION__: string;
 declare var __DEV__: boolean;
+
+type MapObj = { [string]: string };
+
+declare type Setting = {
+  MODE: MapObj,
+  RANK: MapObj,
+  STAGE: MapObj,
+};
+
+declare type Rate = {
+  rank: number,
+  point: number,
+};
+
+declare type Log = {
+  stage: number,
+  mode: number,
+  rate: number,
+};
+
+declare type Record = Array<Log>;
