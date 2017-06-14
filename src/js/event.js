@@ -5,6 +5,9 @@ import type Store from './store';
 import type UiStore from './store/ui';
 import type RecordStore from './store/record';
 
+// TODO: mock
+const storage = localStorage;
+
 
 class Event {
   ui: UiStore;
@@ -42,6 +45,14 @@ class Event {
     }
     if (log.mode === 3) {
       this.record3.add(log);
+    }
+  }
+
+  onClickResetAll(): void {
+    const check = window.confirm('取り消せません');
+    if (check) {
+      storage.clear();
+      location.reload(true);
     }
   }
 }
