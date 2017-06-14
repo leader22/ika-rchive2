@@ -49,7 +49,7 @@ class Event {
   }
 
   onClickResetAll(): void {
-    const check = window.confirm('取り消せません');
+    const check = window.confirm('TODO: 取り消せません');
     if (check) {
       storage.clear();
       location.reload(true);

@@ -23,10 +23,6 @@ class Store {
       this.user.ver = ver;
     }
   }
-
-  reset(): void {
-    // this._storage.clear();
-  }
 }
 
 export default Store;

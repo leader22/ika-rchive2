@@ -16,7 +16,7 @@ const Record = ({
   { record.items.length === 0 && (
   <li>キロクなし</li>
   ) }
-  { record.items.map(log => (
+  { record.items.slice(0, 10).map(log => (
   <li key={log.id}>
     <div>
       {log.id}
