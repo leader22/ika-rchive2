@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 
+import debug from './debug';
 import setting from './setting';
 import Store from './store';
 import Event from './event';
@@ -39,6 +40,7 @@ if (typeof localStorage.getItem('IA2_USER') === 'string') {
   if (isDev) {
     window.store = store;
     window.event = event;
+    window.debug = debug;
   }
 
   ReactDOM.render(
