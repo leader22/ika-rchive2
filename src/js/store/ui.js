@@ -7,9 +7,7 @@ class UiStore extends BaseStore {
 
   constructor(key: string) {
     super(key, {
-      // TODO: debug
-      // isModalOpen: false,
-      isModalOpen: true,
+      isModalOpen: false,
     });
   }
 

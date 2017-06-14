@@ -15,9 +15,15 @@ declare type Rate = {
   point: number,
 };
 
+declare type LogSeed = {
+  mode: number,
+  stage: number,
+  rate: number,
+  result: number,
+};
+
 declare type Log = {
   id: number,
-  mode: number,
   stage: number,
   rate: number,
   result: number,
