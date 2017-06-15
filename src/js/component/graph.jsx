@@ -6,22 +6,20 @@ import type RecordStore from '../store/record';
 
 
 const GraphPage = ({
-  record1, record2, record3,
+  record,
 }: {
-  record1: RecordStore,
-  record2: RecordStore,
-  record3: RecordStore,
+  record: RecordStore,
 }) => (
 <div>
   ウデマエの推移グラフと、キルレの推移グラフ
   <div>
-    エリア: {record1.items.length}件
-    ヤグラ: {record2.items.length}件
-    ホコ: {record3.items.length}件
+    エリア: {record.areaItems.length}件
+    ヤグラ: {record.yaguraItems.length}件
+    ホコ: {record.hokoItems.length}件
   </div>
 </div>
 );
 
 export default inject(
-  'record1', 'record2', 'record3',
+  'record',
 )(observer(GraphPage));

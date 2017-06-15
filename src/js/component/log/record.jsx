@@ -13,6 +13,7 @@ const Record = ({
   event,
   setting,
 }: {
+  mode: number,
   record: RecordStore,
   event: Event,
   setting: Setting,
