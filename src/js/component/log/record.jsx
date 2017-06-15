@@ -2,6 +2,8 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
+import RateStr from '../shared/rate-str';
+
 import type RecordStore from '../../store/record';
 
 
@@ -25,7 +27,7 @@ const Record = ({
       {setting.STAGE[String(log.stage)]}で{setting.RESULT[String(log.result)]}！
     </div>
     <div>
-      {log.rate}
+      <RateStr rate={log.rate} />
     </div>
     <hr />
   </li>

@@ -3,8 +3,9 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import NukaCarousel from 'nuka-carousel';
 
-import type RecordStore from '../store/record';
 import Record from './log/record';
+
+import type RecordStore from '../store/record';
 
 
 const LogPage = ({
