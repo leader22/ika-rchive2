@@ -14,7 +14,7 @@ class RateInput extends React.Component {
   props: {|
     rank?: number,
     point?: number,
-    onChangeRate?: (Rate) => void,
+    onChangeRate?: (number, number) => void,
     setting: Setting,
   |};
 
@@ -45,8 +45,8 @@ class RateInput extends React.Component {
           onChange={this._onRankChange}
           value={this._rank}
         >
-          { Object.entries(setting.RANK).map((kv, idx) => (
-          <option key={idx} value={kv[1]}>{kv[0]}</option>
+          { setting.RANK.map((v, idx) => (
+          <option key={idx} value={idx}>{v}</option>
           )) }
         </select>
         <input
@@ -67,7 +67,7 @@ class RateInput extends React.Component {
       () => this._rank + this._point,
       () => {
         if (typeof this.props.onChangeRate === 'function') {
-          this.props.onChangeRate({ rank: this._rank, point: this._point });
+          this.props.onChangeRate(this._rank, this._point);
         }
       }
     );

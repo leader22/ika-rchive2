@@ -56,8 +56,8 @@ class MultiStageInput extends React.Component {
             onChange={ev => this._onChangeStage(lane, ev.target.value)}
             value={this._stages[lane]}
           >
-            { Object.entries(setting.STAGE).map((kv, idx) => (
-            <option key={idx} value={kv[0]}>{kv[1]}</option>
+            { setting.STAGE.map((v, idx) => (
+            <option key={idx} value={idx}>{v}</option>
             )) }
           </select>
         </div>

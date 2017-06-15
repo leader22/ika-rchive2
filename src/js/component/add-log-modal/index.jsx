@@ -18,14 +18,13 @@ class AddLogModal extends React.Component {
   _stage: number;
   _stages: Array<number>;
   _stageLane: number;
-  _rate: number;
   _rank: number;
   _point: number;
   _result: number;
   _canAdd: boolean;
   _onChangeMode: (number) => void;
   _onChangeStage: (number) => void;
-  _onChangeRate: (Rate) => void;
+  _onChangeRate: (number, number) => void;
   _onChangeResult: (number) => void;
   _onClickAdd: () => void;
 
@@ -38,14 +37,11 @@ class AddLogModal extends React.Component {
     super(props);
 
     extendObservable(this, {
-      _mode: 1,
-      _stage: 1,
-      _rate: computed(() => {
-        return this._rank + this._point;
-      }),
+      _mode: 0,
+      _stage: 0,
       _rank: 0,
-      _point: 10,
-      _result: 1,
+      _point: 0,
+      _result: 0,
       _canAdd: computed(() => {
         if (isNaN(this._point)) { return false; }
         return true;
@@ -58,7 +54,7 @@ class AddLogModal extends React.Component {
     this._onChangeStage = stage => {
       this._stage = stage;
     };
-    this._onChangeRate = ({ rank, point }) => {
+    this._onChangeRate = (rank, point) => {
       this._rank = rank;
       this._point = point;
     };
@@ -69,7 +65,8 @@ class AddLogModal extends React.Component {
       this.props.event.onClickAddLog({
         mode: this._mode,
         stage: this._stage,
-        rate: this._rate,
+        rank: this._rank,
+        point: this._point,
         result: this._result,
       });
     };

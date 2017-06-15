@@ -6,6 +6,8 @@ import {
   toJS,
 } from 'mobx';
 
+import { encodeTime } from '../util';
+
 import type { IObservableArray } from 'mobx';
 
 // TODO: mock
@@ -24,13 +26,13 @@ class RecordStore {
     extendObservable(this, {
       items: [],
       areaItems: computed(() => {
-        return this.items.filter(log => log.mode === 1);
+        return this.items.filter(log => log.mode === 0);
       }),
       yaguraItems: computed(() => {
-        return this.items.filter(log => log.mode === 2);
+        return this.items.filter(log => log.mode === 1);
       }),
       hokoItems: computed(() => {
-        return this.items.filter(log => log.mode === 3);
+        return this.items.filter(log => log.mode === 2);
       }),
     });
 
@@ -39,7 +41,7 @@ class RecordStore {
 
   add(seed: LogSeed): void {
     const log = Object.assign({}, seed, {
-      id: Date.now(),
+      id: encodeTime(Date.now()),
     });
     this.items.splice(0, 0, log);
   }

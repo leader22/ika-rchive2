@@ -13,17 +13,17 @@ const ResultInput = ({
   setting: Setting,
 }) => (
 <div className="result-input">
-  { Object.entries(setting.RESULT).map((kv, idx) => (
+  { setting.RESULT.map((v, idx) => (
   <label className="result-input__item" key={idx}>
     <input
       name="result"
       type="radio"
-      value={kv[0]}
-      checked={kv[0] === String(result)}
-      onChange={(ev: SyntheticInputEvent) => {
-        onChangeResult(parseInt(ev.target.value));
+      value={idx}
+      checked={idx === result}
+      onChange={() => {
+        onChangeResult(idx);
       }}
-    />{kv[1]}
+    />{v}
   </label>
   ))}
 </div>

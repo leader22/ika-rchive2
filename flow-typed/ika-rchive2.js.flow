@@ -1,32 +1,22 @@
 declare var __VERSION__: string;
 declare var __DEV__: boolean;
 
-type MapObj = { [string]: string };
 
 declare type Setting = {
-  RESULT: MapObj,
-  MODE: MapObj,
-  RANK: MapObj,
-  STAGE: MapObj,
-};
-
-declare type Rate = {
-  rank: number,
-  point: number,
+  RESULT: Array<string>,
+  MODE: Array<string>,
+  STAGE: Array<string>,
+  RANK: Array<string>,
 };
 
 declare type LogSeed = {
   mode: number,
   stage: number,
-  rate: number,
+  rank: number,
+  point: number,
   result: number,
 };
 
-declare type Log = {
+declare type Log = LogSeed & {
   id: number,
-  stage: number,
-  rate: number,
-  result: number,
 };
-
-declare type Record = Array<Log>;

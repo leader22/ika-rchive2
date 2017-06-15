@@ -13,17 +13,17 @@ const ModeInput = ({
   setting: Setting,
 }) => (
 <div className="mode-input">
-  { Object.entries(setting.MODE).map((kv, idx) => (
+  { setting.MODE.map((v, idx) => (
   <label className="mode-input__item" key={idx}>
     <input
       name="mode"
       type="radio"
-      value={kv[0]}
-      checked={kv[0] === String(mode)}
-      onChange={(ev: SyntheticInputEvent) => {
-        onChangeMode(parseInt(ev.target.value));
+      value={idx}
+      checked={idx === mode}
+      onChange={() => {
+        onChangeMode(idx);
       }}
-    />{kv[1]}
+    />{v}
   </label>
   ))}
 </div>

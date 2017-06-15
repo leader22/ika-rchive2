@@ -2,8 +2,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import RateStr from '../shared/rate-str';
-
 import type RecordStore from '../../store/record';
 import type Event from '../../event';
 
@@ -28,10 +26,12 @@ const Record = ({
       {log.id}
     </div>
     <div>
-      {setting.STAGE[String(log.stage)]}で{setting.RESULT[String(log.result)]}！
+      {setting.STAGE[log.stage]}の
+      {setting.MODE[log.mode]}で
+      {setting.RESULT[log.result]}
     </div>
     <div>
-      <RateStr rate={log.rate} />
+      {setting.RANK[log.rank]}{log.point}
     </div>
     <div>
       <a onClick={() => { event.onClickModLog(log); }}>[修正]</a>
