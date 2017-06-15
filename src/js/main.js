@@ -27,7 +27,7 @@ try {
 window.onerror = err => {
   err; debugger;
   // TODO:
-  location.href = './sorry.html';
+  // location.href = './sorry.html';
 };
 
 // TODO: 下の画面見えるやつ
