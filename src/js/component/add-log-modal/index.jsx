@@ -3,17 +3,17 @@ import React from 'react';
 import { computed, extendObservable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
-import ModeInput from './shared/mode-input';
-import MultiStageInput from './input/multi-stage-input';
-import RateInput from './shared/rate-input';
-import ResultInput from './shared/result-input';
-import SingleBtn from './shared/single-btn';
+import ModeInput from '../shared/mode-input';
+import RateInput from '../shared/rate-input';
+import ResultInput from '../shared/result-input';
+import SingleBtn from '../shared/single-btn';
+import MultiStageInput from './multi-stage-input';
 
-import type UiStore from '../store/ui';
-import type Event from '../event';
+import type UiStore from '../../store/ui';
+import type Event from '../../event';
 
 
-class InputPage extends React.Component {
+class AddLogModal extends React.Component {
   _mode: number;
   _stage: number;
   _stages: Array<number>;
@@ -79,7 +79,7 @@ class InputPage extends React.Component {
     const { ui, event } = this.props;
 
     return (
-      <div className={`input-modal ${ui.isAddLogModalOpen ? 'input-modal--opened' : ''}`}>
+      <div className={`add-log-modal ${ui.isAddLogModalOpen ? 'add-log-modal--opened' : ''}`}>
         <header className="app-header">
           <button
             className="app-header__action"
@@ -120,4 +120,4 @@ class InputPage extends React.Component {
 export default inject(
   'ui',
   'event',
-)(observer(InputPage));
+)(observer(AddLogModal));

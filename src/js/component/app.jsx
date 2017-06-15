@@ -7,7 +7,7 @@ import GraphPage from './graph';
 import LogPage from './log';
 import StatPage from './stat';
 import OthersPage from './others';
-import InputPage from './input';
+import AddLogModal from './add-log-modal';
 
 import type Event from '../event';
 
@@ -62,7 +62,7 @@ class App extends React.Component {
             </Tab>
           </TabList>
         </Tabs>
-        <InputPage />
+        <AddLogModal />
       </div>
     );
   }

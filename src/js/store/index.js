@@ -1,7 +1,7 @@
 // @flow
-import RecordStore from './store/record';
-import UserStore from './store/user';
-import UiStore from './store/ui';
+import RecordStore from './record';
+import UserStore from './user';
+import UiStore from './ui';
 
 
 class Store {
@@ -13,7 +13,7 @@ class Store {
 
   constructor(ver: string) {
     this.user = new UserStore('IA2_USER');
-    this.ui = new UiStore('_');
+    this.ui = new UiStore();
     this.record1 = new RecordStore('IA2_RECORD_AREA');
     this.record2 = new RecordStore('IA2_RECORD_YAGURA');
     this.record3 = new RecordStore('IA2_RECORD_HOKO');
