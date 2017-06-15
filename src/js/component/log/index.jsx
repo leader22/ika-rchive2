@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 import NukaCarousel from 'nuka-carousel';
 
 import Record from './record';
+import ModLogModal from './mod-log-modal';
 
 import type RecordStore from '../../store/record';
 
@@ -37,6 +38,7 @@ const LogPage = ({
     );
     }) }
   </NukaCarousel>
+  <ModLogModal />
 </div>
 );
 

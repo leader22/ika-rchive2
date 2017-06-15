@@ -49,7 +49,7 @@ class Event {
   }
 
   onClickModLog(log: Log): void {
-    console.log(log);
+    this.ui.setModLog(log);
     this.ui.setModLogModalOpen(true);
   }
   onClickCloseModLogModal(): void {

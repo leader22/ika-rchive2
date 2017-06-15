@@ -1,13 +1,15 @@
 // @flow
-import { extendObservable } from 'mobx';
+import { extendObservable, observable } from 'mobx';
 
 
 class UiStore {
+  modLog: Log | null;
   isAddLogModalOpen: boolean;
   isModLogModalOpen: boolean;
 
   constructor() {
     extendObservable(this, {
+      modLog: observable.ref(null),
       isAddLogModalOpen: false,
       isModLogModalOpen: false,
     });
@@ -19,6 +21,10 @@ class UiStore {
 
   setModLogModalOpen(bool: boolean): void {
     this.isModLogModalOpen = bool;
+  }
+
+  setModLog(log: Log) {
+    this.modLog = log;
   }
 }
 
