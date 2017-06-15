@@ -34,16 +34,19 @@ class Event {
     this.record.add(log);
   }
 
-  onClickDelLog(log: Log): void {
-    this.record.del(log);
-  }
-
   onClickModLog(log: Log): void {
     this.ui.setModLog(log);
     this.ui.setModLogModalOpen(true);
   }
   onClickCloseModLogModal(): void {
     this.ui.setModLogModalOpen(false);
+  }
+
+  onClickDelLog(log: Log): void {
+    const check = window.confirm('TODO: 取り消せません');
+    if (check) {
+      this.record.del(log);
+    }
   }
 
   onClickResetAll(): void {
