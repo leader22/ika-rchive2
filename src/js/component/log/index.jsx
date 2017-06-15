@@ -14,7 +14,7 @@ const LogPage = ({
   record: RecordStore,
 }) => (
 <div>
-  レコードのリスト表示と直近の修正
+  レコードのリスト表示
   <Record record={record} />
   <ModLogModal />
 </div>
