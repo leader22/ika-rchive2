@@ -22,8 +22,8 @@ class RateInput extends React.Component {
     super(props);
 
     extendObservable(this, {
-      _rank: props.rank || 0,
-      _point: props.point || 0,
+      _rank: 0,
+      _point: 0,
     });
 
     this._onRankChange = (ev: SyntheticInputEvent) => {
@@ -35,7 +35,10 @@ class RateInput extends React.Component {
   }
 
   render() {
-    const { setting } = this.props;
+    const {
+      rank, point,
+      setting,
+    } = this.props;
 
     return (
       <div className="rate-input">
@@ -43,7 +46,7 @@ class RateInput extends React.Component {
           name="rank"
           className="rate-input__rank"
           onChange={this._onRankChange}
-          value={this._rank}
+          value={rank}
         >
           { setting.RANK.map((v, idx) => (
           <option key={idx} value={idx}>{v}</option>
@@ -55,7 +58,7 @@ class RateInput extends React.Component {
           name="point"
           maxLength={2}
           min={0} max={99}
-          value={this._point}
+          value={point}
           onChange={this._onPointChange}
         />
       </div>
