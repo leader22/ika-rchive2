@@ -3,16 +3,22 @@ import { extendObservable } from 'mobx';
 
 
 class UiStore {
-  isModalOpen: boolean;
+  isAddLogModalOpen: boolean;
+  isModLogModalOpen: boolean;
 
   constructor() {
     extendObservable(this, {
-      isModalOpen: false,
+      isAddLogModalOpen: false,
+      isModLogModalOpen: false,
     });
   }
 
-  setModalOpen(bool: boolean): void {
-    this.isModalOpen = bool;
+  setAddLogModalOpen(bool: boolean): void {
+    this.isAddLogModalOpen = bool;
+  }
+
+  setModLogModalOpen(bool: boolean): void {
+    this.isModLogModalOpen = bool;
   }
 }
 

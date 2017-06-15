@@ -18,7 +18,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { onClickOpenInputPage } = this.props.event;
+    const { onClickOpenAddLogModal } = this.props.event;
 
     return (
       <div className="app">
@@ -29,7 +29,7 @@ class App extends React.Component {
           <button
             type="button"
             className="app-header__action"
-            onClick={onClickOpenInputPage}
+            onClick={onClickOpenAddLogModal}
           >
             <span className="ft-ika">キロクする</span>
           </button>

@@ -79,12 +79,12 @@ class InputPage extends React.Component {
     const { ui, event } = this.props;
 
     return (
-      <div className={`input-modal ${ui.isModalOpen ? 'input-modal--opened' : ''}`}>
+      <div className={`input-modal ${ui.isAddLogModalOpen ? 'input-modal--opened' : ''}`}>
         <header className="app-header">
           <button
             className="app-header__action"
             type="button"
-            onClick={event.onClickCloseInputPage}
+            onClick={event.onClickCloseAddLogModal}
           >
             <span className="ft-ika">キャンセル</span>
           </button>

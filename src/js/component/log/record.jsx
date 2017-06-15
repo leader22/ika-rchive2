@@ -5,13 +5,16 @@ import { inject, observer } from 'mobx-react';
 import RateStr from '../shared/rate-str';
 
 import type RecordStore from '../../store/record';
+import type Event from '../../event';
 
 
 const Record = ({
   record,
+  event,
   setting,
 }: {
   record: RecordStore,
+  event: Event,
   setting: Setting,
 }) => (
 <ul>
@@ -29,10 +32,16 @@ const Record = ({
     <div>
       <RateStr rate={log.rate} />
     </div>
+    <div>
+      <a onClick={() => { event.onClickModLog(log); }}>[修正]</a>
+    </div>
     <hr />
   </li>
   )) }
 </ul>
 );
 
-export default inject('setting')(observer(Record));
+export default inject(
+  'setting',
+  'event',
+)(observer(Record));

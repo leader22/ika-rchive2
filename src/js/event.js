@@ -29,11 +29,11 @@ class Event {
     this.record3 = record3;
   }
 
-  onClickOpenInputPage(): void {
-    this.ui.setModalOpen(true);
+  onClickOpenAddLogModal(): void {
+    this.ui.setAddLogModalOpen(true);
   }
-  onClickCloseInputPage(): void {
-    this.ui.setModalOpen(false);
+  onClickCloseAddLogModal(): void {
+    this.ui.setAddLogModalOpen(false);
   }
 
   onClickAddLog(log: LogSeed): void {
@@ -46,6 +46,14 @@ class Event {
     if (log.mode === 3) {
       this.record3.add(log);
     }
+  }
+
+  onClickModLog(log: Log): void {
+    console.log(log);
+    this.ui.setModLogModalOpen(true);
+  }
+  onClickCloseModLogModal(): void {
+    this.ui.setModLogModalOpen(false);
   }
 
   onClickResetAll(): void {
