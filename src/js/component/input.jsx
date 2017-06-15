@@ -7,6 +7,7 @@ import ModeInput from './shared/mode-input';
 import MultiStageInput from './input/multi-stage-input';
 import RateInput from './shared/rate-input';
 import ResultInput from './shared/result-input';
+import SingleBtn from './shared/single-btn';
 
 import type UiStore from '../store/ui';
 import type Event from '../event';
@@ -105,14 +106,11 @@ class InputPage extends React.Component {
             result={this._result}
             onChangeResult={this._onChangeResult}
           />
-          <button
-            className="btn"
-            type="button"
+          <SingleBtn
             onClick={this._onClickAdd}
             disabled={this._canAdd === false}
-          >
-            <span className="ft-ika">トウロク</span>
-          </button>
+            text="キロク"
+          />
         </div>
       </div>
     );
