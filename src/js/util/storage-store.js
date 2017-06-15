@@ -10,9 +10,7 @@ const storage = localStorage;
 const isDev = __DEV__;
 
 
-class BaseStore {
-  data: Object;
-
+class StorageStore {
   constructor(key: string, data: Object) {
     const stored = storage.getItem(key);
     if (typeof stored === 'string') {
@@ -22,10 +20,6 @@ class BaseStore {
       extendObservable(this, data);
     }
 
-    // 永続化しなくていいのもある
-    if (key === '_') {
-      return;
-    }
     reaction(
       () => toJS(this),
       data => {
@@ -36,4 +30,4 @@ class BaseStore {
   }
 }
 
-export default BaseStore;
+export default StorageStore;

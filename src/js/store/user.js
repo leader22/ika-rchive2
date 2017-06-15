@@ -1,8 +1,8 @@
 // @flow
-import BaseStore from './base';
+import StorageStore from '../util/storage-store';
 
 
-class UserStore extends BaseStore {
+class UserStore extends StorageStore {
   ver: string;
 
   constructor(key: string) {

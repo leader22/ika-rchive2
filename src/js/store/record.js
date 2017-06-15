@@ -1,10 +1,10 @@
 // @flow
-import BaseStore from './base';
+import StorageStore from '../util/storage-store';
 
 import type { IObservableArray } from 'mobx';
 
 
-class RecordStore extends BaseStore {
+class RecordStore extends StorageStore {
   items: IObservableArray<Log>;
 
   constructor(key: string) {
