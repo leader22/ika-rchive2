@@ -46,6 +46,10 @@ class RecordStore {
     this.items.splice(0, 0, log);
   }
 
+  del(log: Log): void {
+    this.items.remove(log);
+  }
+
   _syncStorage(key: string): void {
     const stored = storage.getItem(key);
     if (typeof stored === 'string') {

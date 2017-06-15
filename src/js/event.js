@@ -34,6 +34,10 @@ class Event {
     this.record.add(log);
   }
 
+  onClickDelLog(log: Log): void {
+    this.record.del(log);
+  }
+
   onClickModLog(log: Log): void {
     this.ui.setModLog(log);
     this.ui.setModLogModalOpen(true);

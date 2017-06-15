@@ -35,6 +35,8 @@ const Record = ({
     </div>
     <div>
       <a onClick={() => { event.onClickModLog(log); }}>[修正]</a>
+      /
+      <a onClick={() => { event.onClickDelLog(log); }}>[削除]</a>
     </div>
     <hr />
   </li>
