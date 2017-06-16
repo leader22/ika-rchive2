@@ -1,19 +1,18 @@
 // @flow
 import React from 'react';
-import { inject, observer } from 'mobx-react';
+
+import { RESULT } from '../../setting';
 
 
 const ResultInput = ({
   result,
   onChangeResult,
-  setting,
 }: {
   result: number,
   onChangeResult: (number) => void,
-  setting: Setting,
 }) => (
 <div className="result-input">
-  { setting.RESULT.map((v, idx) => (
+  { RESULT.map((v, idx) => (
   <label className="result-input__item" key={idx}>
     <input
       name="result"
@@ -29,4 +28,4 @@ const ResultInput = ({
 </div>
 );
 
-export default inject('setting')(observer(ResultInput));
+export default ResultInput;

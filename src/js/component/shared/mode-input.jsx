@@ -1,19 +1,18 @@
 // @flow
 import React from 'react';
-import { inject, observer } from 'mobx-react';
+
+import { MODE } from '../../setting';
 
 
 const ModeInput = ({
   mode,
   onChangeMode,
-  setting,
 }: {
   mode: number,
   onChangeMode: (number) => void,
-  setting: Setting,
 }) => (
 <div className="mode-input">
-  { setting.MODE.map((v, idx) => (
+  { MODE.map((v, idx) => (
   <label className="mode-input__item" key={idx}>
     <input
       name="mode"
@@ -29,6 +28,4 @@ const ModeInput = ({
 </div>
 );
 
-export default inject(
-  'setting',
-)(observer(ModeInput));
+export default ModeInput;

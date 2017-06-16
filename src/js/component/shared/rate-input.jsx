@@ -1,20 +1,21 @@
 // @flow
 import React from 'react';
-import { inject, observer } from 'mobx-react';
 
+import { RANK } from '../../setting';
+
+type Props = {|
+  rank: number,
+  point: number,
+  onChangeRate: (number, number) => void,
+|};
 
 class RateInput extends React.Component {
   _onRankChange: (SyntheticInputEvent) => void;
   _onPointChange: (SyntheticInputEvent) => void;
 
-  props: {|
-    rank: number,
-    point: number,
-    onChangeRate: (number, number) => void,
-    setting: Setting,
-  |};
+  props: Props;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this._onRankChange = (ev: SyntheticInputEvent) => {
@@ -36,7 +37,6 @@ class RateInput extends React.Component {
   render() {
     const {
       rank, point,
-      setting,
     } = this.props;
 
     return (
@@ -47,7 +47,7 @@ class RateInput extends React.Component {
           onChange={this._onRankChange}
           value={rank}
         >
-          { setting.RANK.map((v, idx) => (
+          { RANK.map((v, idx) => (
           <option key={idx} value={idx}>{v}</option>
           )) }
         </select>
@@ -64,6 +64,4 @@ class RateInput extends React.Component {
   }
 }
 
-export default inject(
-  'setting',
-)(observer(RateInput));
+export default RateInput;

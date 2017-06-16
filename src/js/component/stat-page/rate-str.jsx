@@ -1,20 +1,16 @@
 // @flow
 import React from 'react';
-import { inject, observer } from 'mobx-react';
 
+import { RANK } from '../../setting';
 import { rateToRateStr } from '../../util';
 
 
 const RateStr = ({
   rate,
-  setting,
 }: {
   rate: number,
-  setting: Setting,
 }) => (
-  <span>{rateToRateStr(rate, setting.RANK)}</span>
+  <span>{rateToRateStr(rate, RANK)}</span>
 );
 
-export default inject(
-  'setting',
-)(observer(RateStr));
+export default RateStr;

@@ -2,6 +2,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
+import { STAGE } from '../../setting';
 import RateStr from './rate-str';
 
 import type RecordStore from '../../store/record';
@@ -10,11 +11,9 @@ import type RecordStore from '../../store/record';
 class StatPage extends React.Component {
   props: {|
     record: RecordStore,
-    setting: Setting,
   |};
 
   render() {
-    const { STAGE } = this.props.setting;
     const { stat } = this.props.record;
 
     return (
@@ -69,5 +68,4 @@ class StatPage extends React.Component {
 
 export default inject(
   'record',
-  'setting',
 )(observer(StatPage));

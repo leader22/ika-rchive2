@@ -41,11 +41,11 @@ class AddLogFormVM {
   onChangeMode(mode: number): void {
     this.mode = mode;
   }
-  onChangeLane(ev: SyntheticInputEvent): void {
-    this.stageLane = parseInt(ev.target.value);
+  onChangeLane(lane: number): void {
+    this.stageLane = lane;
   }
   onChangeStage(lane: number, stage: number): void {
-    this.stages[lane] = parseInt(stage);
+    this.stages[lane] = stage;
   }
   onChangeRate(rank: number, point: number): void {
     this.rank = rank;

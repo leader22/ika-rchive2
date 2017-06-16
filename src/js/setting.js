@@ -1,17 +1,17 @@
 // @flow
 
-const RESULT = [
+export const RESULT: Array<string> = [
   '負けた',
   '勝った',
 ];
 
-const MODE = [
+export const MODE: Array<string> = [
   'エリア',
   'ヤグラ',
   'ホコ',
 ];
 
-const STAGE = [
+export const STAGE: Array<string> = [
   'バッテラストリート',
   'フジツボスポーツクラブ',
   'ガンガゼ野外音楽堂',
@@ -20,7 +20,7 @@ const STAGE = [
   'タチウオパーキング',
 ];
 
-const RANK = [
+export const RANK: Array<string> = [
   'C-',
   'C',
   'C+',
@@ -34,12 +34,4 @@ const RANK = [
   'S+',
 ];
 
-const LOG_PER_PAGE = 20;
-
-export default {
-  RESULT,
-  MODE,
-  STAGE,
-  RANK,
-  LOG_PER_PAGE,
-};
+export const LOG_PER_PAGE: number = 20;

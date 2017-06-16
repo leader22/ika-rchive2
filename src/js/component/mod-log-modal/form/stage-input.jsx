@@ -1,16 +1,15 @@
 // @flow
 import React from 'react';
-import { inject, observer } from 'mobx-react';
+
+import { STAGE } from '../../../setting';
 
 
 const StageInput = ({
   stage,
   onChangeStage,
-  setting,
 }: {
   stage: number,
   onChangeStage: (number) => void,
-  setting: Setting,
 }) => (
 <div className="stage-input">
   <select
@@ -18,13 +17,11 @@ const StageInput = ({
     onChange={ev => onChangeStage(parseInt(ev.target.value))}
     value={stage}
   >
-    { setting.STAGE.map((v, idx) => (
+    { STAGE.map((v, idx) => (
     <option key={idx} value={idx}>{v}</option>
     )) }
   </select>
 </div>
 );
 
-export default inject(
-  'setting',
-)(observer(StageInput));
+export default StageInput;

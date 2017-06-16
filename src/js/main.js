@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 
 import debug from './util/debug';
-import setting from './setting';
 import Store from './store';
 import Event from './event';
 import App from './component/app';
@@ -47,7 +46,6 @@ if (typeof localStorage.getItem('IA2_USER') === 'string') {
     <Provider
       {...store}
       event={event}
-      setting={setting}
     >
       <App />
     </Provider>,
