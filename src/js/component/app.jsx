@@ -3,10 +3,10 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import GraphPage from './graph';
-import LogPage from './log';
-import StatPage from './stat';
-import OthersPage from './others';
+import GraphPage from './graph-page';
+import LogPage from './log-page';
+import StatPage from './stat-page';
+import OthersPage from './others-page';
 import AddLogModal from './add-log-modal';
 import ModLogModal from './mod-log-modal';
 

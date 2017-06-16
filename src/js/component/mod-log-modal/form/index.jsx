@@ -2,14 +2,14 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import ModeInput from '../shared/mode-input';
-import RateInput from '../shared/rate-input';
-import ResultInput from '../shared/result-input';
-import SingleBtn from '../shared/single-btn';
+import ModeInput from '../../shared/mode-input';
+import RateInput from '../../shared/rate-input';
+import ResultInput from '../../shared/result-input';
+import SingleBtn from '../../shared/single-btn';
 import StageInput from './stage-input';
 
-import type UiStore from '../../store/ui';
-import type Event from '../../event';
+import type UiStore from '../../../store/ui';
+import type Event from '../../../event';
 
 
 class ModLogForm extends React.Component {

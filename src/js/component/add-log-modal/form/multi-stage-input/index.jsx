@@ -1,15 +1,13 @@
 // @flow
 import React from 'react';
-import { computed, extendObservable, reaction } from 'mobx';
+import { reaction } from 'mobx';
 import { inject, observer } from 'mobx-react';
+
+import MultiStageInputVM from './vm';
 
 
 class MultiStageInput extends React.Component {
-  _stage: number;
-  _stages: Array<number>
-  _stageLane: number;
-  _onChangeLane: (SyntheticInputEvent) => void;
-  _onChangeStage: (number, number) => void;
+  _vm: MultiStageInputVM;
   _disposer: () => mixed;
 
   props: {|
@@ -19,21 +17,7 @@ class MultiStageInput extends React.Component {
 
   constructor(props) {
     super(props);
-
-    extendObservable(this, {
-      _stages: [1, 2],
-      _stageLane: 0,
-      _stage: computed(() => {
-        return this._stages[this._stageLane];
-      })
-    });
-
-    this._onChangeLane = (ev: SyntheticInputEvent) => {
-      this._stageLane = parseInt(ev.target.value);
-    };
-    this._onChangeStage = (lane, stage) => {
-      this._stages[lane] = parseInt(stage);
-    };
+    this._vm = new MultiStageInputVM();
   }
 
   render() {
@@ -48,13 +32,13 @@ class MultiStageInput extends React.Component {
             type="radio"
             name="stageLane"
             value={lane}
-            checked={this._stageLane === lane}
-            onChange={this._onChangeLane}
+            checked={this._vm.stageLane === lane}
+            onChange={this._vm.onChangeLane}
           />
           <select
             name={lane}
-            onChange={ev => this._onChangeStage(lane, ev.target.value)}
-            value={this._stages[lane]}
+            onChange={ev => this._vm.onChangeStage(lane, ev.target.value)}
+            value={this._vm.stages[lane]}
           >
             { setting.STAGE.map((v, idx) => (
             <option key={idx} value={idx}>{v}</option>
@@ -68,7 +52,7 @@ class MultiStageInput extends React.Component {
 
   componentDidMount() {
     this._disposer = reaction(
-      () => this._stage,
+      () => this._vm.stage,
       stage => {
         if (typeof this.props.onChangeStage === 'function') {
           this.props.onChangeStage(stage);
