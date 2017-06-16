@@ -35,7 +35,7 @@ class App extends React.Component {
             <span className="ft-ika">キロクする</span>
           </button>
         </header>
-        <Tabs>
+        <Tabs defaultIndex={1}>
           <TabPanel>
             <GraphPage />
           </TabPanel>

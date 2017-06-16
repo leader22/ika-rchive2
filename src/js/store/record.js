@@ -21,6 +21,7 @@ class RecordStore {
   areaItems: IObservableArray<Log>;
   yaguraItems: IObservableArray<Log>;
   hokoItems: IObservableArray<Log>;
+  stat: Stat;
 
   constructor(key: string) {
     extendObservable(this, {
@@ -34,6 +35,7 @@ class RecordStore {
       hokoItems: computed(() => {
         return this.items.filter(log => log.mode === 2);
       }),
+      stat: computed(toStat),
     });
 
     this._syncStorage(key);
@@ -74,3 +76,37 @@ class RecordStore {
 }
 
 export default RecordStore;
+
+// TODO: 移動
+type Stat = {
+  totalPlayCount: number,
+  areaPlayCount: number,
+  yaguraPlayCount: number,
+  hokoPlayCount: number,
+};
+
+function toStat(): Stat {
+  const items = this.items;
+  let itemsLen = items.length;
+
+  const stat = {
+    totalPlayCount: itemsLen,
+    areaPlayCount: 0,
+    yaguraPlayCount: 0,
+    hokoPlayCount: 0,
+  };
+
+  while (itemsLen--) {
+    const item = items[itemsLen];
+
+    _assignPlayCount(stat, item);
+  }
+
+  return stat;
+
+  function _assignPlayCount(stat, item) {
+    if (item.mode === 0) { stat.areaPlayCount++; }
+    if (item.mode === 1) { stat.yaguraPlayCount++; }
+    if (item.mode === 2) { stat.hokoPlayCount++; }
+  }
+}
