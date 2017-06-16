@@ -2,9 +2,11 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import type UiStore from '../../store/ui';
-import type RecordStore from '../../store/record';
-import type Event from '../../event';
+import LogTime from './log-time';
+
+import type UiStore from '../../../store/ui';
+import type RecordStore from '../../../store/record';
+import type Event from '../../../event';
 
 
 const Record = ({
@@ -32,7 +34,7 @@ const Record = ({
         { record.items.slice(0, showItemsLen).map((log, idx) => (
         <li key={`${log.id}-${idx}`}>
           <div>
-            [{record.items.length - idx}] {log.id}
+            [{record.items.length - idx}] <LogTime time={log.id} />
           </div>
           <div>
             {setting.STAGE[log.stage]}の

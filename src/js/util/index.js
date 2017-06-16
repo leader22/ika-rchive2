@@ -22,6 +22,17 @@ export function decodeTime(time: number): number {
   return (time * 1000) + base;
 }
 
+export function formatDate(time: number): string {
+  const date = new Date(time);
+  const YYYY = date.getFullYear();
+  const MM   = `0${date.getMonth() + 1}`.slice(-2);
+  const DD   = `0${date.getDate()}`.slice(-2);
+  const hh   = `0${date.getHours()}`.slice(-2);
+  const mm   = `0${date.getMinutes()}`.slice(-2);
+
+  return `${YYYY}/${MM}/${DD} ${hh}:${mm}`;
+}
+
 export function rateToRateStr(rate: number, rankTable: *): string {
   const point = rate % 100;
   const rank = (rate - point) / 100;
