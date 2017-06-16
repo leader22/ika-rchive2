@@ -54,6 +54,10 @@ class Event {
     // }
   }
 
+  onClickLogShowMore(): void {
+    this.ui.logShowMore();
+  }
+
   onClickResetAll(): void {
     // const check = window.confirm('TODO: 取り消せません');
     // if (check) {

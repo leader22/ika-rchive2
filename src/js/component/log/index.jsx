@@ -4,20 +4,12 @@ import { inject, observer } from 'mobx-react';
 
 import Record from './record';
 
-import type RecordStore from '../../store/record';
 
-
-const LogPage = ({
-  record,
-}: {
-  record: RecordStore,
-}) => (
+const LogPage = () => (
 <div>
   レコードのリスト表示
-  <Record record={record} />
+  <Record />
 </div>
 );
 
-export default inject(
-  'record',
-)(observer(LogPage));
+export default inject()(observer(LogPage));

@@ -10,12 +10,14 @@ class UiStore {
   isAddLogModalOpen: boolean;
   modLog: Log;
   isModLogModalOpen: boolean;
+  logPage: number;
 
   constructor() {
     extendObservable(this, {
       isAddLogModalOpen: false,
       modLog: {},
       isModLogModalOpen: false,
+      logPage: 1,
     });
   }
 
@@ -36,6 +38,10 @@ class UiStore {
 
   updateModLog(item: Object): void {
     Object.assign(this.modLog, item);
+  }
+
+  logShowMore(): void {
+    this.logPage++;
   }
 }
 

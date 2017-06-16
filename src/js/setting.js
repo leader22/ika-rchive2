@@ -34,9 +34,12 @@ const RANK = [
   'S+',
 ];
 
+const LOG_PER_PAGE = 20;
+
 export default {
   RESULT,
   MODE,
   STAGE,
   RANK,
+  LOG_PER_PAGE,
 };

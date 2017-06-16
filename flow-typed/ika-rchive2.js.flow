@@ -7,6 +7,7 @@ declare type Setting = {
   MODE: Array<string>,
   STAGE: Array<string>,
   RANK: Array<string>,
+  LOG_PER_PAGE: number,
 };
 
 declare type LogSeed = {
