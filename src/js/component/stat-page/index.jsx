@@ -8,32 +8,57 @@ import type RecordStore from '../../store/record';
 class StatPage extends React.Component {
   props: {|
     record: RecordStore,
+    setting: Setting,
   |};
 
   render() {
+    const { STAGE } = this.props.setting;
     const { stat } = this.props.record;
 
     return (
       <div>
-        <h3>キロクけんすう</h3>
-        <ul>
-          <li>合計: {stat.totalPlayCount}</li>
-          <li>エリア: {stat.areaPlayCount}</li>
-          <li>ヤグラ: {stat.yaguraPlayCount}</li>
-          <li>ホコ: {stat.hokoPlayCount}</li>
-        </ul>
         <h3>ウデマエ</h3>
         <ul>
           <li>エリア: 最高{stat.areaBestRate}/平均{stat.areaAvgRate}</li>
           <li>ヤグラ: 最高{stat.yaguraBestRate}/平均{stat.yaguraAvgRate}</li>
           <li>ホコ: 最高{stat.hokoBestRate}/平均{stat.hokoAvgRate}</li>
         </ul>
-        <h3>かちまけ</h3>
+
+        <h3>しょうりつ・かちまけ</h3>
         <ul>
-          <li>総合: {stat.totalWinP}% = {stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
-          <li>エリア: {stat.areaWinP}% = {stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>
-          <li>ヤグラ: {stat.yaguraWinP}% = {stat.yaguraWinCount}勝/{stat.yaguraLoseCount}敗</li>
-          <li>ホコ: {stat.hokoWinP}% = {stat.hokoWinCount}勝/{stat.hokoLoseCount}敗</li>
+          <li>総合: {stat.totalWinP}% = {stat.totalPlayCount}戦/{stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
+          <li>エリア: {stat.areaWinP}% = {stat.areaPlayCount}戦/{stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>
+          <li>ヤグラ: {stat.yaguraWinP}% = {stat.yaguraPlayCount}戦/{stat.yaguraWinCount}勝/{stat.yaguraLoseCount}敗</li>
+          <li>ホコ: {stat.hokoWinP}% = {stat.hokoPlayCount}戦/{stat.hokoWinCount}勝/{stat.hokoLoseCount}敗</li>
+        </ul>
+
+        <h3>ステージべつかちまけ</h3>
+        <h4>エリア</h4>
+        <ul>
+          { Object.entries(stat.areaByStage).map(([stage, byStage]) => (
+          <li key={stage}>
+            {/* flow-disable-line */}
+            {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
+          </li>
+          )) }
+        </ul>
+        <h4>ヤグラ</h4>
+        <ul>
+          { Object.entries(stat.yaguraByStage).map(([stage, byStage]) => (
+          <li key={stage}>
+            {/* flow-disable-line */}
+            {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
+          </li>
+          )) }
+        </ul>
+        <h4>ホコ</h4>
+        <ul>
+          { Object.entries(stat.hokoByStage).map(([stage, byStage]) => (
+          <li key={stage}>
+            {/* flow-disable-line */}
+            {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
+          </li>
+          )) }
         </ul>
       </div>
     );
@@ -42,4 +67,5 @@ class StatPage extends React.Component {
 
 export default inject(
   'record',
+  'setting',
 )(observer(StatPage));

@@ -44,7 +44,7 @@ function _addRecord(mode, num) {
 
       const seed = {
         mode: mode,
-        stage: __nToM(1, 6),
+        stage: __nToM(0, 5),
         result: isWin ? 1 : 0,
         rank: rank,
         point: point,

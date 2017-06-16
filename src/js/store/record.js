@@ -107,6 +107,16 @@ type Stat = {
   areaAvgRate: number,
   yaguraAvgRate: number,
   hokoAvgRate: number,
+
+  areaByStage: { [number]: ByStage },
+  yaguraByStage: { [number]: ByStage },
+  hokoByStage: { [number]: ByStage },
+};
+type ByStage = {
+  playCount: number,
+  winCount: number,
+  loseCount: number,
+  winP: number,
 };
 
 function toStat(): Stat {
@@ -142,6 +152,10 @@ function toStat(): Stat {
     areaAvgRate: 0,
     yaguraAvgRate: 0,
     hokoAvgRate: 0,
+
+    areaByStage: {},
+    yaguraByStage: {},
+    hokoByStage: {},
   };
 
   while (itemsLen--) {
@@ -150,11 +164,14 @@ function toStat(): Stat {
     _assignPlayCount(stat, item);
     _assignWinCount(stat, item);
     _assignBestRate(stat, item);
+    _assignStagePlayAndWinCount(stat, item);
   }
 
   _assignWinP(stat);
   _assignLoseCount(stat);
   _assignAvgRate(stat);
+  _assignStageWinP(stat);
+  _assignStageLoseCount(stat);
 
   return stat;
 }
@@ -180,6 +197,18 @@ function _assignBestRate(stat: Stat, item: Log): void {
   item.mode === 1 && (stat._yaguraTotalRate += rate);
   item.mode === 2 && (stat._hokoTotalRate += rate);
 }
+function _assignStagePlayAndWinCount(stat: Stat, item: Log): void {
+  const { stage, mode, result } = item;
+  stage in stat.areaByStage || (stat.areaByStage[stage] = __getByStage());
+  stage in stat.yaguraByStage || (stat.yaguraByStage[stage] = __getByStage());
+  stage in stat.hokoByStage || (stat.hokoByStage[stage] = __getByStage());
+  mode === 0 && stat.areaByStage[stage].playCount++;
+  mode === 1 && stat.yaguraByStage[stage].playCount++;
+  mode === 2 && stat.hokoByStage[stage].playCount++;
+  (mode === 0 && result) && stat.areaByStage[stage].winCount++;
+  (mode === 1 && result) && stat.yaguraByStage[stage].winCount++;
+  (mode === 2 && result) && stat.hokoByStage[stage].winCount++;
+}
 function _assignWinP(stat: Stat): void {
   stat.totalWinP = __percentage(stat.totalWinCount, stat.totalPlayCount, 2);
   stat.areaWinP = __percentage(stat.areaWinCount, stat.areaPlayCount, 2);
@@ -197,7 +226,43 @@ function _assignAvgRate(stat: Stat): void {
   stat.yaguraAvgRate = (stat._yaguraTotalRate / stat.yaguraPlayCount)|0;
   stat.hokoAvgRate = (stat._hokoTotalRate / stat.hokoPlayCount)|0;
 }
+function _assignStageWinP(stat: Stat): void {
+  for (let key in stat.areaByStage) {
+    const val = stat.areaByStage[Number(key)];
+    val.winP = __percentage(val.winCount, val.playCount, 2);
+  }
+  for (let key in stat.yaguraByStage) {
+    const val = stat.yaguraByStage[Number(key)];
+    val.winP = __percentage(val.winCount, val.playCount, 2);
+  }
+  for (let key in stat.hokoByStage) {
+    const val = stat.hokoByStage[Number(key)];
+    val.winP = __percentage(val.winCount, val.playCount, 2);
+  }
+}
+function _assignStageLoseCount(stat: Stat): void {
+  for (let key in stat.areaByStage) {
+    const val = stat.areaByStage[Number(key)];
+    val.loseCount = val.playCount - val.winCount;
+  }
+  for (let key in stat.yaguraByStage) {
+    const val = stat.yaguraByStage[Number(key)];
+    val.loseCount = val.playCount - val.winCount;
+  }
+  for (let key in stat.hokoByStage) {
+    const val = stat.hokoByStage[Number(key)];
+    val.loseCount = val.playCount - val.winCount;
+  }
+}
 
+function __getByStage(): ByStage {
+  return {
+    playCount: 0,
+    winCount: 0,
+    loseCount: 0,
+    winP: 0,
+  };
+}
 function __percentage(c: number, p: number, n: number) {
   if (c === 0 || p === 0) {
     return 0;
