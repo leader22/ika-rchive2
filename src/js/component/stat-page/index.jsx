@@ -22,12 +22,18 @@ class StatPage extends React.Component {
           <li>ヤグラ: {stat.yaguraPlayCount}</li>
           <li>ホコ: {stat.hokoPlayCount}</li>
         </ul>
+        <h3>ウデマエ</h3>
+        <ul>
+          <li>エリア: 最高{stat.areaBestRate}/平均{stat.areaAvgRate}</li>
+          <li>ヤグラ: 最高{stat.yaguraBestRate}/平均{stat.yaguraAvgRate}</li>
+          <li>ホコ: 最高{stat.hokoBestRate}/平均{stat.hokoAvgRate}</li>
+        </ul>
         <h3>勝率と勝敗</h3>
         <ul>
-          <li>総合: {stat.totalWinRate}% = {stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
-          <li>エリア: {stat.areaWinRate}% = {stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>
-          <li>ヤグラ: {stat.yaguraWinRate}% = {stat.yaguraWinCount}勝/{stat.yaguraLoseCount}敗</li>
-          <li>ホコ: {stat.hokoWinRate}% = {stat.hokoWinCount}勝/{stat.hokoLoseCount}敗</li>
+          <li>総合: {stat.totalWinP}% = {stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
+          <li>エリア: {stat.areaWinP}% = {stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>
+          <li>ヤグラ: {stat.yaguraWinP}% = {stat.yaguraWinCount}勝/{stat.yaguraLoseCount}敗</li>
+          <li>ホコ: {stat.hokoWinP}% = {stat.hokoWinCount}勝/{stat.hokoLoseCount}敗</li>
         </ul>
       </div>
     );

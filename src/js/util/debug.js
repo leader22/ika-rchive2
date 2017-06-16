@@ -39,6 +39,8 @@ function _addRecord(mode, num) {
       if (point < 0) { rank--; point = 70; }
       // 下限
       if (rank < 0) { rank = 0; }
+      // 上限
+      if (rank > 10) { rank = 10; point = 99; }
 
       const seed = {
         mode: mode,
