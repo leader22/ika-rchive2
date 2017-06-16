@@ -2,6 +2,8 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
+import RateStr from './rate-str';
+
 import type RecordStore from '../../store/record';
 
 
@@ -19,9 +21,9 @@ class StatPage extends React.Component {
       <div>
         <h3>ウデマエ</h3>
         <ul>
-          <li>エリア: 最高{stat.areaBestRate}/平均{stat.areaAvgRate}</li>
-          <li>ヤグラ: 最高{stat.yaguraBestRate}/平均{stat.yaguraAvgRate}</li>
-          <li>ホコ: 最高{stat.hokoBestRate}/平均{stat.hokoAvgRate}</li>
+          <li>エリア: 最高<RateStr rate={stat.areaBestRate} />/平均<RateStr rate={stat.areaAvgRate} /></li>
+          <li>ヤグラ: 最高<RateStr rate={stat.yaguraBestRate} />/平均<RateStr rate={stat.yaguraAvgRate} /></li>
+          <li>ホコ: 最高<RateStr rate={stat.hokoBestRate} />/平均<RateStr rate={stat.hokoAvgRate} /></li>
         </ul>
 
         <h3>しょうりつ・かちまけ</h3>
