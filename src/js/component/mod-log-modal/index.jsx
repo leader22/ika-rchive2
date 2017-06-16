@@ -2,13 +2,12 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import AddLogForm from './form';
+import ModLogForm from './form';
 
 import type UiStore from '../../store/ui';
 import type Event from '../../event';
 
-
-class AddLogModal extends React.Component {
+class ModLogModal extends React.Component {
   props: {|
     ui: UiStore,
     event: Event,
@@ -18,17 +17,17 @@ class AddLogModal extends React.Component {
     const { ui, event } = this.props;
 
     return (
-      <div className={`add-log-modal ${ui.isAddLogModalOpen ? 'add-log-modal--opened' : ''}`}>
+      <div className={`mod-log-modal ${ui.isModLogModalOpen ? 'mod-log-modal--opened' : ''}`}>
         <header className="app-header">
           <button
             className="app-header__action"
             type="button"
-            onClick={event.onClickCloseAddLogModal}
+            onClick={event.onClickCloseModLogModal}
           >
             <span className="ft-ika">キャンセル</span>
           </button>
         </header>
-        <AddLogForm />
+        <ModLogForm />
       </div>
     );
   }
@@ -37,4 +36,4 @@ class AddLogModal extends React.Component {
 export default inject(
   'ui',
   'event',
-)(observer(AddLogModal));
+)(observer(ModLogModal));

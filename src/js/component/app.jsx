@@ -8,6 +8,7 @@ import LogPage from './log';
 import StatPage from './stat';
 import OthersPage from './others';
 import AddLogModal from './add-log-modal';
+import ModLogModal from './mod-log-modal';
 
 import type Event from '../event';
 
@@ -34,7 +35,7 @@ class App extends React.Component {
             <span className="ft-ika">キロクする</span>
           </button>
         </header>
-        <Tabs>
+        <Tabs defaultIndex={1}>
           <TabPanel>
             <GraphPage />
           </TabPanel>
@@ -63,6 +64,7 @@ class App extends React.Component {
           </TabList>
         </Tabs>
         <AddLogModal />
+        <ModLogModal />
       </div>
     );
   }

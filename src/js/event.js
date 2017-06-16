@@ -34,27 +34,32 @@ class Event {
     this.record.add(log);
   }
 
-  onClickModLog(log: Log): void {
+  onClickOpenModLogModal(log: Log): void {
     this.ui.setModLog(log);
-    this.ui.setModLogModalOpen(true);
+  }
+  onChangeModLog(item: Object): void {
+    this.ui.updateModLog(item);
+  }
+  onClickModLog(): void {
+    this.record.mod(this.ui.modLog);
   }
   onClickCloseModLogModal(): void {
-    this.ui.setModLogModalOpen(false);
+    this.ui.setModLog(null);
   }
 
   onClickDelLog(log: Log): void {
-    const check = window.confirm('TODO: 取り消せません');
-    if (check) {
+    // const check = window.confirm('TODO: 取り消せません');
+    // if (check) {
       this.record.del(log);
-    }
+    // }
   }
 
   onClickResetAll(): void {
-    const check = window.confirm('TODO: 取り消せません');
-    if (check) {
+    // const check = window.confirm('TODO: 取り消せません');
+    // if (check) {
       storage.clear();
       location.reload(true);
-    }
+    // }
   }
 }
 

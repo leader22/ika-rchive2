@@ -50,6 +50,13 @@ class RecordStore {
     this.items.remove(log);
   }
 
+  mod(log: Log): void {
+    const targetIdx = this.items.findIndex(item => item.id === log.id);
+    if (targetIdx !== -1) {
+      this.items.splice(targetIdx, 1, log);
+    }
+  }
+
   _syncStorage(key: string): void {
     const stored = storage.getItem(key);
     if (typeof stored === 'string') {

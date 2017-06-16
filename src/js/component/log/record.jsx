@@ -34,7 +34,7 @@ const Record = ({
       {setting.RANK[log.rank]}{log.point}
     </div>
     <div>
-      <a onClick={() => { event.onClickModLog(log); }}>[修正]</a>
+      <a onClick={() => { event.onClickOpenModLogModal(log); }}>[修正]</a>
       /
       <a onClick={() => { event.onClickDelLog(log); }}>[削除]</a>
     </div>
