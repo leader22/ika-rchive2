@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { observer } from 'mobx-react';
 
 import { STAGE } from '../../../setting';
 
@@ -40,4 +41,4 @@ const MultiStageInput = ({
   </div>
 );
 
-export default MultiStageInput;
+export default observer(MultiStageInput);
