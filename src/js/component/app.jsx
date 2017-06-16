@@ -40,10 +40,10 @@ class App extends React.Component {
             <GraphPage />
           </TabPanel>
           <TabPanel>
-            <LogPage />
+            <StatPage />
           </TabPanel>
           <TabPanel>
-            <StatPage />
+            <LogPage />
           </TabPanel>
           <TabPanel>
             <OthersPage />
@@ -53,10 +53,10 @@ class App extends React.Component {
               <span className="ft-ika">グラフ</span>
             </Tab>
             <Tab>
-              <span className="ft-ika">ログ</span>
+              <span className="ft-ika">トウケイ</span>
             </Tab>
             <Tab>
-              <span className="ft-ika">トウケイ</span>
+              <span className="ft-ika">ログ</span>
             </Tab>
             <Tab>
               <span className="ft-ika">ソノタ</span>
