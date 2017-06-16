@@ -2,12 +2,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-function rateToRateStr(rate: number, rankTable): string {
-  const point = rate % 100;
-  const rank = (rate - point) / 100;
-  const rankStr = rankTable[rank];
-  return `${rankStr}${point}`;
-}
+import { rateToRateStr } from '../../util';
 
 
 const RateStr = ({
@@ -20,4 +15,6 @@ const RateStr = ({
   <span>{rateToRateStr(rate, setting.RANK)}</span>
 );
 
-export default inject('setting')(observer(RateStr));
+export default inject(
+  'setting',
+)(observer(RateStr));

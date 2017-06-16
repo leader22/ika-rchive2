@@ -21,3 +21,10 @@ export function decodeTime(time: number): number {
   const base = new Date('2017/03/03').getTime();
   return (time * 1000) + base;
 }
+
+export function rateToRateStr(rate: number, rankTable: *): string {
+  const point = rate % 100;
+  const rank = (rate - point) / 100;
+  const rankStr = rankTable[rank];
+  return `${rankStr}${point}`;
+}
