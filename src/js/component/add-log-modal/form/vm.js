@@ -2,26 +2,30 @@
 import {
   computed,
   extendObservable,
-  toJS,
 } from 'mobx';
+import { bindThis } from '../../../util';
 
 
 class AddLogFormVM {
   mode: number;
   stage: number;
+  stages: Array<number>
+  stageLane: number;
   rank: number;
   point: number;
   result: number;
   canAdd: boolean;
-  onChangeMode: (number) => void;
-  onChangeStage: (number) => void;
-  onChangeRate: (number, number) => void;
-  onChangeResult: (number) => void;
 
   constructor() {
+    bindThis(this);
+
     extendObservable(this, {
       mode: 0,
-      stage: 0,
+      stages: [0, 1],
+      stageLane: 0,
+      stage: computed(() => {
+        return this.stages[this.stageLane];
+      }),
       rank: 0,
       point: 0,
       result: 0,
@@ -32,24 +36,33 @@ class AddLogFormVM {
         return true;
       }),
     });
-
-    this.onChangeMode = (mode) => {
-      this.mode = mode;
-    };
-    this.onChangeStage = (stage) => {
-      this.stage = stage;
-    };
-    this.onChangeRate = (rank, point) => {
-      this.rank = rank;
-      this.point = point;
-    };
-    this.onChangeResult = (result) => {
-      this.result = result;
-    };
   }
 
-  toJS() {
-    return toJS(this);
+  onChangeMode(mode: number): void {
+    this.mode = mode;
+  }
+  onChangeLane(ev: SyntheticInputEvent): void {
+    this.stageLane = parseInt(ev.target.value);
+  }
+  onChangeStage(lane: number, stage: number): void {
+    this.stages[lane] = parseInt(stage);
+  }
+  onChangeRate(rank: number, point: number): void {
+    this.rank = rank;
+    this.point = point;
+  }
+  onChangeResult(result: number): void {
+    this.result = result;
+  }
+
+  toJS(): LogSeed {
+    return {
+      mode: this.mode,
+      stage: this.stage,
+      rank: this.rank,
+      point: this.point,
+      result: this.result,
+    };
   }
 }
 

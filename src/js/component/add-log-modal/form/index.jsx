@@ -45,6 +45,9 @@ class AddLogForm extends React.Component {
           onChangeMode={this._vm.onChangeMode}
         />
         <MultiStageInput
+          stageLane={this._vm.stageLane}
+          stages={this._vm.stages}
+          onChangeLane={this._vm.onChangeLane}
           onChangeStage={this._vm.onChangeStage}
         />
         <RateInput
