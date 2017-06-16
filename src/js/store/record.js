@@ -83,6 +83,20 @@ type Stat = {
   areaPlayCount: number,
   yaguraPlayCount: number,
   hokoPlayCount: number,
+
+  totalWinCount: number,
+  totalLoseCount: number,
+  areaWinCount: number,
+  areaLoseCount: number,
+  yaguraWinCount: number,
+  yaguraLoseCount: number,
+  hokoWinCount: number,
+  hokoLoseCount: number,
+
+  totalWinRate: number,
+  areaWinRate: number,
+  yaguraWinRate: number,
+  hokoWinRate: number,
 };
 
 function toStat(): Stat {
@@ -90,23 +104,68 @@ function toStat(): Stat {
   let itemsLen = items.length;
 
   const stat = {
-    totalPlayCount: itemsLen,
+    totalPlayCount: 0,
     areaPlayCount: 0,
     yaguraPlayCount: 0,
     hokoPlayCount: 0,
+
+    totalWinCount: 0,
+    totalLoseCount: 0,
+    areaWinCount: 0,
+    areaLoseCount: 0,
+    yaguraWinCount: 0,
+    yaguraLoseCount: 0,
+    hokoWinCount: 0,
+    hokoLoseCount: 0,
+
+    totalWinRate: 0,
+    areaWinRate: 0,
+    yaguraWinRate: 0,
+    hokoWinRate: 0,
   };
 
   while (itemsLen--) {
     const item = items[itemsLen];
 
     _assignPlayCount(stat, item);
+    _assignWinCount(stat, item);
   }
+
+  _assignWinRate(stat);
+  _assignLoseCount(stat);
 
   return stat;
+}
 
-  function _assignPlayCount(stat, item) {
-    if (item.mode === 0) { stat.areaPlayCount++; }
-    if (item.mode === 1) { stat.yaguraPlayCount++; }
-    if (item.mode === 2) { stat.hokoPlayCount++; }
-  }
+function _assignPlayCount(stat: Stat, item: Log): void {
+  stat.totalPlayCount++;
+  (item.mode === 0) && stat.areaPlayCount++;
+  (item.mode === 1) && stat.yaguraPlayCount++;
+  (item.mode === 2) && stat.hokoPlayCount++;
+}
+function _assignWinCount(stat: Stat, item: Log): void {
+  item.result && stat.totalWinCount++;
+  (item.mode === 0 && item.result) && stat.areaWinCount++;
+  (item.mode === 1 && item.result) && stat.yaguraWinCount++;
+  (item.mode === 2 && item.result) && stat.hokoWinCount++;
+}
+function _assignWinRate(stat: Stat): void {
+  stat.totalWinRate = __percentage(stat.totalWinCount, stat.totalPlayCount, 2);
+  stat.areaWinRate = __percentage(stat.areaWinCount, stat.areaPlayCount, 2);
+  stat.yaguraWinRate = __percentage(stat.yaguraWinCount, stat.yaguraPlayCount, 2);
+  stat.hokoWinRate = __percentage(stat.hokoWinCount, stat.hokoPlayCount, 2);
+}
+function _assignLoseCount(stat: Stat): void {
+  stat.totalLoseCount = stat.totalPlayCount - stat.totalWinCount;
+  stat.areaLoseCount = stat.areaPlayCount - stat.areaWinCount;
+  stat.yaguraLoseCount = stat.yaguraPlayCount - stat.yaguraWinCount;
+  stat.hokoLoseCount = stat.hokoPlayCount - stat.hokoWinCount;
+}
+
+function __percentage(c: number, p: number, n: number) {
+  if (c === 0 || p === 0) { return 0; }
+
+  const rate = c / p * 100;
+  const pow = Math.pow(10, n);
+  return Math.round(rate * pow) / pow;
 }

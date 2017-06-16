@@ -11,21 +11,23 @@ class StatPage extends React.Component {
   |};
 
   render() {
-    const {
-      totalPlayCount,
-      areaPlayCount,
-      yaguraPlayCount,
-      hokoPlayCount,
-    } = this.props.record.stat;
+    const { stat } = this.props.record;
 
     return (
       <div>
         <h3>バトル回数</h3>
         <ul>
-          <li>総合: {totalPlayCount}</li>
-          <li>エリア: {areaPlayCount}</li>
-          <li>ヤグラ: {yaguraPlayCount}</li>
-          <li>ホコ: {hokoPlayCount}</li>
+          <li>総合: {stat.totalPlayCount}</li>
+          <li>エリア: {stat.areaPlayCount}</li>
+          <li>ヤグラ: {stat.yaguraPlayCount}</li>
+          <li>ホコ: {stat.hokoPlayCount}</li>
+        </ul>
+        <h3>勝率と勝敗</h3>
+        <ul>
+          <li>総合: {stat.totalWinRate}% = {stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
+          <li>エリア: {stat.areaWinRate}% = {stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>
+          <li>ヤグラ: {stat.yaguraWinRate}% = {stat.yaguraWinCount}勝/{stat.yaguraLoseCount}敗</li>
+          <li>ホコ: {stat.hokoWinRate}% = {stat.hokoWinCount}勝/{stat.hokoLoseCount}敗</li>
         </ul>
       </div>
     );
