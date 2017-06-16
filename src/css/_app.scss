@@ -1,5 +1,8 @@
 $footer-height: 40px;
 
+.app-name {
+  text-shadow: 1px 1px 1px #000, 2px 2px 1px #1AD118;
+}
 
 .app {
   position: relative;
@@ -42,7 +45,7 @@ $footer-height: 40px;
     flex: 1 1 auto;
 
     &--selected {
-      color: green;
+      color: #ED2772;
     }
   }
 }

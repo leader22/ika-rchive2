@@ -15,9 +15,9 @@ class StatPage extends React.Component {
 
     return (
       <div>
-        <h3>バトル回数</h3>
+        <h3>キロクけんすう</h3>
         <ul>
-          <li>総合: {stat.totalPlayCount}</li>
+          <li>合計: {stat.totalPlayCount}</li>
           <li>エリア: {stat.areaPlayCount}</li>
           <li>ヤグラ: {stat.yaguraPlayCount}</li>
           <li>ホコ: {stat.hokoPlayCount}</li>
@@ -28,7 +28,7 @@ class StatPage extends React.Component {
           <li>ヤグラ: 最高{stat.yaguraBestRate}/平均{stat.yaguraAvgRate}</li>
           <li>ホコ: 最高{stat.hokoBestRate}/平均{stat.hokoAvgRate}</li>
         </ul>
-        <h3>勝率と勝敗</h3>
+        <h3>かちまけ</h3>
         <ul>
           <li>総合: {stat.totalWinP}% = {stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
           <li>エリア: {stat.areaWinP}% = {stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>

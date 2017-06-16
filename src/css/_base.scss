@@ -15,6 +15,8 @@ body {
 
 h1, h2, h3 {
   margin: 0;
+  font-family: 'ikamodoki';
+  text-shadow: 1px 1px 1px #000;
 }
 
 ul {
@@ -39,6 +41,14 @@ select {
   border-radius: 1px;
 }
 
+a {
+  color: #1AD118;
+}
+
+b {
+  color: #ED2772;
+}
+
 @font-face {
   font-family: 'ikamodoki';
   src: url('../static/font/ikamodoki1_0.ttf') format('truetype');
@@ -46,4 +56,5 @@ select {
 
 .ft-ika {
   font-family: 'ikamodoki';
+  text-shadow: 1px 1px 1px #000;
 }
