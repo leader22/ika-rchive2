@@ -2,7 +2,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import type RecordStore from '../store/record';
+import type RecordStore from '../../store/record';
 
 
 const GraphPage = ({
