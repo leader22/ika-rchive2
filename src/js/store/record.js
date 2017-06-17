@@ -26,6 +26,7 @@ class RecordStore {
   constructor(key: string) {
     extendObservable(this, {
       items: [],
+      noItem: computed(() => this.items.length === 0),
       areaItems: computed(() => {
         return this.items.filter(log => log.mode === 0);
       }),

@@ -13,28 +13,28 @@ const OthersPage = ({
   user: UserStore,
   event: Event,
 }) => (
-<div>
-  <h3 className="app-name">ウデマエア-カイブ<b>2</b></h3>
-  <ul>
-    <li>
-      バージョン: v{user.ver}
-    </li>
-  </ul>
+  <div className="others-page">
+    <h3 className="app-name">ウデマエア-カイブ<b>2</b></h3>
+    <ul>
+      <li>
+        バージョン: v{user.ver}
+      </li>
+    </ul>
 
-  <h3>つかいかた</h3>
-  <ul>
-    <li>
-      画面右上にある「キロクする」から・・
-    </li>
-  </ul>
+    <h3>つかいかた</h3>
+    <ul>
+      <li>
+        画面右上にある「キロクする」から・・
+      </li>
+    </ul>
 
-  <h3>???</h3>
-  <ul>
-    <li>
-      <a onClick={event.onClickResetAll}>リセットしてはじめから</a>
-    </li>
-  </ul>
-</div>
+    <h3>???</h3>
+    <ul>
+      <li>
+        <a onClick={event.onClickResetAll}>リセットしてはじめから</a>
+      </li>
+    </ul>
+  </div>
 );
 
 export default inject(

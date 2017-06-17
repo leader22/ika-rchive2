@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 
-import { RANK } from '../../setting';
-import { rateToRateStr } from '../../util';
+import { RANK } from '../../../setting';
+import { rateToRateStr } from '../../../util';
 
 
 const RateStr = ({
