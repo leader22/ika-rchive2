@@ -46,7 +46,7 @@ class RecordStore {
     const log = Object.assign({}, seed, {
       id: encodeTime(Date.now()),
     });
-    this.items.splice(0, 0, log);
+    this.items.push(log);
   }
 
   del(log: Log): void {

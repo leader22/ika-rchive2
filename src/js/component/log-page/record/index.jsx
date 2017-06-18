@@ -30,7 +30,7 @@ const Record = ({
         { isNoItem && (
         <li>キロクなし</li>
         ) }
-        { record.items.slice(0, showItemsLen).map((log, idx) => (
+        { record.items.slice(-showItemsLen).reverse().map((log, idx) => (
         <li key={`${log.id}-${idx}`}>
           <div>
             [{record.items.length - idx}] <LogTime time={log.id} />
