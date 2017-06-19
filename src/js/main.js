@@ -29,7 +29,9 @@ window.onerror = err => {
   // location.href = './sorry.html';
 };
 
-// TODO: 下の画面見えるやつ
+// ログが多いとLocalStorageからの取得に時間がかかって下の画面見える
+// なので隠しておく
+const $body = document.getElementById('jsApp');
 
 // 常連の方
 if (typeof localStorage.getItem('IA2_USER') === 'string') {
@@ -49,7 +51,7 @@ if (typeof localStorage.getItem('IA2_USER') === 'string') {
     >
       <App />
     </Provider>,
-    document.getElementById('jsApp')
+    $body
   );
 }
 // はじめての方
@@ -61,4 +63,9 @@ else {
       location.reload(true);
     }, false);
   }
+}
+
+// ここまでの処理は全て同期なので、準備完了で見せる
+if ($body) {
+  $body.className = 'body';
 }

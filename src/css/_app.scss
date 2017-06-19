@@ -1,7 +1,16 @@
 $footer-height: 40px;
 
+.body {
+  opacity: 1;
+  transition: opacity .5s linear;
+
+  &--loading {
+    opacity: 0;
+  }
+}
+
 .app-name {
-  text-shadow: 1px 1px 1px #000, 2px 2px 1px #1AD118;
+  text-shadow: 1px 1.5px 0 #000, 2px 2px 0 #1AD118;
 }
 
 .app {
