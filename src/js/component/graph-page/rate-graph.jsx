@@ -29,6 +29,7 @@ const RateGraph = ({
       backgroundColor: 'transparent',
       zoomType: 'x',
       height,
+      spacing: [10, 0, 10, 0],
     },
     xAxis: {
       // 拡大時の最小単位を1"件"に固定したい（0.5試合目とかないから）

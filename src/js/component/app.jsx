@@ -35,30 +35,30 @@ class App extends React.Component {
             <span className="ft-ika">キロクする</span>
           </button>
         </header>
-        <Tabs>
-          <TabPanel>
+        <Tabs className="app-tabs">
+          <TabPanel className="app-tabpanel">
             <GraphPage />
           </TabPanel>
-          <TabPanel>
+          <TabPanel className="app-tabpanel">
             <StatPage />
           </TabPanel>
-          <TabPanel>
+          <TabPanel className="app-tabpanel">
             <LogPage />
           </TabPanel>
-          <TabPanel>
+          <TabPanel className="app-tabpanel">
             <OthersPage />
           </TabPanel>
-          <TabList>
-            <Tab>
+          <TabList className="app-tablist">
+            <Tab className="app-tab" selectedClassName="app-tab--selected">
               <span className="ft-ika">グラフ</span>
             </Tab>
-            <Tab>
+            <Tab className="app-tab" selectedClassName="app-tab--selected">
               <span className="ft-ika">トウケイ</span>
             </Tab>
-            <Tab>
+            <Tab className="app-tab" selectedClassName="app-tab--selected">
               <span className="ft-ika">ログ</span>
             </Tab>
-            <Tab>
+            <Tab className="app-tab" selectedClassName="app-tab--selected">
               <span className="ft-ika">ソノタ</span>
             </Tab>
           </TabList>

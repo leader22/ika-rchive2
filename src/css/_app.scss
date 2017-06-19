@@ -23,29 +23,33 @@ $footer-height: 40px;
   }
 }
 
-.react-tabs {
+.app-tabs {
   padding-bottom: $footer-height;
+}
 
-  &__tab-list {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: $footer-height;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    margin: 0;
-    background-color: #000;
-  }
+.app-tabpanel {
+  margin: 10px;
+}
 
-  &__tab {
-    flex: 1 1 auto;
+.app-tablist {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: $footer-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  margin: 0;
+  background-color: #000;
+}
 
-    &--selected {
-      color: #ED2772;
-    }
+.app-tab {
+  flex: 1 1 auto;
+
+  &--selected {
+    color: #ED2772;
   }
 }
 
