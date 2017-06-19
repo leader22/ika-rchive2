@@ -27,7 +27,7 @@ const ModeGraph = ({
       </div>
       <div className="mode-graph-legend">
         { record.view.graph.playModeRatio.map((ratio, idx) => (
-        <span key={idx} className="ft-ika">
+        <span key={idx}>
           { idx === 0 || ' / ' }
           {MODE[idx]}: {ratio}%
         </span>
