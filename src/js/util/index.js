@@ -43,7 +43,7 @@ export function rateToRateStr(rate: number, rankTable: *): string {
   return '';
 }
 
-export function percentage(c: number, p: number, n: number = 1) {
+export function percentage(c: number, p: number, n: number = 1): number {
   if (c === 0 || p === 0) {
     return 0;
   }

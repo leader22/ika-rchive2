@@ -13,6 +13,10 @@ export default {
       yaguraRate: [],
       hokoRate: [],
       playModeRatio: [],
+
+      areaByStage: {},
+      yaguraByStage: {},
+      hokoByStage: {},
     };
   },
 
@@ -37,4 +41,41 @@ export default {
       percentage(graph._hokoPlayCount, graph._totalPlayCount, 2),
     ];
   },
+
+  assignStagePlayAndWinCount(graph: Graph, item: Log): void {
+    const { stage, mode, result } = item;
+    stage in graph.areaByStage || (graph.areaByStage[stage] = __getByStage());
+    stage in graph.yaguraByStage || (graph.yaguraByStage[stage] = __getByStage());
+    stage in graph.hokoByStage || (graph.hokoByStage[stage] = __getByStage());
+    mode === 0 && graph.areaByStage[stage].playCount++;
+    mode === 1 && graph.yaguraByStage[stage].playCount++;
+    mode === 2 && graph.hokoByStage[stage].playCount++;
+    (mode === 0 && result) && graph.areaByStage[stage].winCount++;
+    (mode === 1 && result) && graph.yaguraByStage[stage].winCount++;
+    (mode === 2 && result) && graph.hokoByStage[stage].winCount++;
+  },
+
+  assignStageWinP(graph: Graph): void {
+    for (let key in graph.areaByStage) {
+      const val = graph.areaByStage[Number(key)];
+      val.winP = percentage(val.winCount, val.playCount, 2);
+    }
+    for (let key in graph.yaguraByStage) {
+      const val = graph.yaguraByStage[Number(key)];
+      val.winP = percentage(val.winCount, val.playCount, 2);
+    }
+    for (let key in graph.hokoByStage) {
+      const val = graph.hokoByStage[Number(key)];
+      val.winP = percentage(val.winCount, val.playCount, 2);
+    }
+  },
 };
+
+function __getByStage(): ByStage {
+  return {
+    playCount: 0,
+    winCount: 0,
+    loseCount: 0,
+    winP: 0,
+  };
+}

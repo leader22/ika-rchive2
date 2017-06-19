@@ -23,6 +23,10 @@ declare type Graph = {
   areaRate: Array<number>,
   yaguraRate: Array<number>,
   hokoRate: Array<number>,
+
+  areaByStage: { [number]: ByStage },
+  yaguraByStage: { [number]: ByStage },
+  hokoByStage: { [number]: ByStage },
 };
 
 declare type Stat = {
