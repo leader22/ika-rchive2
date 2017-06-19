@@ -13,12 +13,15 @@ export default function recordToView(items: IObservableArray<Log>) {
     const item = items[i];
 
     toGraph.assignRate(graph, item);
+    toGraph.assignPlayCount(graph, item);
 
     toStat.assignPlayCount(stat, item);
     toStat.assignWinCount(stat, item);
     toStat.assignBestRate(stat, item);
     toStat.assignStagePlayAndWinCount(stat, item);
   }
+
+  toGraph.assignPlayRatio(graph);
 
   toStat.assignWinP(stat);
   toStat.assignLoseCount(stat);

@@ -151,3 +151,18 @@ $footer-height: 40px;
   padding: 30% 0;
   text-align: center;
 }
+
+.mode-graph {
+  display: flex;
+  text-align: center;
+  height: 20px;
+
+  &__item {
+    height: 100%;
+  }
+}
+
+.mode-graph-legend {
+  text-align: center;
+  font-size: .8rem;
+}

@@ -1,4 +1,6 @@
 // @flow
+import { percentage } from '../../util';
+
 
 export default {
   getEmptyObj(): Stat {
@@ -76,10 +78,10 @@ export default {
   },
 
   assignWinP(stat: Stat): void {
-    stat.totalWinP = __percentage(stat.totalWinCount, stat.totalPlayCount, 2);
-    stat.areaWinP = __percentage(stat.areaWinCount, stat.areaPlayCount, 2);
-    stat.yaguraWinP = __percentage(stat.yaguraWinCount, stat.yaguraPlayCount, 2);
-    stat.hokoWinP = __percentage(stat.hokoWinCount, stat.hokoPlayCount, 2);
+    stat.totalWinP = percentage(stat.totalWinCount, stat.totalPlayCount, 2);
+    stat.areaWinP = percentage(stat.areaWinCount, stat.areaPlayCount, 2);
+    stat.yaguraWinP = percentage(stat.yaguraWinCount, stat.yaguraPlayCount, 2);
+    stat.hokoWinP = percentage(stat.hokoWinCount, stat.hokoPlayCount, 2);
   },
 
   assignLoseCount(stat: Stat): void {
@@ -98,15 +100,15 @@ export default {
   assignStageWinP(stat: Stat): void {
     for (let key in stat.areaByStage) {
       const val = stat.areaByStage[Number(key)];
-      val.winP = __percentage(val.winCount, val.playCount, 2);
+      val.winP = percentage(val.winCount, val.playCount, 2);
     }
     for (let key in stat.yaguraByStage) {
       const val = stat.yaguraByStage[Number(key)];
-      val.winP = __percentage(val.winCount, val.playCount, 2);
+      val.winP = percentage(val.winCount, val.playCount, 2);
     }
     for (let key in stat.hokoByStage) {
       const val = stat.hokoByStage[Number(key)];
-      val.winP = __percentage(val.winCount, val.playCount, 2);
+      val.winP = percentage(val.winCount, val.playCount, 2);
     }
   },
 
@@ -134,13 +136,4 @@ function __getByStage(): ByStage {
     loseCount: 0,
     winP: 0,
   };
-}
-function __percentage(c: number, p: number, n: number) {
-  if (c === 0 || p === 0) {
-    return 0;
-  }
-
-  const rate = c / p * 100;
-  const pow = Math.pow(10, n);
-  return Math.round(rate * pow) / pow;
 }

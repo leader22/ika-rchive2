@@ -3,11 +3,11 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import ReactHighcharts from 'react-highcharts';
 
-import NoItem from '../shared/no-item';
-import { rateToRateStr } from '../../util';
-import { RANK } from '../../setting';
+import NoItem from '../../shared/no-item';
+import { rateToRateStr } from '../../../util';
+import { RANK, MODE_COLOR } from '../../../setting';
 
-import type RecordStore from '../../store/record';
+import type RecordStore from '../../../store/record';
 
 
 function getChartConfig() {
@@ -63,22 +63,19 @@ const RateByMode = ({
   record: RecordStore,
 }) => {
   const seriesData = {
-    color: '',
     data: [],
+    color: MODE_COLOR[mode],
     type: 'area',
     // idxではなく1から
     pointStart: 1,
   };
   if (mode === 0) {
-    seriesData.color = '#FF7D10';
     seriesData.data = record.view.graph.areaRate;
   }
   if (mode === 1) {
-    seriesData.color = '#553ABA';
     seriesData.data = record.view.graph.yaguraRate;
   }
   if (mode === 2) {
-    seriesData.color = '#FDF81E';
     seriesData.data = record.view.graph.hokoRate;
   }
 

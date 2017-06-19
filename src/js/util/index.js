@@ -42,3 +42,13 @@ export function rateToRateStr(rate: number, rankTable: *): string {
   }
   return '';
 }
+
+export function percentage(c: number, p: number, n: number = 1) {
+  if (c === 0 || p === 0) {
+    return 0;
+  }
+
+  const rate = c / p * 100;
+  const pow = Math.pow(10, n);
+  return Math.round(rate * pow) / pow;
+}

@@ -35,3 +35,9 @@ export const RANK: Array<string> = [
 ];
 
 export const LOG_PER_PAGE: number = 20;
+
+export const MODE_COLOR: Array<string> = [
+  '#FF7D10',
+  '#553ABA',
+  '#FDF81E',
+];
