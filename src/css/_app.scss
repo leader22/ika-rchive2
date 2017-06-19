@@ -11,6 +11,10 @@ $footer-height: 40px;
 
 .app-name {
   text-shadow: 1px 1.5px 0 #000, 2px 2px 0 #1AD118;
+
+  b {
+    color: #ED2772;
+  }
 }
 
 .app {
@@ -130,12 +134,17 @@ $footer-height: 40px;
   width: 200px;
   height: 40px;
   margin: 0 auto;
-  background-color: #FF6E00;
+  background-color: #ED2772;
   font-size: 1.3rem;
   cursor: pointer;
 
+  &--clicked {
+    background-color: #1AD118;
+  }
+
   &[disabled] {
     opacity: .5;
+    pointer-events: none;
   }
 }
 

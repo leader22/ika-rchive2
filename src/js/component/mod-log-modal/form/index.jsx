@@ -74,7 +74,8 @@ class ModLogForm extends React.Component {
         <SingleBtn
           onClick={this._onClickMod}
           disabled={false}
-          text="シュウセイ"
+          text="これでシュウセイ"
+          textClicked="シュウセイカンリョウ!"
         />
       </div>
     );

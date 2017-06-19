@@ -62,7 +62,8 @@ class AddLogForm extends React.Component {
         <SingleBtn
           onClick={this._onClickAdd}
           disabled={this._vm.canAdd === false}
-          text="キロク"
+          text="これでキロク"
+          textClicked="キロクカンリョウ!"
         />
       </div>
     );

@@ -50,6 +50,7 @@ class Event {
   }
   onClickModLog(): void {
     this.record.mod(this.ui.modLog);
+    this.ui.setModLog(null);
   }
   onClickCloseModLogModal(): void {
     this.ui.setModLog(null);
