@@ -13,10 +13,13 @@ const isDev = __DEV__;
 
 class UserStore {
   ver: string;
+  visibleTab: number;
 
   constructor(key: string) {
     extendObservable(this, {
       ver: '',
+      // 最初はソノタのタブ
+      visibleTab: 3,
     });
 
     this._syncStorage(key);
@@ -35,6 +38,10 @@ class UserStore {
         if (isDev) { console.log(data); }
       }
     );
+  }
+
+  setVisibleTab(idx: number) {
+    this.visibleTab = idx;
   }
 }
 

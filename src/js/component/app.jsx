@@ -10,16 +10,22 @@ import OthersPage from './others-page';
 import AddLogModal from './add-log-modal';
 import ModLogModal from './mod-log-modal';
 
+import type UserStore from '../store/user';
 import type Event from '../event';
 
 
 class App extends React.Component {
   props: {
+    user: UserStore,
     event: Event,
   };
 
   render() {
-    const { onClickOpenAddLogModal } = this.props.event;
+    const { visibleTab } = this.props.user;
+    const {
+      onClickOpenAddLogModal,
+      onChangeTab,
+    } = this.props.event;
 
     return (
       <div className="app">
@@ -35,7 +41,11 @@ class App extends React.Component {
             <span className="ft-ika">キロクする</span>
           </button>
         </header>
-        <Tabs className="app-tabs">
+        <Tabs
+          className="app-tabs"
+          selectedIndex={visibleTab}
+          onSelect={onChangeTab}
+        >
           <TabPanel className="app-tabpanel">
             <GraphPage />
           </TabPanel>
@@ -70,4 +80,7 @@ class App extends React.Component {
   }
 }
 
-export default inject('event')(observer(App));
+export default inject(
+  'event',
+  'user',
+)(observer(App));

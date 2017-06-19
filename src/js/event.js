@@ -3,6 +3,7 @@ import { bindThis } from './util';
 
 import type Store from './store';
 import type UiStore from './store/ui';
+import type UserStore from './store/user';
 import type RecordStore from './store/record';
 
 // TODO: mock
@@ -11,16 +12,23 @@ const storage = localStorage;
 
 class Event {
   ui: UiStore;
+  user: UserStore;
   record: RecordStore;
 
   constructor({
     ui,
+    user,
     record,
   }: Store) {
     bindThis(this);
 
     this.ui = ui;
+    this.user = user;
     this.record = record;
+  }
+
+  onChangeTab(idx: number): void {
+    this.user.setVisibleTab(idx);
   }
 
   onClickOpenAddLogModal(): void {
