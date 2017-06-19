@@ -62,40 +62,32 @@ const RateByMode = ({
   mode: number,
   record: RecordStore,
 }) => {
-  const config = getChartConfig();
-  let seriesData = {
+  const seriesData = {
     color: '',
     data: [],
-  };
-  if (mode === 0) {
-    seriesData = {
-      color: '#FF7D10',
-      data: record.graph.areaRate,
-    };
-  }
-  if (mode === 1) {
-    seriesData = {
-      color: '#553ABA',
-      data: record.graph.yaguraRate,
-    };
-  }
-  if (mode === 2) {
-    seriesData = {
-      color: '#FDF81E',
-      data: record.graph.hokoRate,
-    };
-  }
-
-  config.series.push(Object.assign({
     type: 'area',
     // idxではなく1から
     pointStart: 1,
-  }, seriesData));
+  };
+  if (mode === 0) {
+    seriesData.color = '#FF7D10';
+    seriesData.data = record.graph.areaRate;
+  }
+  if (mode === 1) {
+    seriesData.color = '#553ABA';
+    seriesData.data = record.graph.yaguraRate;
+  }
+  if (mode === 2) {
+    seriesData.color = '#FDF81E';
+    seriesData.data = record.graph.hokoRate;
+  }
 
   if (seriesData.data.length === 0) {
     return <NoItem />;
   }
 
+  const config = getChartConfig();
+  config.series.push(seriesData);
   return (
     <ReactHighcharts config={config} />
   );

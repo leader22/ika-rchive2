@@ -48,7 +48,7 @@ declare type Stat = {
   hokoByStage: { [number]: ByStage },
 };
 
-declrae type ByStage = {
+declare type ByStage = {
   playCount: number,
   winCount: number,
   loseCount: number,
