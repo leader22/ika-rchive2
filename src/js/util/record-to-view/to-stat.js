@@ -66,15 +66,21 @@ export default {
 
   assignStagePlayAndWinCount(stat: Stat, item: Log): void {
     const { stage, mode, result } = item;
-    stage in stat.areaByStage || (stat.areaByStage[stage] = __getByStage());
-    stage in stat.yaguraByStage || (stat.yaguraByStage[stage] = __getByStage());
-    stage in stat.hokoByStage || (stat.hokoByStage[stage] = __getByStage());
-    mode === 0 && stat.areaByStage[stage].playCount++;
-    mode === 1 && stat.yaguraByStage[stage].playCount++;
-    mode === 2 && stat.hokoByStage[stage].playCount++;
-    (mode === 0 && result) && stat.areaByStage[stage].winCount++;
-    (mode === 1 && result) && stat.yaguraByStage[stage].winCount++;
-    (mode === 2 && result) && stat.hokoByStage[stage].winCount++;
+    if (mode === 0) {
+      stage in stat.areaByStage || (stat.areaByStage[stage] = __getByStage());
+      stat.areaByStage[stage].playCount++;
+      result && stat.areaByStage[stage].winCount++;
+    }
+    if (mode === 1) {
+      stage in stat.yaguraByStage || (stat.yaguraByStage[stage] = __getByStage());
+      stat.yaguraByStage[stage].playCount++;
+      result && stat.yaguraByStage[stage].winCount++;
+    }
+    if (mode === 2) {
+      stage in stat.hokoByStage || (stat.hokoByStage[stage] = __getByStage());
+      stat.hokoByStage[stage].playCount++;
+      result && stat.hokoByStage[stage].winCount++;
+    }
   },
 
   assignWinP(stat: Stat): void {

@@ -16,6 +16,7 @@ function getChartConfig() {
     legend: { enabled: false, },
     chart: {
       type: 'column',
+      alignTicks: false,
       backgroundColor: 'transparent',
       height: window.innerHeight * 0.4,
       spacing: [10, 0, 10, 0],
@@ -36,7 +37,9 @@ function getChartConfig() {
       {
         title: { text: null, },
         opposite: true,
+        max: 100,
         labels: {
+          format: '{value}%',
           style: { color: '#fff', },
         },
       },
@@ -63,10 +66,13 @@ const StageByMode = ({
   record: RecordStore,
 }) => {
   const playCountSeries = {
+    name: 'しあいすう',
+    color: '#ED2772',
     data: [],
-    color: '#fff',
   };
   const winPSeries = {
+    name: 'しょうりつ',
+    color: '#1AD118',
     yAxis: 1,
     data: [],
   };
@@ -83,15 +89,11 @@ const StageByMode = ({
   }
 
   const stages = [];
-  // いちおう全ステージで回るけど、使うかは別
-  STAGE.forEach((stageName, idx) => {
-    const stage = byStage[idx];
-    // 遊んだところだけ出す
-    if (stage && stage.playCount) {
-      stages.push(stageName);
-      playCountSeries.data.push(stage.playCount);
-      winPSeries.data.push(stage.winP);
-    }
+  Object.keys(byStage).forEach(key => {
+    const { playCount, winP } = byStage[Number(key)];
+    stages.push(STAGE[Number(key)]);
+    playCountSeries.data.push(playCount);
+    winPSeries.data.push(winP);
   });
 
   if (stages.length === 0) {

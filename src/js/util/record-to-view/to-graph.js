@@ -44,15 +44,21 @@ export default {
 
   assignStagePlayAndWinCount(graph: Graph, item: Log): void {
     const { stage, mode, result } = item;
-    stage in graph.areaByStage || (graph.areaByStage[stage] = __getByStage());
-    stage in graph.yaguraByStage || (graph.yaguraByStage[stage] = __getByStage());
-    stage in graph.hokoByStage || (graph.hokoByStage[stage] = __getByStage());
-    mode === 0 && graph.areaByStage[stage].playCount++;
-    mode === 1 && graph.yaguraByStage[stage].playCount++;
-    mode === 2 && graph.hokoByStage[stage].playCount++;
-    (mode === 0 && result) && graph.areaByStage[stage].winCount++;
-    (mode === 1 && result) && graph.yaguraByStage[stage].winCount++;
-    (mode === 2 && result) && graph.hokoByStage[stage].winCount++;
+    if (mode === 0) {
+      stage in graph.areaByStage || (graph.areaByStage[stage] = __getByStage());
+      graph.areaByStage[stage].playCount++;
+      result && graph.areaByStage[stage].winCount++;
+    }
+    if (mode === 1) {
+      stage in graph.yaguraByStage || (graph.yaguraByStage[stage] = __getByStage());
+      graph.yaguraByStage[stage].playCount++;
+      result && graph.yaguraByStage[stage].winCount++;
+    }
+    if (mode === 2) {
+      stage in graph.hokoByStage || (graph.hokoByStage[stage] = __getByStage());
+      graph.hokoByStage[stage].playCount++;
+      result && graph.hokoByStage[stage].winCount++;
+    }
   },
 
   assignStageWinP(graph: Graph): void {

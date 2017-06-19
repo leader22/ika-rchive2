@@ -21,9 +21,9 @@ const GraphPage = ({
 
   return (
     <div className="graph-page">
-      <StageGraph />
-      <ModeGraph />
       <RateGraph />
+      <ModeGraph />
+      <StageGraph />
     </div>
   );
 };
