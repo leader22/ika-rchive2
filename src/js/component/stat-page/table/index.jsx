@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import { STAGE } from '../../../setting';
 import RateStr from './rate-str';
@@ -33,33 +34,51 @@ const StatPage = ({
       </ul>
 
       <h3>ステージべつかちまけ</h3>
-      <h4>エリア</h4>
-      <ul>
-        { Object.entries(stat.areaByStage).map(([stage, byStage]) => (
-        <li key={stage}>
-          {/* flow-disable-line */}
-          {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
-        </li>
-        )) }
-      </ul>
-      <h4>ヤグラ</h4>
-      <ul>
-        { Object.entries(stat.yaguraByStage).map(([stage, byStage]) => (
-        <li key={stage}>
-          {/* flow-disable-line */}
-          {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
-        </li>
-        )) }
-      </ul>
-      <h4>ホコ</h4>
-      <ul>
-        { Object.entries(stat.hokoByStage).map(([stage, byStage]) => (
-        <li key={stage}>
-          {/* flow-disable-line */}
-          {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
-        </li>
-        )) }
-      </ul>
+      <Tabs>
+        <TabList className="mode-tablist">
+          <Tab className="mode-tab" selectedClassName="mode-tab--selected">
+            <span className="ft-ika">エリア</span>
+          </Tab>
+          <li>|</li>
+          <Tab className="mode-tab" selectedClassName="mode-tab--selected">
+            <span className="ft-ika">ヤグラ</span>
+          </Tab>
+          <li>|</li>
+          <Tab className="mode-tab" selectedClassName="mode-tab--selected">
+            <span className="ft-ika">ホコ</span>
+          </Tab>
+        </TabList>
+        <TabPanel>
+          <ul>
+            { Object.entries(stat.areaByStage).map(([stage, byStage]) => (
+            <li key={stage}>
+              {/* flow-disable-line */}
+              {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
+            </li>
+            )) }
+          </ul>
+        </TabPanel>
+        <TabPanel>
+          <ul>
+            { Object.entries(stat.yaguraByStage).map(([stage, byStage]) => (
+            <li key={stage}>
+              {/* flow-disable-line */}
+              {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
+            </li>
+            )) }
+          </ul>
+        </TabPanel>
+        <TabPanel>
+          <ul>
+            { Object.entries(stat.hokoByStage).map(([stage, byStage]) => (
+            <li key={stage}>
+              {/* flow-disable-line */}
+              {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
+            </li>
+            )) }
+          </ul>
+        </TabPanel>
+      </Tabs>
     </div>
   );
 };
