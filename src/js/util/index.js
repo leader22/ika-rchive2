@@ -37,7 +37,7 @@ export function rateToRateStr(rate: number, rankTable: *): string {
   const rank = (rate - point) / 100;
   const rankStr = rankTable[rank];
 
-  if (rankStr) {
+  if (rankStr && point >= 0) {
     return `${rankStr}${point}`;
   }
   return '';
