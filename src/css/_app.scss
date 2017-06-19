@@ -9,6 +9,10 @@ $footer-height: 40px;
   }
 }
 
+.index {
+  padding: 1rem;
+}
+
 .app-name {
   text-shadow: 1px 1.5px 0 #000, 2px 2px 0 #1AD118;
 
@@ -133,7 +137,7 @@ $footer-height: 40px;
   display: block;
   width: 200px;
   height: 40px;
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: #ED2772;
   font-size: 1.3rem;
   cursor: pointer;

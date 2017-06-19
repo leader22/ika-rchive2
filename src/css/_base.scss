@@ -13,18 +13,25 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   margin: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
   font-family: 'ikamodoki';
   text-shadow: 1px 1px 1px #000;
+  text-align: center;
+}
+
+p {
+  margin: .5rem 0;
+  font-size: .9rem;
+  line-height: 1.1rem;
 }
 
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
 }
 
 button,
@@ -60,4 +67,5 @@ b {
 .ft-ika {
   font-family: 'ikamodoki';
   text-shadow: 1px 1px 1px #000;
+  vertical-align: text-bottom;
 }
