@@ -3,8 +3,8 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import { STAGE } from '../../../setting';
 import RateStr from './rate-str';
+import ByStage from './by-stage';
 
 import type RecordStore from '../../../store/record';
 
@@ -49,34 +49,13 @@ const StatPage = ({
           </Tab>
         </TabList>
         <TabPanel>
-          <ul>
-            { Object.entries(stat.areaByStage).map(([stage, byStage]) => (
-            <li key={stage}>
-              {/* flow-disable-line */}
-              {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
-            </li>
-            )) }
-          </ul>
+          <ByStage byStage={stat.areaByStage} />
         </TabPanel>
         <TabPanel>
-          <ul>
-            { Object.entries(stat.yaguraByStage).map(([stage, byStage]) => (
-            <li key={stage}>
-              {/* flow-disable-line */}
-              {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
-            </li>
-            )) }
-          </ul>
+          <ByStage byStage={stat.yaguraByStage} />
         </TabPanel>
         <TabPanel>
-          <ul>
-            { Object.entries(stat.hokoByStage).map(([stage, byStage]) => (
-            <li key={stage}>
-              {/* flow-disable-line */}
-              {STAGE[stage]}: {byStage.winP}% = {byStage.playCount}戦/{byStage.winCount}勝/{byStage.loseCount}敗
-            </li>
-            )) }
-          </ul>
+          <ByStage byStage={stat.hokoByStage} />
         </TabPanel>
       </Tabs>
     </div>
