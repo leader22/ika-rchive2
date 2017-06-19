@@ -18,24 +18,31 @@ const isDev = __DEV__;
 
 class RecordStore {
   items: IObservableArray<Log>;
-  areaItems: IObservableArray<Log>;
-  yaguraItems: IObservableArray<Log>;
-  hokoItems: IObservableArray<Log>;
+  graph: {
+    areaRate: Array<number>,
+    yaguraRate: Array<number>,
+    hokoRate: Array<number>,
+  };
   stat: Stat;
 
   constructor(key: string) {
     extendObservable(this, {
       items: [],
       noItem: computed(() => this.items.length === 0),
-      areaItems: computed(() => {
-        return this.items.filter(log => log.mode === 0);
-      }),
-      yaguraItems: computed(() => {
-        return this.items.filter(log => log.mode === 1);
-      }),
-      hokoItems: computed(() => {
-        return this.items.filter(log => log.mode === 2);
-      }),
+      graph: {
+        areaRate: computed(() => {
+          return this.items.filter(log => log.mode === 0)
+                           .map(log => (log.rank * 100) + log.point);
+        }),
+        yaguraRate: computed(() => {
+          return this.items.filter(log => log.mode === 1)
+                           .map(log => (log.rank * 100) + log.point);
+        }),
+        hokoRate: computed(() => {
+          return this.items.filter(log => log.mode === 2)
+                           .map(log => (log.rank * 100) + log.point);
+        }),
+      },
       stat: computed(toStat),
     });
 
@@ -78,47 +85,6 @@ class RecordStore {
 
 export default RecordStore;
 
-// TODO: 移動
-type Stat = {
-  totalPlayCount: number,
-  areaPlayCount: number,
-  yaguraPlayCount: number,
-  hokoPlayCount: number,
-
-  totalWinCount: number,
-  totalLoseCount: number,
-  areaWinCount: number,
-  areaLoseCount: number,
-  yaguraWinCount: number,
-  yaguraLoseCount: number,
-  hokoWinCount: number,
-  hokoLoseCount: number,
-
-  totalWinP: number,
-  areaWinP: number,
-  yaguraWinP: number,
-  hokoWinP: number,
-
-  areaBestRate: number,
-  yaguraBestRate: number,
-  hokoBestRate: number,
-  _areaTotalRate: number,
-  _yaguraTotalRate: number,
-  _hokoTotalRate: number,
-  areaAvgRate: number,
-  yaguraAvgRate: number,
-  hokoAvgRate: number,
-
-  areaByStage: { [number]: ByStage },
-  yaguraByStage: { [number]: ByStage },
-  hokoByStage: { [number]: ByStage },
-};
-type ByStage = {
-  playCount: number,
-  winCount: number,
-  loseCount: number,
-  winP: number,
-};
 
 function toStat(): Stat {
   const items = this.items;

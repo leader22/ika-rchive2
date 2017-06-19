@@ -20,17 +20,6 @@ const GraphPage = ({
   return (
     <div className="graph-page">
       <RateGraph />
-      <ul>
-        <li>
-          エリア: {record.areaItems.length}件
-        </li>
-        <li>
-          ヤグラ: {record.yaguraItems.length}件
-        </li>
-        <li>
-          ホコ: {record.hokoItems.length}件
-        </li>
-      </ul>
     </div>
   );
 };

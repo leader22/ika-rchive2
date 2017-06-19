@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const NoItem = () => (
-  <div>
+  <div className="no-item">
     まだキロクがありません
   </div>
 );

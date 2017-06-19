@@ -12,3 +12,45 @@ declare type LogSeed = {
 declare type Log = LogSeed & {
   id: number,
 };
+
+declare type Stat = {
+  totalPlayCount: number,
+  areaPlayCount: number,
+  yaguraPlayCount: number,
+  hokoPlayCount: number,
+
+  totalWinCount: number,
+  totalLoseCount: number,
+  areaWinCount: number,
+  areaLoseCount: number,
+  yaguraWinCount: number,
+  yaguraLoseCount: number,
+  hokoWinCount: number,
+  hokoLoseCount: number,
+
+  totalWinP: number,
+  areaWinP: number,
+  yaguraWinP: number,
+  hokoWinP: number,
+
+  areaBestRate: number,
+  yaguraBestRate: number,
+  hokoBestRate: number,
+  _areaTotalRate: number,
+  _yaguraTotalRate: number,
+  _hokoTotalRate: number,
+  areaAvgRate: number,
+  yaguraAvgRate: number,
+  hokoAvgRate: number,
+
+  areaByStage: { [number]: ByStage },
+  yaguraByStage: { [number]: ByStage },
+  hokoByStage: { [number]: ByStage },
+};
+
+declrae type ByStage = {
+  playCount: number,
+  winCount: number,
+  loseCount: number,
+  winP: number,
+};

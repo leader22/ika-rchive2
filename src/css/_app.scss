@@ -129,3 +129,25 @@ $footer-height: 40px;
     opacity: .5;
   }
 }
+
+.mode-tablist {
+  display: flex;
+  text-align: center;
+  width: 60%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.mode-tab {
+  flex: 1 1 auto;
+  padding: 0 10px;
+
+  &--selected {
+    color: #ED2772;
+  }
+}
+
+.no-item {
+  padding: 30% 0;
+  text-align: center;
+}
