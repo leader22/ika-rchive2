@@ -71,15 +71,15 @@ const RateByMode = ({
   };
   if (mode === 0) {
     seriesData.color = '#FF7D10';
-    seriesData.data = record.graph.areaRate;
+    seriesData.data = record.view.graph.areaRate;
   }
   if (mode === 1) {
     seriesData.color = '#553ABA';
-    seriesData.data = record.graph.yaguraRate;
+    seriesData.data = record.view.graph.yaguraRate;
   }
   if (mode === 2) {
     seriesData.color = '#FDF81E';
-    seriesData.data = record.graph.hokoRate;
+    seriesData.data = record.view.graph.hokoRate;
   }
 
   if (seriesData.data.length === 0) {

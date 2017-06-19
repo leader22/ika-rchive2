@@ -14,7 +14,7 @@ const StatPage = ({
 }: {
   record: RecordStore
 }) => {
-  const { stat } = record;
+  const { stat } = record.view;
 
   return (
     <div>

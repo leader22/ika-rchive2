@@ -13,6 +13,12 @@ declare type Log = LogSeed & {
   id: number,
 };
 
+declare type Graph = {
+  areaRate: Array<number>,
+  yaguraRate: Array<number>,
+  hokoRate: Array<number>,
+};
+
 declare type Stat = {
   totalPlayCount: number,
   areaPlayCount: number,

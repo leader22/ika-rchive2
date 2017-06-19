@@ -1,6 +1,5 @@
 // @flow
 
-
 export function bindThis(instance: any): void {
   const proto: any = Object.getPrototypeOf(instance);
   Object.getOwnPropertyNames(proto)
