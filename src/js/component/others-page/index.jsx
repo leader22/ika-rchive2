@@ -14,7 +14,7 @@ const OthersPage = ({
   event: Event,
 }) => (
   <div className="others-page">
-    <h2 className="app-name">ウデマエア-カイブ<b>2</b></h2>
+    <h2 className="service-name">ウデマエア-カイブ<b>2</b></h2>
     <p>
       バージョン: v{user.ver}
     </p>

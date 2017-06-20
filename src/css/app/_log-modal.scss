@@ -1,0 +1,55 @@
+.log-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform .3s cubic-bezier(0.65, 0.05, 0.36, 1);
+  transform: translate3d(0, 150vh, 0);
+  background-color: #000;
+
+  &--opened {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mode-input,
+.result-input {
+  text-align: center;
+
+  &__item {
+    padding: 0 5px;
+  }
+}
+
+.multi-stage-input {
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & + & {
+      margin-top: 10px;
+    }
+
+    &__lane {
+      margin-right: 10px;
+    }
+  }
+}
+
+.stage-input {
+  text-align: center;
+}
+
+.rate-input {
+  display: flex;
+  justify-content: center;
+
+  &__rank {
+    margin-right: 10px;
+  }
+  &__point {
+    padding: 0 5px;
+  }
+}

@@ -1,0 +1,100 @@
+$footer-height: 40px;
+
+.app {
+  position: relative;
+}
+
+.app-header {
+  position: relative;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: #000;
+  text-align: center;
+
+  &__title {
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  &__action {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    height: 40px;
+  }
+}
+
+.app-tabs {
+  padding-bottom: $footer-height;
+}
+
+.app-tabpanel {
+  margin: 10px;
+}
+
+.app-tablist {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: $footer-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  margin: 0;
+  background-color: #000;
+}
+
+.app-tab {
+  flex: 1 1 auto;
+
+  &--selected {
+    color: #ED2772;
+  }
+}
+
+// イカ、汎用的に使われるもの
+.single-btn {
+  display: block;
+  width: 200px;
+  height: 40px;
+  margin: 20px auto;
+  background-color: #ED2772;
+  font-size: 1.3rem;
+  cursor: pointer;
+
+  &--clicked {
+    background-color: #1AD118;
+  }
+
+  &[disabled] {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+.mode-tablist {
+  display: flex;
+  text-align: center;
+  width: 60%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.mode-tab {
+  flex: 1 1 auto;
+  padding: 0 10px;
+
+  &--selected {
+    color: #ED2772;
+  }
+}
+
+.no-item {
+  padding: 30% 0;
+  text-align: center;
+}
