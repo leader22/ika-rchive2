@@ -9,25 +9,30 @@ import type RecordStore from './store/record';
 
 import debug from './util/debug';
 
-// TODO: mock
-const storage = localStorage;
-
 
 class Event {
   ui: UiStore;
   user: UserStore;
   record: RecordStore;
 
+  _storage: Storage;
+  _location: Location;
+
   constructor({
-    ui,
-    user,
-    record,
-  }: Store) {
+      ui,
+      user,
+      record,
+    }: Store,
+    window: window,
+  ) {
     bindThis(this);
 
     this.ui = ui;
     this.user = user;
     this.record = record;
+
+    this._storage = window.localStorage;
+    this._location = window.location;
 
     reaction(
       () => this.ui.isModalOpen,
@@ -81,8 +86,8 @@ class Event {
   onClickResetAll(): void {
     // const check = window.confirm('TODO: 取り消せません');
     // if (check) {
-      storage.clear();
-      location.reload(true);
+      this._storage.clear();
+      this._location.reload(true);
     // }
   }
 
