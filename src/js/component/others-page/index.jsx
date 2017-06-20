@@ -15,18 +15,14 @@ const OthersPage = ({
 }) => (
   <div className="others-page">
     <h3 className="app-name">ウデマエア-カイブ<b>2</b></h3>
-    <ul>
-      <li>
-        バージョン: v{user.ver}
-      </li>
-    </ul>
+    <p>
+      バージョン: v{user.ver}
+    </p>
 
     <h3>つかいかた</h3>
-    <ul>
-      <li>
-        画面右上にある「キロクする」から・・
-      </li>
-    </ul>
+    <p>
+      画面右上にある「<span className="ft-ika">キロクする</span>」から試合結果を記録すると、<span className="ft-ika">グラフ</span>や<span className="ft-ika">トウケイ</span>が見られるようになるぞ！
+    </p>
 
     <h3>???</h3>
     <ul>
