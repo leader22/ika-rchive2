@@ -48,6 +48,7 @@ class Event {
 
   onClickAddLog(log: LogSeed): void {
     this.record.add(log);
+    this.user.updateLastRankAndPoint(log);
   }
 
   onClickOpenModLogModal(log: Log): void {

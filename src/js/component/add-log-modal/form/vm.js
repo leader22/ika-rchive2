@@ -15,9 +15,12 @@ class AddLogFormVM {
   point: number;
   result: number;
   canAdd: boolean;
+  _lastRankAndPoint: LastRankAndPoint;
 
-  constructor() {
+  constructor(lastRankAndPoint: LastRankAndPoint) {
     bindThis(this);
+
+    this._lastRankAndPoint = lastRankAndPoint;
 
     extendObservable(this, {
       mode: 0,
@@ -36,10 +39,13 @@ class AddLogFormVM {
         return true;
       }),
     });
+
+    this._applyLastRankAndPoint();
   }
 
   onChangeMode(mode: number): void {
     this.mode = mode;
+    this._applyLastRankAndPoint();
   }
   onChangeLane(lane: number): void {
     this.stageLane = lane;
@@ -63,6 +69,12 @@ class AddLogFormVM {
       point: this.point,
       result: this.result,
     };
+  }
+
+  _applyLastRankAndPoint(): void {
+    const [ rank, point ] = this._lastRankAndPoint[String(this.mode)];
+    this.rank = rank;
+    this.point = point;
   }
 }
 

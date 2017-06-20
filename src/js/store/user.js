@@ -14,12 +14,19 @@ const isDev = __DEV__;
 class UserStore {
   ver: string;
   visibleTab: number;
+  lastRankAndPoint: LastRankAndPoint;
 
   constructor(key: string) {
     extendObservable(this, {
       ver: '',
       // 最初はソノタのタブ
       visibleTab: 3,
+      // 直近でキロクしたもの
+      lastRankAndPoint: {
+        '0': [0, 0],
+        '1': [0, 0],
+        '2': [0, 0],
+      }
     });
 
     this._syncStorage(key);
@@ -40,8 +47,13 @@ class UserStore {
     );
   }
 
-  setVisibleTab(idx: number) {
+  setVisibleTab(idx: number): void {
     this.visibleTab = idx;
+  }
+
+  updateLastRankAndPoint(log: LogSeed): void {
+    const { mode, rank, point } = log;
+    this.lastRankAndPoint[String(mode)].splice(0, 2, rank, point);
   }
 }
 

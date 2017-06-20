@@ -9,6 +9,7 @@ import ResultInput from '../../shared/result-input';
 import SingleBtn from '../../shared/single-btn';
 import MultiStageInput from './multi-stage-input';
 
+import type UserStore from '../../../store/user';
 import type UiStore from '../../../store/ui';
 import type Event from '../../../event';
 
@@ -18,6 +19,7 @@ class AddLogForm extends React.Component {
   _onClickAdd: () => void;
 
   props: {|
+    user: UserStore,
     ui: UiStore,
     event: Event,
   |};
@@ -25,7 +27,7 @@ class AddLogForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this._vm = new AddLogFormVM();
+    this._vm = new AddLogFormVM(props.user.lastRankAndPoint);
     this._onClickAdd = () => {
       this.props.event.onClickAddLog(this._vm.toJS());
     };
@@ -71,6 +73,7 @@ class AddLogForm extends React.Component {
 }
 
 export default inject(
+  'user',
   'ui',
   'event',
 )(observer(AddLogForm));
