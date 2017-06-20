@@ -14,7 +14,7 @@ const ModeGraph = ({
 }) => {
   return (
     <div>
-      <h3>ルールのプレイわりあい</h3>
+      <h2>ルールのプレイわりあい</h2>
       <div className="mode-graph">
         { record.view.graph.playModeRatio.map((ratio, idx) => (
         <div

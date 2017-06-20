@@ -7,7 +7,7 @@ import RateByMode from './rate-by-mode';
 
 const RateGraph = () => (
   <div>
-    <h3>ウデマエのスイイ</h3>
+    <h2>ウデマエのスイイ</h2>
     <Tabs>
       <TabList className="mode-tablist">
         <Tab className="mode-tab" selectedClassName="mode-tab--selected">

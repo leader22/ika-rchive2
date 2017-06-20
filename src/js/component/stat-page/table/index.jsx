@@ -18,14 +18,14 @@ const StatPage = ({
 
   return (
     <div>
-      <h3>ウデマエ</h3>
+      <h2>ウデマエ</h2>
       <ul>
         <li>エリア: 最高<RateStr rate={stat.areaBestRate} />/平均<RateStr rate={stat.areaAvgRate} /></li>
         <li>ヤグラ: 最高<RateStr rate={stat.yaguraBestRate} />/平均<RateStr rate={stat.yaguraAvgRate} /></li>
         <li>ホコ: 最高<RateStr rate={stat.hokoBestRate} />/平均<RateStr rate={stat.hokoAvgRate} /></li>
       </ul>
 
-      <h3>しょうりつ・かちまけ</h3>
+      <h2>しょうりつ・かちまけ</h2>
       <ul>
         <li>総合: {stat.totalWinP}% = {stat.totalPlayCount}戦/{stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
         <li>エリア: {stat.areaWinP}% = {stat.areaPlayCount}戦/{stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>
@@ -33,7 +33,7 @@ const StatPage = ({
         <li>ホコ: {stat.hokoWinP}% = {stat.hokoPlayCount}戦/{stat.hokoWinCount}勝/{stat.hokoLoseCount}敗</li>
       </ul>
 
-      <h3>ステージべつかちまけ</h3>
+      <h2>ステージべつかちまけ</h2>
       <Tabs>
         <TabList className="mode-tablist">
           <Tab className="mode-tab" selectedClassName="mode-tab--selected">

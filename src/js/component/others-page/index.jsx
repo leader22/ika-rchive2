@@ -14,17 +14,17 @@ const OthersPage = ({
   event: Event,
 }) => (
   <div className="others-page">
-    <h3 className="app-name">ウデマエア-カイブ<b>2</b></h3>
+    <h2 className="app-name">ウデマエア-カイブ<b>2</b></h2>
     <p>
       バージョン: v{user.ver}
     </p>
 
-    <h3>つかいかた</h3>
+    <h2>つかいかた</h2>
     <p>
       画面右上にある「<span className="ft-ika">キロクする</span>」から試合結果を記録すると、<span className="ft-ika">グラフ</span>や<span className="ft-ika">トウケイ</span>が見られるようになるぞ！
     </p>
 
-    <h3>???</h3>
+    <h2>???</h2>
     <ul>
       <li>
         <a onClick={event.onClickResetAll}>リセットしてはじめから</a>
