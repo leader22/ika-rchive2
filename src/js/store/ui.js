@@ -1,5 +1,6 @@
 // @flow
 import {
+  computed,
   extendObservable,
   runInAction,
   toJS,
@@ -8,15 +9,21 @@ import {
 
 class UiStore {
   isAddLogModalOpen: boolean;
-  modLog: Log;
   isModLogModalOpen: boolean;
+  isModalOpen: boolean;
+  modLog: Log;
   logPage: number;
 
   constructor() {
     extendObservable(this, {
+      // formの要素が競合しないために、それぞれ必要
       isAddLogModalOpen: false,
-      modLog: {},
       isModLogModalOpen: false,
+      // 見た目的には同時に開かないけど
+      isModalOpen: computed(() => {
+        return this.isAddLogModalOpen || this.isModLogModalOpen;
+      }),
+      modLog: {},
       logPage: 1,
     });
   }

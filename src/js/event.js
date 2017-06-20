@@ -1,4 +1,5 @@
 // @flow
+import { reaction } from 'mobx';
 import { bindThis } from './util';
 
 import type Store from './store';
@@ -25,6 +26,13 @@ class Event {
     this.ui = ui;
     this.user = user;
     this.record = record;
+
+    reaction(
+      () => this.ui.isModalOpen,
+      isOpen => {
+        window.ontouchmove = isOpen ? ev => { ev.preventDefault(); } : () => {};
+      }
+    );
   }
 
   onChangeTab(idx: number): void {
