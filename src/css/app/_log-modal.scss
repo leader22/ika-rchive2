@@ -55,9 +55,14 @@
   justify-content: center;
 
   &__rank {
+    box-sizing: border-box;
     margin-right: 10px;
+    width: 50px;
   }
   &__point {
+    box-sizing: border-box;
     padding: 0 5px;
+    width: 50px;
+    text-align: center;
   }
 }
