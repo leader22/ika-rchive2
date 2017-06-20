@@ -5,11 +5,10 @@ import { inject, observer } from 'mobx-react';
 import {
   LOG_PER_PAGE,
   STAGE,
-  MODE,
-  MODE_COLOR,
   RESULT,
   RANK,
 } from '../../../setting';
+import ModeStr from '../../shared/mode-str';
 import LogTime from './log-time';
 
 import type UiStore from '../../../store/ui';
@@ -40,7 +39,7 @@ const Record = ({
               [{itemsLen - idx}] <LogTime time={log.id} />
             </div>
             <div>
-              <span style={{ color: MODE_COLOR[log.mode] }}>{MODE[log.mode]}</span> in {STAGE[log.stage]}
+              <ModeStr mode={log.mode} /> in {STAGE[log.stage]}
             </div>
             <div>
               {RESULT[log.result]} - {RANK[log.rank]}{log.point}
