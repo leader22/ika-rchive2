@@ -5,6 +5,9 @@ import {
   toJS,
 } from 'mobx';
 
+import { getStorage } from '../util';
+const storage: Storage = getStorage();
+
 // eslint-disable-next-line
 const isDev = __DEV__;
 
@@ -14,11 +17,7 @@ class UserStore {
   visibleTab: number;
   lastRankAndPoint: LastRankAndPoint;
 
-  _storage: Storage;
-
-  constructor(key: string, storage: Storage) {
-    this._storage = storage;
-
+  constructor(key: string) {
     extendObservable(this, {
       ver: '',
       // 最初はソノタのタブ
@@ -35,7 +34,7 @@ class UserStore {
   }
 
   _syncStorage(key: string): void {
-    const stored = this._storage.getItem(key);
+    const stored = storage.getItem(key);
     if (typeof stored === 'string') {
       extendObservable(this, JSON.parse(stored));
     }
@@ -43,7 +42,7 @@ class UserStore {
     reaction(
       () => toJS(this),
       data => {
-        this._storage.setItem(key, JSON.stringify(data));
+        storage.setItem(key, JSON.stringify(data));
         if (isDev) { console.log(data); }
       }
     );

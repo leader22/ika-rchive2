@@ -9,10 +9,10 @@ class Store {
   user: UserStore;
   record: RecordStore;
 
-  constructor(ver: string, window: window) {
+  constructor(ver: string) {
     this.ui = new UiStore();
-    this.user = new UserStore('IA2_USER', window.localStorage);
-    this.record = new RecordStore('IA2_RECORD', window.localStorage);
+    this.user = new UserStore('IA2_USER');
+    this.record = new RecordStore('IA2_RECORD');
 
     if (this.user.ver !== ver) {
       console.warn(`migrate from ${this.user.ver} to ${ver}`);
