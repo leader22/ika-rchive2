@@ -10,16 +10,20 @@ const ByStage = ({
 }: {
   byStage: ByStage,
 }) => (
-  <ul>
-    { STAGE.map((stageName, idx) => {
-      const stage = byStage[idx] || {};
-      return (
-        <li key={idx}>
-          {stageName}: {stage.winP || 0}% = {stage.playCount || 0}戦/{stage.winCount || 0}勝/{stage.loseCount || 0}敗
-        </li>
-      );
+  <table className="stat-table stat-table--fixed">
+    <tbody>
+      { STAGE.map((stageName, idx) => {
+        const stage = byStage[idx] || {};
+        return (
+          <tr key={idx}>
+            <td className="elp">{stageName}</td>
+            <td className="min">{stage.winP || 0}%</td>
+            <td>{stage.playCount || 0}戦 {stage.winCount || 0}勝{stage.loseCount || 0}敗</td>
+          </tr>
+        );
     }) }
-  </ul>
+    </tbody>
+  </table>
 );
 
 export default observer(ByStage);

@@ -3,6 +3,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import ModeStr from '../../shared/mode-str';
 import RateStr from './rate-str';
 import ByStage from './by-stage';
 
@@ -19,21 +20,63 @@ const StatPage = ({
   return (
     <div>
       <h2>ウデマエ</h2>
-      <ul>
-        <li>エリア: 最高<RateStr rate={stat.areaBestRate} />/平均<RateStr rate={stat.areaAvgRate} /></li>
-        <li>ヤグラ: 最高<RateStr rate={stat.yaguraBestRate} />/平均<RateStr rate={stat.yaguraAvgRate} /></li>
-        <li>ホコ: 最高<RateStr rate={stat.hokoBestRate} />/平均<RateStr rate={stat.hokoAvgRate} /></li>
-      </ul>
+      <table className="stat-table">
+        <tbody>
+          <tr>
+            <td></td>
+            <td>最高</td>
+            <td>平均</td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={0} /></td>
+            <td><RateStr rate={stat.areaBestRate} /></td>
+            <td><RateStr rate={stat.areaAvgRate} /></td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={1} /></td>
+            <td><RateStr rate={stat.yaguraBestRate} /></td>
+            <td><RateStr rate={stat.yaguraAvgRate} /></td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={2} /></td>
+            <td><RateStr rate={stat.hokoBestRate} /></td>
+            <td><RateStr rate={stat.hokoAvgRate} /></td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>しょうりつ・かちまけ</h2>
-      <ul>
-        <li>総合: {stat.totalWinP}% = {stat.totalPlayCount}戦/{stat.totalWinCount}勝/{stat.totalLoseCount}敗</li>
-        <li>エリア: {stat.areaWinP}% = {stat.areaPlayCount}戦/{stat.areaWinCount}勝/{stat.areaLoseCount}敗</li>
-        <li>ヤグラ: {stat.yaguraWinP}% = {stat.yaguraPlayCount}戦/{stat.yaguraWinCount}勝/{stat.yaguraLoseCount}敗</li>
-        <li>ホコ: {stat.hokoWinP}% = {stat.hokoPlayCount}戦/{stat.hokoWinCount}勝/{stat.hokoLoseCount}敗</li>
-      </ul>
+      <h2>しょうりつ・プレイすう</h2>
+      <table className="stat-table">
+        <tbody>
+          <tr>
+            <td></td>
+            <td>勝率</td>
+            <td>内訳</td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={0} /></td>
+            <td>{stat.areaWinP}%</td>
+            <td>{stat.areaPlayCount}戦 {stat.areaWinCount}勝{stat.areaLoseCount}敗</td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={1} /></td>
+            <td>{stat.yaguraWinP}%</td>
+            <td>{stat.yaguraPlayCount}戦 {stat.yaguraWinCount}勝{stat.yaguraLoseCount}敗</td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={2} /></td>
+            <td>{stat.hokoWinP}%</td>
+            <td>{stat.hokoPlayCount}戦 {stat.hokoWinCount}勝{stat.hokoLoseCount}敗</td>
+          </tr>
+          <tr>
+            <td>総合</td>
+            <td>{stat.totalWinP}%</td>
+            <td>{stat.totalPlayCount}戦 {stat.totalWinCount}勝{stat.totalLoseCount}敗</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>ステージべつかちまけ</h2>
+      <h2>ルール・ステージべつ</h2>
       <Tabs>
         <TabList className="mode-tablist">
           <Tab className="mode-tab" selectedClassName="mode-tab--selected">

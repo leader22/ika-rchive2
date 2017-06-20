@@ -7,7 +7,7 @@ import StageByMode from './stage-by-mode';
 
 const StageGraph = () => (
   <div>
-    <h2>ステージべつのプレイすうとしょうりつ</h2>
+    <h2>ステージべつプレイすうとしょうりつ</h2>
     <Tabs>
       <TabList className="mode-tablist">
         <Tab className="mode-tab" selectedClassName="mode-tab--selected">
