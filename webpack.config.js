@@ -1,7 +1,20 @@
 // @flow
 const webpack = require('webpack');
-const isProd = process.argv.indexOf('-p') !== -1;
+const UglifyEsPlugin = require('uglify-es-webpack-plugin');
+const isProd = process.env.NODE_ENV === 'production';
 const pkg = require('./package.json');
+
+const plugins = [
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
+    '__DEV__': JSON.stringify(!isProd),
+    '__VERSION__': JSON.stringify(pkg.version),
+  }),
+];
+
+if (isProd) {
+  plugins.push(new UglifyEsPlugin());
+}
 
 module.exports = {
   entry: {
@@ -30,11 +43,5 @@ module.exports = {
     ],
   },
 
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
-      '__DEV__': JSON.stringify(!isProd),
-      '__VERSION__': JSON.stringify(pkg.version),
-    }),
-  ],
+  plugins,
 };

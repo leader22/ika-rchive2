@@ -4,9 +4,12 @@
   "description": "Archive your UDEMAE2!",
   "scripts": {
     "dev": "npm run start & npm run _dev:js & npm run _dev:css & wait",
+    "build": "npm run _build:js && npm run _build:css",
     "start": "python -m SimpleHTTPServer 8000",
     "_dev:js": "webpack -w",
-    "_dev:css": "node-sass -w ./src/css/main.scss ./dist/main.bundle.css"
+    "_build:js": "NODE_ENV=production webpack",
+    "_dev:css": "node-sass -w ./src/css/main.scss ./dist/main.bundle.css",
+    "_build:css": "node-sass -x --output-style compressed ./src/css/main.scss ./dist/main.bundle.css"
   },
   "author": "leader22",
   "license": "MIT",
@@ -16,6 +19,7 @@
     "babel-preset-react": "^6.24.1",
     "flow-bin": "^0.47.0",
     "node-sass": "^4.5.3",
+    "uglify-es-webpack-plugin": "0.0.2",
     "webpack": "^2.6.1"
   },
   "dependencies": {
