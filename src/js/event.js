@@ -73,10 +73,10 @@ class Event {
   }
 
   onClickDelLog(log: Log): void {
-    // const check = window.confirm('TODO: 取り消せません');
-    // if (check) {
+    const check = window.confirm('この操作は取り消せません。\n本当に削除しますか？');
+    if (check) {
       this.record.del(log);
-    // }
+    }
   }
 
   onClickLogShowMore(): void {
@@ -84,11 +84,11 @@ class Event {
   }
 
   onClickResetAll(): void {
-    // const check = window.confirm('TODO: 取り消せません');
-    // if (check) {
+    const check = window.confirm('この操作は取り消せません。\n本当に削除しますか？');
+    if (check) {
       this._storage.clear();
       this._location.reload(true);
-    // }
+    }
   }
 
   // TODO: あとでけす

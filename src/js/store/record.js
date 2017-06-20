@@ -11,8 +11,6 @@ import recordToView from '../util/record-to-view';
 
 import type { IObservableArray } from 'mobx';
 
-// TODO: mock
-const storage = localStorage;
 // eslint-disable-next-line
 const isDev = __DEV__;
 
@@ -25,7 +23,11 @@ class RecordStore {
     stat: Stat,
   };
 
-  constructor(key: string) {
+  _storage: Storage;
+
+  constructor(key: string, storage: Storage) {
+    this._storage = storage;
+
     extendObservable(this, {
       items: [],
       noItem: computed(() => this.items.length === 0),
@@ -54,7 +56,7 @@ class RecordStore {
   }
 
   _syncStorage(key: string): void {
-    const stored = storage.getItem(key);
+    const stored = this._storage.getItem(key);
     if (typeof stored === 'string') {
       this.items.replace(JSON.parse(stored));
     }
@@ -62,7 +64,7 @@ class RecordStore {
     reaction(
       () => toJS(this.items),
       data => {
-        storage.setItem(key, JSON.stringify(data));
+        this._storage.setItem(key, JSON.stringify(data));
         if (isDev) { console.log(data); }
       }
     );
