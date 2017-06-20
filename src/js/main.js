@@ -19,14 +19,12 @@ try {
   localStorage.setItem('IA2_TEST', 'TEST');
   localStorage.removeItem('IA2_TEST');
 } catch(err) {
-  // TODO:
   location.href = './sorry.html';
 }
 // なんかあったらもう逃がす
 window.onerror = err => {
-  err; debugger;
-  // TODO:
-  // location.href = './sorry.html';
+  console.error(err);
+  location.href = './sorry.html';
 };
 
 // ログが多いとLocalStorageからの取得に時間がかかって下の画面見える
