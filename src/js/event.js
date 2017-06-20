@@ -7,6 +7,8 @@ import type UiStore from './store/ui';
 import type UserStore from './store/user';
 import type RecordStore from './store/record';
 
+import debug from './util/debug';
+
 // TODO: mock
 const storage = localStorage;
 
@@ -83,6 +85,11 @@ class Event {
       location.reload(true);
     // }
   }
+
+  // TODO: あとでけす
+  onClickDebug1() { debug.addAreaRecord(100); }
+  onClickDebug2() { debug.addYaguraRecord(500); }
+  onClickDebug3() { debug.addHokoRecord(10); }
 }
 
 export default Event;
