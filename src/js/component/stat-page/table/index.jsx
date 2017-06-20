@@ -45,6 +45,37 @@ const StatPage = ({
         </tbody>
       </table>
 
+      <h2>プレイわりあい</h2>
+      <table className="stat-table">
+        <tbody>
+          <tr>
+            <td></td>
+            <td>割合</td>
+            <td>試合数</td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={0} /></td>
+            <td>{stat.areaPlayP}%</td>
+            <td>{stat.areaPlayCount}戦</td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={1} /></td>
+            <td>{stat.yaguraPlayP}%</td>
+            <td>{stat.yaguraPlayCount}戦</td>
+          </tr>
+          <tr>
+            <td><ModeStr mode={2} /></td>
+            <td>{stat.hokoPlayP}%</td>
+            <td>{stat.hokoPlayCount}戦</td>
+          </tr>
+          <tr>
+            <td>総合</td>
+            <td>100%</td>
+            <td>{stat.totalPlayCount}戦</td>
+          </tr>
+        </tbody>
+      </table>
+
       <h2>しょうりつ・プレイすう</h2>
       <table className="stat-table">
         <tbody>
@@ -56,22 +87,22 @@ const StatPage = ({
           <tr>
             <td><ModeStr mode={0} /></td>
             <td>{stat.areaWinP}%</td>
-            <td>{stat.areaPlayCount}戦 {stat.areaWinCount}勝{stat.areaLoseCount}敗</td>
+            <td>{stat.areaWinCount}勝{stat.areaLoseCount}敗</td>
           </tr>
           <tr>
             <td><ModeStr mode={1} /></td>
             <td>{stat.yaguraWinP}%</td>
-            <td>{stat.yaguraPlayCount}戦 {stat.yaguraWinCount}勝{stat.yaguraLoseCount}敗</td>
+            <td>{stat.yaguraWinCount}勝{stat.yaguraLoseCount}敗</td>
           </tr>
           <tr>
             <td><ModeStr mode={2} /></td>
             <td>{stat.hokoWinP}%</td>
-            <td>{stat.hokoPlayCount}戦 {stat.hokoWinCount}勝{stat.hokoLoseCount}敗</td>
+            <td>{stat.hokoWinCount}勝{stat.hokoLoseCount}敗</td>
           </tr>
           <tr>
             <td>総合</td>
             <td>{stat.totalWinP}%</td>
-            <td>{stat.totalPlayCount}戦 {stat.totalWinCount}勝{stat.totalLoseCount}敗</td>
+            <td>{stat.totalWinCount}勝{stat.totalLoseCount}敗</td>
           </tr>
         </tbody>
       </table>

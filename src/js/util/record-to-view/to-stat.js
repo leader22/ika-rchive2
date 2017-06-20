@@ -24,6 +24,10 @@ export default {
       yaguraWinP: 0,
       hokoWinP: 0,
 
+      areaPlayP: 0,
+      yaguraPlayP: 0,
+      hokoPlayP: 0,
+
       areaBestRate: 0,
       yaguraBestRate: 0,
       hokoBestRate: 0,
@@ -131,6 +135,19 @@ export default {
       const val = stat.hokoByStage[Number(key)];
       val.loseCount = val.playCount - val.winCount;
     }
+  },
+
+  assignPlayP(stat: Stat): void {
+    const {
+      areaPlayCount,
+      yaguraPlayCount,
+      hokoPlayCount,
+      totalPlayCount,
+    } = stat;
+
+    stat.areaPlayP = percentage(areaPlayCount, totalPlayCount, 1);
+    stat.yaguraPlayP = percentage(yaguraPlayCount, totalPlayCount, 1);
+    stat.hokoPlayP = percentage(hokoPlayCount, totalPlayCount, 1);
   },
 };
 

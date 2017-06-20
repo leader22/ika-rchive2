@@ -14,12 +14,6 @@ declare type Log = LogSeed & {
 };
 
 declare type Graph = {
-  _totalPlayCount: number,
-  _areaPlayCount: number,
-  _yaguraPlayCount: number,
-  _hokoPlayCount: number,
-  playModeRatio: Array<number>,
-
   areaRate: Array<number>,
   yaguraRate: Array<number>,
   hokoRate: Array<number>,
@@ -48,6 +42,10 @@ declare type Stat = {
   areaWinP: number,
   yaguraWinP: number,
   hokoWinP: number,
+
+  areaPlayP: number,
+  yaguraPlayP: number,
+  hokoPlayP: number,
 
   areaBestRate: number,
   yaguraBestRate: number,
