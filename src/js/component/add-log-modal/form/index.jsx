@@ -63,7 +63,7 @@ class AddLogForm extends React.Component {
           onClick={this._onClickAdd}
           disabled={this._vm.canAdd === false}
           text="これでキロク"
-          textClicked="キロクカンリョウ!"
+          textClicked="カンリョウ!"
         />
       </div>
     );
