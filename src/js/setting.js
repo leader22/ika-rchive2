@@ -1,8 +1,8 @@
 // @flow
 
 export const RESULT: Array<string> = [
-  '負けた',
-  '勝った',
+  '負け',
+  '勝ち',
 ];
 
 export const MODE: Array<string> = [
@@ -38,6 +38,6 @@ export const LOG_PER_PAGE: number = 20;
 
 export const MODE_COLOR: Array<string> = [
   '#FF7D10',
-  '#553ABA',
+  '#6770FF',
   '#FDF81E',
 ];
