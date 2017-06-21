@@ -8,7 +8,7 @@ import {
 
 import {
   encodeTime,
-  getStorage,
+  getGlobal,
 } from '../util';
 import recordToView from '../util/record-to-view';
 
@@ -16,7 +16,7 @@ import type { IObservableArray } from 'mobx';
 
 // eslint-disable-next-line
 const isDev = __DEV__;
-const storage: Storage = getStorage();
+const window = getGlobal();
 
 
 class RecordStore {
@@ -56,7 +56,7 @@ class RecordStore {
   }
 
   _syncStorage(key: string): void {
-    const stored = storage.getItem(key);
+    const stored = window.localStorage.getItem(key);
     if (typeof stored === 'string') {
       this.items.replace(JSON.parse(stored));
     }
@@ -64,7 +64,7 @@ class RecordStore {
     reaction(
       () => toJS(this.items),
       data => {
-        storage.setItem(key, JSON.stringify(data));
+        window.localStorage.setItem(key, JSON.stringify(data));
         if (isDev) { console.log(data); }
       }
     );

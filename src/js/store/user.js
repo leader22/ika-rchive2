@@ -5,11 +5,11 @@ import {
   toJS,
 } from 'mobx';
 
-import { getStorage } from '../util';
-const storage: Storage = getStorage();
+import { getGlobal } from '../util';
 
 // eslint-disable-next-line
 const isDev = __DEV__;
+const window = getGlobal();
 
 
 class UserStore {
@@ -34,7 +34,7 @@ class UserStore {
   }
 
   _syncStorage(key: string): void {
-    const stored = storage.getItem(key);
+    const stored = window.localStorage.getItem(key);
     if (typeof stored === 'string') {
       extendObservable(this, JSON.parse(stored));
     }
@@ -42,7 +42,7 @@ class UserStore {
     reaction(
       () => toJS(this),
       data => {
-        storage.setItem(key, JSON.stringify(data));
+        window.localStorage.setItem(key, JSON.stringify(data));
         if (isDev) { console.log(data); }
       }
     );

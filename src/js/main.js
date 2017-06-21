@@ -34,7 +34,7 @@ const $body = document.getElementById('jsApp');
 // 常連の方
 if (typeof localStorage.getItem('IA2_USER') === 'string') {
   const store = new Store(ver);
-  const event = new Event(store, window);
+  const event = new Event(store);
 
   if (isDev) {
     window.store = store;

@@ -1,6 +1,11 @@
 // @flow
 import { reaction } from 'mobx';
-import { bindThis } from './util';
+import {
+  bindThis,
+  getGlobal,
+} from './util';
+
+const window = getGlobal();
 
 import type Store from './store';
 import type UiStore from './store/ui';
@@ -15,24 +20,18 @@ class Event {
   user: UserStore;
   record: RecordStore;
 
-  _storage: Storage;
-  _location: Location;
-
-  constructor({
+  constructor(
+    {
       ui,
       user,
       record,
-    }: Store,
-    window: window,
+    }: Store
   ) {
     bindThis(this);
 
     this.ui = ui;
     this.user = user;
     this.record = record;
-
-    this._storage = window.localStorage;
-    this._location = window.location;
 
     reaction(
       () => this.ui.isModalOpen,
@@ -86,8 +85,8 @@ class Event {
   onClickResetAll(): void {
     const check = window.confirm('この操作は取り消せません。\n本当に削除しますか？');
     if (check) {
-      this._storage.clear();
-      this._location.reload(true);
+      window.localStorage.clear();
+      window.location.reload(true);
     }
   }
 

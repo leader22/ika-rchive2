@@ -1,7 +1,7 @@
 // @flow
 
-export function getStorage(): Storage {
-  return window.localStorage;
+export function getGlobal(): window {
+  return window;
 }
 
 export function bindThis(instance: any): void {
