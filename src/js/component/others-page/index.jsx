@@ -32,7 +32,7 @@ const OthersPage = ({
       画面右上にある「<span className="ft-ika">キロクする</span>」から試合結果を記録すると、<span className="ft-ika">グラフ</span>や<span className="ft-ika">トウケイ</span>が見られるようになるぞ！
     </p>
 
-    <h2>ツール</h2>
+    <h2>デバッグツール</h2>
     <ul>
       <li>
         <a onClick={event.onClickResetAll}>リセットしてはじめから</a>

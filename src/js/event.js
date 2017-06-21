@@ -94,9 +94,9 @@ class Event {
   }
 
   // TODO: あとでけす
-  onClickDebug1() { this.debug.addAreaRecord(100); }
-  onClickDebug2() { this.debug.addYaguraRecord(500); }
-  onClickDebug3() { this.debug.addHokoRecord(10); }
+  onClickDebug1() { this.debug.addAreaRecord(100); window.alert('つくったよ'); }
+  onClickDebug2() { this.debug.addYaguraRecord(500); window.alert('つくったよ'); }
+  onClickDebug3() { this.debug.addHokoRecord(10); window.alert('つくったよ'); }
 }
 
 export default Event;
