@@ -1,8 +1,9 @@
 // @flow
 const webpack = require('webpack');
 const UglifyEsPlugin = require('uglify-es-webpack-plugin');
-const isProd = process.env.NODE_ENV === 'production';
 const pkg = require('./package.json');
+
+const isProd = process.env.NODE_ENV === 'production';
 
 const plugins = [
   new webpack.DefinePlugin({
@@ -13,6 +14,7 @@ const plugins = [
 ];
 
 if (isProd) {
+  plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
   plugins.push(new UglifyEsPlugin());
 }
 
