@@ -8,7 +8,6 @@ export default {
       areaRate: [],
       yaguraRate: [],
       hokoRate: [],
-      playModeRatio: [],
 
       areaByStage: {},
       yaguraByStage: {},
