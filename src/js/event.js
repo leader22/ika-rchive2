@@ -7,31 +7,34 @@ import {
 
 const window = getGlobal();
 
+import type Debug from './util/debug';
 import type Store from './store';
 import type UiStore from './store/ui';
 import type UserStore from './store/user';
 import type RecordStore from './store/record';
-
-import debug from './util/debug';
 
 
 class Event {
   ui: UiStore;
   user: UserStore;
   record: RecordStore;
+  debug: Debug;
 
   constructor(
     {
       ui,
       user,
       record,
-    }: Store
+    }: Store,
+    debug: Debug,
   ) {
     bindThis(this);
 
     this.ui = ui;
     this.user = user;
     this.record = record;
+
+    this.debug = debug;
 
     reaction(
       () => this.ui.isModalOpen,
@@ -91,9 +94,9 @@ class Event {
   }
 
   // TODO: あとでけす
-  onClickDebug1() { debug.addAreaRecord(100); }
-  onClickDebug2() { debug.addYaguraRecord(500); }
-  onClickDebug3() { debug.addHokoRecord(10); }
+  onClickDebug1() { this.debug.addAreaRecord(100); }
+  onClickDebug2() { this.debug.addYaguraRecord(500); }
+  onClickDebug3() { this.debug.addHokoRecord(10); }
 }
 
 export default Event;

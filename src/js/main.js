@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 
-import debug from './util/debug';
+import Debug from './util/debug';
 import Store from './store';
 import Event from './event';
 import App from './component/app';
@@ -34,7 +34,8 @@ const $body = document.getElementById('jsApp');
 // 常連の方
 if (typeof localStorage.getItem('IA2_USER') === 'string') {
   const store = new Store(ver);
-  const event = new Event(store);
+  const debug = new Debug(store);
+  const event = new Event(store, debug);
 
   if (isDev) {
     window.store = store;
