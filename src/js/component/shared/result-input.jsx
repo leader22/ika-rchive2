@@ -13,7 +13,10 @@ const ResultInput = ({
 }) => (
 <div className="result-input">
   { RESULT.map((v, idx) => (
-  <label className="result-input__item" key={idx}>
+  <label
+    key={idx}
+    className={`result-input__item ${idx === result ? 'result-input__item--checked' : ''}`}
+  >
     <input
       name="result"
       type="radio"

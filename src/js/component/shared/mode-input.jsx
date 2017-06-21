@@ -13,7 +13,10 @@ const ModeInput = ({
 }) => (
 <div className="mode-input">
   { MODE.map((v, idx) => (
-  <label className="mode-input__item" key={idx}>
+  <label
+    key={idx}
+    className={`mode-input__item ${idx === mode ? 'mode-input__item--checked' : ''}`}
+  >
     <input
       name="mode"
       type="radio"
