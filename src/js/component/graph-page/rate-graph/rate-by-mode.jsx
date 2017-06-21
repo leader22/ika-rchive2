@@ -86,7 +86,12 @@ const RateByMode = ({
   const config = getChartConfig();
   config.series.push(seriesData);
   return (
-    <ReactHighcharts config={config} />
+    <div className="graph-item">
+      <div className="graph-item__note">
+        ※ドラッグ・ピンチインで表示範囲の絞込ができます<
+      /div>
+      <ReactHighcharts config={config} />
+    </div>
   );
 };
 
