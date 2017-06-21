@@ -4,10 +4,15 @@ import { inject, observer } from 'mobx-react';
 import ReactHighcharts from 'react-highcharts';
 
 import NoItem from '../../shared/no-item';
-import { rateToRateStr } from '../../../util';
+import {
+  getGlobal,
+  rateToRateStr,
+} from '../../../util';
 import { RANK, MODE_COLOR } from '../../../setting';
 
 import type RecordStore from '../../../store/record';
+
+const window = getGlobal();
 
 
 function getChartConfig() {
