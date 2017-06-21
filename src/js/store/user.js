@@ -53,8 +53,8 @@ class UserStore {
   }
 
   updateLastRankAndPoint(log: LogSeed): void {
-    const { mode, rank, point } = log;
-    this.lastRankAndPoint[String(mode)].splice(0, 2, rank, point);
+    const { md, rk, pt } = log;
+    this.lastRankAndPoint[String(md)].splice(0, 2, rk, pt);
   }
 }
 

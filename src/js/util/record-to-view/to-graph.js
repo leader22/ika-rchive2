@@ -17,28 +17,28 @@ export default {
   },
 
   assignRate(graph: Graph, item: Log): void {
-    const rate = (item.rank * 100) + item.point;
-    item.mode === 0 && graph.areaRate.push(rate);
-    item.mode === 1 && graph.yaguraRate.push(rate);
-    item.mode === 2 && graph.hokoRate.push(rate);
+    const rate = (item.rk * 100) + item.pt;
+    item.md === 0 && graph.areaRate.push(rate);
+    item.md === 1 && graph.yaguraRate.push(rate);
+    item.md === 2 && graph.hokoRate.push(rate);
   },
 
   assignStagePlayAndWinCount(graph: Graph, item: Log): void {
-    const { stage, mode, result } = item;
-    if (mode === 0) {
-      stage in graph.areaByStage || (graph.areaByStage[stage] = __getByStage());
-      graph.areaByStage[stage].playCount++;
-      result && graph.areaByStage[stage].winCount++;
+    const { st, md, rs } = item;
+    if (md === 0) {
+      st in graph.areaByStage || (graph.areaByStage[st] = __getByStage());
+      graph.areaByStage[st].playCount++;
+      rs && graph.areaByStage[st].winCount++;
     }
-    if (mode === 1) {
-      stage in graph.yaguraByStage || (graph.yaguraByStage[stage] = __getByStage());
-      graph.yaguraByStage[stage].playCount++;
-      result && graph.yaguraByStage[stage].winCount++;
+    if (md === 1) {
+      st in graph.yaguraByStage || (graph.yaguraByStage[st] = __getByStage());
+      graph.yaguraByStage[st].playCount++;
+      rs && graph.yaguraByStage[st].winCount++;
     }
-    if (mode === 2) {
-      stage in graph.hokoByStage || (graph.hokoByStage[stage] = __getByStage());
-      graph.hokoByStage[stage].playCount++;
-      result && graph.hokoByStage[stage].winCount++;
+    if (md === 2) {
+      st in graph.hokoByStage || (graph.hokoByStage[st] = __getByStage());
+      graph.hokoByStage[st].playCount++;
+      rs && graph.hokoByStage[st].winCount++;
     }
   },
 

@@ -50,11 +50,11 @@ export default class Debug {
         if (rank > 10) { rank = 10; point = 99; }
 
         const seed = {
-          mode: mode,
-          stage: __nToM(0, 5),
-          result: isWin ? 1 : 0,
-          rank: rank,
-          point: point,
+          md: mode,
+          st: __nToM(0, 5),
+          rs: isWin ? 1 : 0,
+          rk: rank,
+          pt: point,
         };
         record.add(seed);
       }
@@ -64,7 +64,7 @@ export default class Debug {
   _resetRecord(mode) {
     const items = this.store.record.items;
 
-    const restItems = items.peek().filter(log => log.mode !== mode);
+    const restItems = items.peek().filter(log => log.md !== mode);
     items.replace(restItems);
   }
 }

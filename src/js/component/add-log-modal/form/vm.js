@@ -63,11 +63,11 @@ class AddLogFormVM {
 
   toJS(): LogSeed {
     return {
-      mode: this.mode,
-      stage: this.stage,
-      rank: this.rank,
-      point: this.point,
-      result: this.result,
+      md: this.mode,
+      st: this.stage,
+      rk: this.rank,
+      pt: this.point,
+      rs: this.result,
     };
   }
 

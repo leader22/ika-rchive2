@@ -46,44 +46,44 @@ export default {
 
   assignPlayCount(stat: Stat, item: Log): void {
     stat.totalPlayCount++;
-    item.mode === 0 && stat.areaPlayCount++;
-    item.mode === 1 && stat.yaguraPlayCount++;
-    item.mode === 2 && stat.hokoPlayCount++;
+    item.md === 0 && stat.areaPlayCount++;
+    item.md === 1 && stat.yaguraPlayCount++;
+    item.md === 2 && stat.hokoPlayCount++;
   },
 
   assignWinCount(stat: Stat, item: Log): void {
-    item.result && stat.totalWinCount++;
-    (item.mode === 0 && item.result) && stat.areaWinCount++;
-    (item.mode === 1 && item.result) && stat.yaguraWinCount++;
-    (item.mode === 2 && item.result) && stat.hokoWinCount++;
+    item.rs && stat.totalWinCount++;
+    (item.md === 0 && item.rs) && stat.areaWinCount++;
+    (item.md === 1 && item.rs) && stat.yaguraWinCount++;
+    (item.md === 2 && item.rs) && stat.hokoWinCount++;
   },
 
   assignBestRate(stat: Stat, item: Log): void {
-    const rate = (item.rank * 100) + item.point;
-    item.mode === 0 && (stat.areaBestRate = Math.max(stat.areaBestRate, rate));
-    item.mode === 1 && (stat.yaguraBestRate = Math.max(stat.yaguraBestRate, rate));
-    item.mode === 2 && (stat.hokoBestRate = Math.max(stat.hokoBestRate, rate));
-    item.mode === 0 && (stat._areaTotalRate += rate);
-    item.mode === 1 && (stat._yaguraTotalRate += rate);
-    item.mode === 2 && (stat._hokoTotalRate += rate);
+    const rate = (item.rk * 100) + item.pt;
+    item.md === 0 && (stat.areaBestRate = Math.max(stat.areaBestRate, rate));
+    item.md === 1 && (stat.yaguraBestRate = Math.max(stat.yaguraBestRate, rate));
+    item.md === 2 && (stat.hokoBestRate = Math.max(stat.hokoBestRate, rate));
+    item.md === 0 && (stat._areaTotalRate += rate);
+    item.md === 1 && (stat._yaguraTotalRate += rate);
+    item.md === 2 && (stat._hokoTotalRate += rate);
   },
 
   assignStagePlayAndWinCount(stat: Stat, item: Log): void {
-    const { stage, mode, result } = item;
-    if (mode === 0) {
-      stage in stat.areaByStage || (stat.areaByStage[stage] = __getByStage());
-      stat.areaByStage[stage].playCount++;
-      result && stat.areaByStage[stage].winCount++;
+    const { st, md, rs } = item;
+    if (md === 0) {
+      st in stat.areaByStage || (stat.areaByStage[st] = __getByStage());
+      stat.areaByStage[st].playCount++;
+      rs && stat.areaByStage[st].winCount++;
     }
-    if (mode === 1) {
-      stage in stat.yaguraByStage || (stat.yaguraByStage[stage] = __getByStage());
-      stat.yaguraByStage[stage].playCount++;
-      result && stat.yaguraByStage[stage].winCount++;
+    if (md === 1) {
+      st in stat.yaguraByStage || (stat.yaguraByStage[st] = __getByStage());
+      stat.yaguraByStage[st].playCount++;
+      rs && stat.yaguraByStage[st].winCount++;
     }
-    if (mode === 2) {
-      stage in stat.hokoByStage || (stat.hokoByStage[stage] = __getByStage());
-      stat.hokoByStage[stage].playCount++;
-      result && stat.hokoByStage[stage].winCount++;
+    if (md === 2) {
+      st in stat.hokoByStage || (stat.hokoByStage[st] = __getByStage());
+      stat.hokoByStage[st].playCount++;
+      rs && stat.hokoByStage[st].winCount++;
     }
   },
 

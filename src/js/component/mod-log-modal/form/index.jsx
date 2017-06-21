@@ -27,17 +27,17 @@ class ModLogForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this._onChangeMode = mode => {
-      this.props.event.onChangeModLog({ mode });
+    this._onChangeMode = md => {
+      this.props.event.onChangeModLog({ md });
     };
-    this._onChangeStage = stage => {
-      this.props.event.onChangeModLog({ stage });
+    this._onChangeStage = st => {
+      this.props.event.onChangeModLog({ st });
     };
-    this._onChangeRate = (rank, point) => {
-      this.props.event.onChangeModLog({ rank, point });
+    this._onChangeRate = (rk, pt) => {
+      this.props.event.onChangeModLog({ rk, pt });
     };
-    this._onChangeResult = result => {
-      this.props.event.onChangeModLog({ result });
+    this._onChangeResult = rs => {
+      this.props.event.onChangeModLog({ rs });
     };
     this._onClickMod = () => {
       this.props.event.onClickModLog();
@@ -55,20 +55,20 @@ class ModLogForm extends React.Component {
     return (
       <div>
         <ModeInput
-          mode={modLog.mode}
+          mode={modLog.md}
           onChangeMode={this._onChangeMode}
         />
         <StageInput
-          stage={modLog.stage}
+          stage={modLog.st}
           onChangeStage={this._onChangeStage}
         />
         <RateInput
-          rank={modLog.rank}
-          point={modLog.point}
+          rank={modLog.rk}
+          point={modLog.pt}
           onChangeRate={this._onChangeRate}
         />
         <ResultInput
-          result={modLog.result}
+          result={modLog.rs}
           onChangeResult={this._onChangeResult}
         />
         <SingleBtn
