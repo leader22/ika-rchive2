@@ -59,6 +59,9 @@ class Event {
     this.ui.setAddLogModalOpen(false);
   }
 
+  onChangeAddLog(key: string, valObj: Object): void {
+    this.addLog.update(key, valObj);
+  }
   onClickAddLog(): void {
     this.record.add(this.addLog.toJS());
   }

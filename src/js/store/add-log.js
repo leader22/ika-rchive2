@@ -4,10 +4,7 @@ import {
   extendObservable,
 } from 'mobx';
 
-import {
-  bindThis,
-  isValidLogSeed,
-} from '../util';
+import { isValidLogSeed } from '../util';
 
 
 class AddLogStore {
@@ -21,8 +18,6 @@ class AddLogStore {
   canAdd: boolean;
 
   constructor() {
-    bindThis(this);
-
     extendObservable(this, {
       mode: 0,
       stages: [0, 1],
@@ -39,21 +34,27 @@ class AddLogStore {
     });
   }
 
-  onChangeMode(mode: number): void {
-    this.mode = mode;
-  }
-  onChangeLane(lane: number): void {
-    this.stageLane = lane;
-  }
-  onChangeStage(lane: number, stage: number): void {
-    this.stages[lane] = stage;
-  }
-  onChangeRate(rank: number, point: number): void {
-    this.rank = rank;
-    this.point = point;
-  }
-  onChangeResult(result: number): void {
-    this.result = result;
+  update(key: string, val: Object): void {
+    switch (key) {
+    case 'mode':
+      this.mode = val.mode;
+      break;
+    case 'lane':
+      this.stageLane = val.lane;
+      break;
+    case 'stage':
+      this.stages[val.lane] = val.stage;
+      break;
+    case 'rate':
+      this.rank = val.rank;
+      this.point = val.point;
+      break;
+    case 'result':
+      this.result = val.result;
+      break;
+    default:
+      return;
+    }
   }
 
   toJS(): LogSeed {

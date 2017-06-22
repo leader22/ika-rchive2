@@ -21,15 +21,18 @@ class AddLogForm extends React.Component {
   |};
 
   render() {
+    const { isAddLogModalOpen } = this.props.ui;
     const {
-      mode, onChangeMode,
-      stageLane, stages, onChangeLane, onChangeStage,
-      rank, point, onChangeRate,
-      result, onChangeResult,
+      mode,
+      stageLane, stages,
+      rank, point,
+      result,
       canAdd,
     } = this.props.addLog;
-    const { onClickAddLog } = this.props.event;
-    const { isAddLogModalOpen } = this.props.ui;
+    const {
+      onClickAddLog,
+      onChangeAddLog,
+    } = this.props.event;
 
     if (isAddLogModalOpen === false) {
       return null;
@@ -39,22 +42,22 @@ class AddLogForm extends React.Component {
       <div>
         <ModeInput
           mode={mode}
-          onChangeMode={onChangeMode}
+          onChangeMode={mode => onChangeAddLog('mode', { mode })}
         />
         <MultiStageInput
           stageLane={stageLane}
           stages={stages}
-          onChangeLane={onChangeLane}
-          onChangeStage={onChangeStage}
+          onChangeLane={lane => onChangeAddLog('lane', { lane })}
+          onChangeStage={(lane, stage) => onChangeAddLog('stage', { lane, stage })}
         />
         <RateInput
           rank={rank}
           point={point}
-          onChangeRate={onChangeRate}
+          onChangeRate={(rank, point) => onChangeAddLog('rate', { rank, point })}
         />
         <ResultInput
           result={result}
-          onChangeResult={onChangeResult}
+          onChangeResult={result => onChangeAddLog('result', { result })}
         />
         <SingleBtn
           onClick={onClickAddLog}
