@@ -66,6 +66,14 @@ class AddLogStore {
       return;
     }
   }
+
+  applyLastRankAndPoint(lastRankAndPoint: LastRankAndPoint): void {
+    const rankAndPoint = lastRankAndPoint.get(this.mode);
+    if (Array.isArray(rankAndPoint)) {
+      this.rank = rankAndPoint[0];
+      this.point = rankAndPoint[1];
+    }
+  }
 }
 
 export default AddLogStore;

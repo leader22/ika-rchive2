@@ -50,6 +50,14 @@ class Event {
         window.ontouchmove = isOpen ? ev => { ev.preventDefault(); } : () => {};
       }
     );
+
+    // 最後にキロクしたウデマエを復元
+    reaction(
+      () => `${this.addLog.mode}-${String(this.ui.isAddLogModalOpen)}`,
+      () => {
+        this.addLog.applyLastRankAndPoint(this.record.lastRankAndPoint);
+      }
+    );
   }
 
   onChangeTab(idx: number): void {

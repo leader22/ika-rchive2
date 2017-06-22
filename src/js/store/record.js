@@ -26,12 +26,31 @@ class RecordStore {
     graph: Graph,
     stat: Stat,
   };
+  lastRankAndPoint: LastRankAndPoint;
 
   constructor(key: string) {
     extendObservable(this, {
       items: [],
       noItem: computed(() => this.items.length === 0),
       view: computed(() => recordToView(this.items)),
+      lastRankAndPoint: computed(() => {
+        const lastRankAndPoint = new Map();
+
+        let itemsLen = this.items.length;
+        while (itemsLen--) {
+          const item = this.items[itemsLen];
+          lastRankAndPoint.has(item.md) || lastRankAndPoint.set(item.md, [item.rk, item.pt]);
+          // ルールの数分だけあったらもう抜けてよい
+          if (lastRankAndPoint.size === 3) { break; }
+        }
+
+        // 見つからなかったら初期値
+        [0, 1, 2].forEach(mode => {
+          lastRankAndPoint.has(mode) || lastRankAndPoint.set(mode, [0, 0]);
+        });
+
+        return lastRankAndPoint;
+      }),
     });
 
     this._syncStorage(key);
