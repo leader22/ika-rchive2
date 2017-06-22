@@ -13,6 +13,8 @@ declare type Log = LogSeed & {
   id: number,
 };
 
+declare type LastRankAndPoint = Map<number, Array<number>>;
+
 declare type Graph = {
   areaRate: Array<number>,
   yaguraRate: Array<number>,
