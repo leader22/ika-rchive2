@@ -3,13 +3,14 @@ import {
   computed,
   extendObservable,
 } from 'mobx';
+
 import {
   bindThis,
   isValidLogSeed,
-} from '../../../util';
+} from '../util';
 
 
-class AddLogFormVM {
+class AddLogStore {
   mode: number;
   stage: number;
   stages: Array<number>
@@ -66,4 +67,4 @@ class AddLogFormVM {
   }
 }
 
-export default AddLogFormVM;
+export default AddLogStore;

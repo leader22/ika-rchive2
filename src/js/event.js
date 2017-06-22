@@ -10,12 +10,14 @@ const window = getGlobal();
 import type Debug from './util/debug';
 import type Store from './store';
 import type UiStore from './store/ui';
+import type AddLogStore from './store/add-log';
 import type UserStore from './store/user';
 import type RecordStore from './store/record';
 
 
 class Event {
   ui: UiStore;
+  addLog: AddLogStore;
   user: UserStore;
   record: RecordStore;
   debug: Debug;
@@ -23,6 +25,7 @@ class Event {
   constructor(
     {
       ui,
+      addLog,
       user,
       record,
     }: Store,
@@ -31,6 +34,7 @@ class Event {
     bindThis(this);
 
     this.ui = ui;
+    this.addLog = addLog;
     this.user = user;
     this.record = record;
 
@@ -55,8 +59,8 @@ class Event {
     this.ui.setAddLogModalOpen(false);
   }
 
-  onClickAddLog(log: LogSeed): void {
-    this.record.add(log);
+  onClickAddLog(): void {
+    this.record.add(this.addLog.toJS());
   }
 
   onClickOpenModLogModal(log: Log): void {
