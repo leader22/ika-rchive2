@@ -13,61 +13,61 @@ import type ModLogStore from '../../../store/mod-log';
 import type Event from '../../../event';
 
 
-class ModLogForm extends React.Component {
-  props: {|
-    ui: UiStore,
-    modLog: ModLogStore,
-    event: Event,
-  |};
+const ModLogForm = ({
+  ui,
+  modLog,
+  event,
+}: {
+  ui: UiStore,
+  modLog: ModLogStore,
+  event: Event,
+}) => {
+  const { isModLogModalOpen } = ui;
+  const {
+    onChangeModLog,
+    onClickModLog,
+  } = event;
+  const {
+    mode,
+    stage,
+    rank,
+    point,
+    result,
+    canMod,
+  } = modLog;
 
-  render() {
-    const { isModLogModalOpen } = this.props.ui;
-    const {
-      onChangeModLog,
-      onClickModLog,
-    } = this.props.event;
-    const {
-      mode,
-      stage,
-      rank,
-      point,
-      result,
-      canMod,
-    } = this.props.modLog;
-
-    if (isModLogModalOpen === false) {
-      return null;
-    }
-
-    return (
-      <div>
-        <ModeInput
-          mode={mode}
-          onChangeMode={mode => onChangeModLog('mode', { mode })}
-        />
-        <StageInput
-          stage={stage}
-          onChangeStage={stage => onChangeModLog('stage', { stage })}
-        />
-        <RateInput
-          rank={rank}
-          point={point}
-          onChangeRate={(rank, point) => onChangeModLog('rate', { rank, point })}
-        />
-        <ResultInput
-          result={result}
-          onChangeResult={result => onChangeModLog('result', { result })}
-        />
-        <SingleBtn
-          onClick={onClickModLog}
-          disabled={canMod === false}
-          text="これでシュウセイ"
-          textClicked="カンリョウ!"
-        />
-      </div>
-    );
+  if (isModLogModalOpen === false) {
+    return null;
   }
-}
+
+  return (
+    <div>
+      <ModeInput
+        mode={mode}
+        onChangeMode={mode => onChangeModLog('mode', { mode })}
+      />
+      <StageInput
+        stage={stage}
+        onChangeStage={stage => onChangeModLog('stage', { stage })}
+      />
+      <RateInput
+        rank={rank}
+        point={point}
+        onChangeRate={(rank, point) => onChangeModLog('rate', { rank, point })}
+      />
+      <ResultInput
+        result={result}
+        onChangeResult={result => onChangeModLog('result', { result })}
+      />
+      <SingleBtn
+        onClick={onClickModLog}
+        disabled={canMod === false}
+        text="これでシュウセイ"
+        textClicked="カンリョウ!"
+      />
+    </div>
+  );
+};
 
 export default inject(
   'ui',
