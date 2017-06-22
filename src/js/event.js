@@ -67,7 +67,7 @@ class Event {
     this.addLog.update(key, valObj);
   }
   onClickAddLog(): void {
-    this.record.add(this.addLog.toJS());
+    this.record.add(this.addLog.asSeed);
   }
 
   onClickOpenModLogModal(log: Log): void {
@@ -78,7 +78,7 @@ class Event {
     this.modLog.update(key, valObj);
   }
   onClickModLog(): void {
-    this.record.mod(this.modLog.toJS());
+    this.record.mod(this.modLog.asLog);
     this.ui.setModLogModalOpen(false);
   }
   onClickCloseModLogModal(): void {

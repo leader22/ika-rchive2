@@ -17,6 +17,7 @@ class ModLogStore {
   point: number;
   result: number;
   canMod: boolean;
+  asLog: Log;
 
   constructor() {
     extendObservable(this, {
@@ -27,8 +28,18 @@ class ModLogStore {
       point: 0,
       result: 0,
       canMod: computed(() => {
-        return isValidLogSeed(this.toJS());
+        return isValidLogSeed(this.asLog);
       }),
+      asLog: computed(() => {
+        return {
+          id: this.id,
+          md: this.mode,
+          st: this.stage,
+          rk: this.rank,
+          pt: this.point,
+          rs: this.result,
+        };
+      })
     });
   }
 
@@ -59,17 +70,6 @@ class ModLogStore {
     default:
       return;
     }
-  }
-
-  toJS(): Log {
-    return {
-      id: this.id,
-      md: this.mode,
-      st: this.stage,
-      rk: this.rank,
-      pt: this.point,
-      rs: this.result,
-    };
   }
 }
 

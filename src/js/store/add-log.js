@@ -16,6 +16,7 @@ class AddLogStore {
   point: number;
   result: number;
   canAdd: boolean;
+  asSeed: LogSeed;
 
   constructor() {
     extendObservable(this, {
@@ -29,8 +30,17 @@ class AddLogStore {
       point: 0,
       result: 0,
       canAdd: computed(() => {
-        return isValidLogSeed(this.toJS());
+        return isValidLogSeed(this.asSeed);
       }),
+      asSeed: computed(() => {
+        return {
+          md: this.mode,
+          st: this.stage,
+          rk: this.rank,
+          pt: this.point,
+          rs: this.result,
+        };
+      })
     });
   }
 
@@ -55,16 +65,6 @@ class AddLogStore {
     default:
       return;
     }
-  }
-
-  toJS(): LogSeed {
-    return {
-      md: this.mode,
-      st: this.stage,
-      rk: this.rank,
-      pt: this.point,
-      rs: this.result,
-    };
   }
 }
 
