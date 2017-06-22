@@ -1,7 +1,5 @@
 // @flow
 import React from 'react';
-import { observable } from 'mobx';
-import { observer } from 'mobx-react';
 
 type Props = {|
   text: string,
@@ -12,23 +10,23 @@ type Props = {|
 
 class SingleBtn extends React.Component {
   _handleClick: () => void;
-  _vm: {
+
+  state: {
     isClick: boolean,
   };
-
   props: Props;
 
   constructor(props: Props) {
     super(props);
 
-    this._vm = observable({
+    this.state = {
       isClick: false,
-    });
+    };
 
     this._handleClick = () => {
-      this._vm.isClick = true;
+      this.setState({ isClick: true });
       setTimeout(() => {
-        this._vm.isClick = false;
+        this.setState({ isClick: false });
         this.props.onClick();
       }, 500);
     };
@@ -40,7 +38,7 @@ class SingleBtn extends React.Component {
       textClicked,
       disabled,
     } = this.props;
-    const { isClick } = this._vm;
+    const { isClick } = this.state;
 
     if (isClick) {
       return (
@@ -67,4 +65,4 @@ class SingleBtn extends React.Component {
   }
 }
 
-export default observer(SingleBtn);
+export default SingleBtn;
