@@ -43,7 +43,9 @@ class Event {
     this.record = record;
 
     this.debug = debug;
+  }
 
+  onBoot(): void {
     reaction(
       () => this.ui.isModalOpen,
       isOpen => {

@@ -43,6 +43,8 @@ if (typeof localStorage.getItem('IA2_USER') === 'string') {
     window.debug = debug;
   }
 
+  event.onBoot();
+
   ReactDOM.render(
     <Provider
       {...store}
