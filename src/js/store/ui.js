@@ -6,12 +6,17 @@ import {
   toJS,
 } from 'mobx';
 
+import {
+  isValidLogSeed,
+} from '../util';
+
 
 class UiStore {
   isAddLogModalOpen: boolean;
   isModLogModalOpen: boolean;
   isModalOpen: boolean;
   modLog: Log;
+  canModLog: boolean;
   logPage: number;
 
   constructor() {
@@ -24,6 +29,7 @@ class UiStore {
         return this.isAddLogModalOpen || this.isModLogModalOpen;
       }),
       modLog: {},
+      canModLog: true,
       logPage: 1,
     });
   }
@@ -40,11 +46,15 @@ class UiStore {
     runInAction(() => {
       this.isModLogModalOpen = true;
       extendObservable(this.modLog, toJS(log));
+      this.canModLog = true;
     });
   }
 
   updateModLog(item: Object): void {
     Object.assign(this.modLog, item);
+    // XXX: 本当はcomputedにしたい
+    // ただし、modLogをmapにせず楽に更新する以上やむなし
+    this.canModLog = isValidLogSeed(this.modLog);
   }
 
   logShowMore(): void {

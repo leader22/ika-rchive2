@@ -47,6 +47,14 @@ export function rateToRateStr(rate: number, rankTable: *): string {
   return '';
 }
 
+export function isValidLogSeed(seed: LogSeed): boolean {
+  const point = seed.pt;
+  if (isNaN(point)) { return false; }
+  if (point > 99) { return false; }
+  if (point < 0) { return false; }
+  return true;
+}
+
 export function percentage(c: number, p: number, n: number = 1): number {
   if (c === 0 || p === 0) {
     return 0;

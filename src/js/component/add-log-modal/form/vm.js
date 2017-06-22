@@ -3,7 +3,10 @@ import {
   computed,
   extendObservable,
 } from 'mobx';
-import { bindThis } from '../../../util';
+import {
+  bindThis,
+  isValidLogSeed,
+} from '../../../util';
 
 
 class AddLogFormVM {
@@ -33,10 +36,7 @@ class AddLogFormVM {
       point: 0,
       result: 0,
       canAdd: computed(() => {
-        if (isNaN(this.point)) { return false; }
-        if (this.point > 99) { return false; }
-        if (this.point < 0) { return false; }
-        return true;
+        return isValidLogSeed(this.toJS());
       }),
     });
 

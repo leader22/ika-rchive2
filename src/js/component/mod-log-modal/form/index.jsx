@@ -45,10 +45,13 @@ class ModLogForm extends React.Component {
   }
 
   render() {
-    const { ui } = this.props;
-    const { modLog } = ui;
+    const {
+      isModLogModalOpen,
+      modLog,
+      canModLog,
+    } = this.props.ui;
 
-    if (ui.isModLogModalOpen === false) {
+    if (isModLogModalOpen === false) {
       return null;
     }
 
@@ -73,7 +76,7 @@ class ModLogForm extends React.Component {
         />
         <SingleBtn
           onClick={this._onClickMod}
-          disabled={false}
+          disabled={canModLog === false}
           text="これでシュウセイ"
           textClicked="カンリョウ!"
         />
