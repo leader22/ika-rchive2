@@ -2,8 +2,6 @@
 import {
   computed,
   extendObservable,
-  // runInAction,
-  // toJS,
 } from 'mobx';
 
 import { isValidLogSeed } from '../util';

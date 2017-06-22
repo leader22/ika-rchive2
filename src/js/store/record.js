@@ -70,7 +70,7 @@ class RecordStore {
   mod(log: Log): void {
     const targetIdx = this.items.findIndex(item => item.id === log.id);
     if (targetIdx !== -1) {
-      this.items.splice(targetIdx, 1, toJS(log));
+      this.items.splice(targetIdx, 1, log);
     }
   }
 
