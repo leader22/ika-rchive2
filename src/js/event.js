@@ -11,6 +11,7 @@ import type Debug from './util/debug';
 import type Store from './store';
 import type UiStore from './store/ui';
 import type AddLogStore from './store/add-log';
+import type ModLogStore from './store/mod-log';
 import type UserStore from './store/user';
 import type RecordStore from './store/record';
 
@@ -18,6 +19,7 @@ import type RecordStore from './store/record';
 class Event {
   ui: UiStore;
   addLog: AddLogStore;
+  modLog: ModLogStore;
   user: UserStore;
   record: RecordStore;
   debug: Debug;
@@ -26,6 +28,7 @@ class Event {
     {
       ui,
       addLog,
+      modLog,
       user,
       record,
     }: Store,
@@ -35,6 +38,7 @@ class Event {
 
     this.ui = ui;
     this.addLog = addLog;
+    this.modLog = modLog;
     this.user = user;
     this.record = record;
 
@@ -67,17 +71,18 @@ class Event {
   }
 
   onClickOpenModLogModal(log: Log): void {
-    this.ui.setModLog(log);
+    this.ui.setModLogModalOpen(true);
+    this.modLog.init(log);
   }
-  onChangeModLog(item: Object): void {
-    this.ui.updateModLog(item);
+  onChangeModLog(key: string, valObj: Object): void {
+    this.modLog.update(key, valObj);
   }
   onClickModLog(): void {
-    this.record.mod(this.ui.modLog);
-    this.ui.setModLog(null);
+    this.record.mod(this.modLog.toJS());
+    this.ui.setModLogModalOpen(false);
   }
   onClickCloseModLogModal(): void {
-    this.ui.setModLog(null);
+    this.ui.setModLogModalOpen(false);
   }
 
   onClickDelLog(log: Log): void {

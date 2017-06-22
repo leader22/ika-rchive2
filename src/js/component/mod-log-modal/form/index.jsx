@@ -9,47 +9,31 @@ import SingleBtn from '../../shared/single-btn';
 import StageInput from './stage-input';
 
 import type UiStore from '../../../store/ui';
+import type ModLogStore from '../../../store/mod-log';
 import type Event from '../../../event';
 
 
 class ModLogForm extends React.Component {
-  _onChangeMode: (number) => void;
-  _onChangeStage: (number) => void;
-  _onChangeRate: (number, number) => void;
-  _onChangeResult: (number) => void;
-  _onClickMod: () => void;
-
   props: {|
     ui: UiStore,
+    modLog: ModLogStore,
     event: Event,
   |};
 
-  constructor(props) {
-    super(props);
-
-    this._onChangeMode = md => {
-      this.props.event.onChangeModLog({ md });
-    };
-    this._onChangeStage = st => {
-      this.props.event.onChangeModLog({ st });
-    };
-    this._onChangeRate = (rk, pt) => {
-      this.props.event.onChangeModLog({ rk, pt });
-    };
-    this._onChangeResult = rs => {
-      this.props.event.onChangeModLog({ rs });
-    };
-    this._onClickMod = () => {
-      this.props.event.onClickModLog();
-    };
-  }
-
   render() {
+    const { isModLogModalOpen } = this.props.ui;
     const {
-      isModLogModalOpen,
-      modLog,
-      canModLog,
-    } = this.props.ui;
+      onChangeModLog,
+      onClickModLog,
+    } = this.props.event;
+    const {
+      mode,
+      stage,
+      rank,
+      point,
+      result,
+      canMod,
+    } = this.props.modLog;
 
     if (isModLogModalOpen === false) {
       return null;
@@ -58,25 +42,25 @@ class ModLogForm extends React.Component {
     return (
       <div>
         <ModeInput
-          mode={modLog.md}
-          onChangeMode={this._onChangeMode}
+          mode={mode}
+          onChangeMode={mode => onChangeModLog('mode', { mode })}
         />
         <StageInput
-          stage={modLog.st}
-          onChangeStage={this._onChangeStage}
+          stage={stage}
+          onChangeStage={stage => onChangeModLog('stage', { stage })}
         />
         <RateInput
-          rank={modLog.rk}
-          point={modLog.pt}
-          onChangeRate={this._onChangeRate}
+          rank={rank}
+          point={point}
+          onChangeRate={(rank, point) => onChangeModLog('rate', { rank, point })}
         />
         <ResultInput
-          result={modLog.rs}
-          onChangeResult={this._onChangeResult}
+          result={result}
+          onChangeResult={result => onChangeModLog('result', { result })}
         />
         <SingleBtn
-          onClick={this._onClickMod}
-          disabled={canModLog === false}
+          onClick={onClickModLog}
+          disabled={canMod === false}
           text="これでシュウセイ"
           textClicked="カンリョウ!"
         />
@@ -87,5 +71,6 @@ class ModLogForm extends React.Component {
 
 export default inject(
   'ui',
+  'modLog',
   'event',
 )(observer(ModLogForm));
