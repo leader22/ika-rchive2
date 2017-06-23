@@ -41,7 +41,7 @@ const AddLogForm = ({
 
   return (
     <div>
-      <h3>ウデマエのキロク</h3>
+      <h2>ウデマエのキロク</h2>
       <ModeInput
         mode={mode}
         onChangeMode={mode => onChangeAddLog('mode', { mode })}

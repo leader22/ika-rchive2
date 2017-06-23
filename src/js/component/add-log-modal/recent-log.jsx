@@ -21,12 +21,8 @@ const RecentLog = ({
   const endRankAndPoint = record.lastRankAndPoint.get(mode) || [0, 0];
 
   return (
-    <div>
-      <hr />
-      <h3>こんかいのセイセキ</h3>
-      <div>
-        {RANK[beginRankAndPoint[0]]}{beginRankAndPoint[1]} => {RANK[endRankAndPoint[0]]}{endRankAndPoint[1]}
-      </div>
+    <div className="recent-log">
+      ウデマエ増減: {RANK[beginRankAndPoint[0]]}{beginRankAndPoint[1]} → {RANK[endRankAndPoint[0]]}{endRankAndPoint[1]}
     </div>
   );
 };
