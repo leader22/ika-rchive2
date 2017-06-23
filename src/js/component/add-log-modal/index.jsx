@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 
 import LogModal from '../shared/log-modal';
 import AddLogForm from './form';
+import RecentLog from './recent-log';
 
 import type UiStore from '../../store/ui';
 import type Event from '../../event';
@@ -20,6 +21,7 @@ const AddLogModal = ({
     onClickClose={event.onClickCloseAddLogModal}
   >
     <AddLogForm />
+    <RecentLog />
   </LogModal>
 );
 

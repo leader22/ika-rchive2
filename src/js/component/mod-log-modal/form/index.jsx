@@ -42,6 +42,7 @@ const ModLogForm = ({
 
   return (
     <div>
+      <h3>キロクのシュウセイ</h3>
       <ModeInput
         mode={mode}
         onChangeMode={mode => onChangeModLog('mode', { mode })}

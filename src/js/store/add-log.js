@@ -17,8 +17,12 @@ class AddLogStore {
   result: number;
   canAdd: boolean;
   asSeed: LogSeed;
+  lastRate: Array<Array<number>>;
 
   constructor() {
+    // このセッション開始時のウデマエ
+    this.lastRate = [];
+
     extendObservable(this, {
       mode: 0,
       stages: [0, 1],
@@ -40,7 +44,7 @@ class AddLogStore {
           pt: this.point,
           rs: this.result,
         };
-      })
+      }),
     });
   }
 
@@ -72,6 +76,13 @@ class AddLogStore {
     if (Array.isArray(rankAndPoint)) {
       this.rank = rankAndPoint[0];
       this.point = rankAndPoint[1];
+    }
+  }
+
+  copyLastRankAndPoint(lastRankAndPoint: LastRankAndPoint): void {
+    for (let kv of lastRankAndPoint) {
+      const [md, [rk, pt]] = kv;
+      this.lastRate[md] = [rk, pt];
     }
   }
 }

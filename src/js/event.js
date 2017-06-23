@@ -46,6 +46,8 @@ class Event {
   }
 
   onBoot(): void {
+    this.addLog.copyLastRankAndPoint(this.record.lastRankAndPoint);
+
     reaction(
       () => this.ui.isModalOpen,
       isOpen => {
