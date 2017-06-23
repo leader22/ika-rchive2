@@ -51,6 +51,7 @@ export default class Debug {
 
         const seed = {
           md: mode,
+          wp: '',
           st: __nToM(0, 5),
           rs: isWin ? 1 : 0,
           rk: rank,

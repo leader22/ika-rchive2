@@ -10,6 +10,7 @@ import { isValidLogSeed } from '../util';
 class ModLogStore {
   id: number;
   mode: number;
+  weapon: string;
   stage: number;
   rank: number;
   point: number;
@@ -21,6 +22,7 @@ class ModLogStore {
     extendObservable(this, {
       id: 0,
       mode: 0,
+      weapon: '',
       stage: 0,
       rank: 0,
       point: 0,
@@ -31,6 +33,7 @@ class ModLogStore {
       asLog: computed(() => {
         return {
           id: this.id,
+          wp: this.weapon,
           md: this.mode,
           st: this.stage,
           rk: this.rank,
@@ -44,6 +47,7 @@ class ModLogStore {
   init(log: Log): void {
     this.id = log.id;
     this.mode = log.md;
+    this.weapon = log.wp;
     this.stage = log.st;
     this.rank = log.rk;
     this.point = log.pt;
@@ -54,6 +58,9 @@ class ModLogStore {
     switch (key) {
     case 'mode':
       this.mode = val.mode;
+      break;
+    case 'weapon':
+      this.weapon = val.weapon;
       break;
     case 'stage':
       this.stage = val.stage;

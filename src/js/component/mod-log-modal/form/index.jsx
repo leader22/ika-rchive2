@@ -3,6 +3,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 
 import ModeInput from '../../shared/mode-input';
+import WeaponInput from '../../shared/weapon-input';
 import RateInput from '../../shared/rate-input';
 import ResultInput from '../../shared/result-input';
 import SingleBtn from '../../shared/single-btn';
@@ -29,6 +30,7 @@ const ModLogForm = ({
   } = event;
   const {
     mode,
+    weapon,
     stage,
     rank,
     point,
@@ -46,6 +48,10 @@ const ModLogForm = ({
       <ModeInput
         mode={mode}
         onChangeMode={mode => onChangeModLog('mode', { mode })}
+      />
+      <WeaponInput
+        weapon={weapon}
+        onChangeWeapon={weapon => onChangeModLog('weapon', { weapon })}
       />
       <StageInput
         stage={stage}

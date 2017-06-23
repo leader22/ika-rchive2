@@ -9,6 +9,7 @@ import { isValidLogSeed } from '../util';
 
 class AddLogStore {
   mode: number;
+  weapon: string;
   stage: number;
   stages: Array<number>
   stageLane: number;
@@ -25,6 +26,7 @@ class AddLogStore {
 
     extendObservable(this, {
       mode: 0,
+      weapon: '',
       stages: [0, 1],
       stageLane: 0,
       stage: computed(() => {
@@ -39,6 +41,7 @@ class AddLogStore {
       asSeed: computed(() => {
         return {
           md: this.mode,
+          wp: this.weapon,
           st: this.stage,
           rk: this.rank,
           pt: this.point,
@@ -52,6 +55,9 @@ class AddLogStore {
     switch (key) {
     case 'mode':
       this.mode = val.mode;
+      break;
+    case 'weapon':
+      this.weapon = val.weapon;
       break;
     case 'lane':
       this.stageLane = val.lane;

@@ -7,6 +7,7 @@ import {
   STAGE,
   RESULT,
   RANK,
+  WEAPON,
 } from '../../../setting';
 import ModeStr from '../../shared/mode-str';
 import LogTime from './log-time';
@@ -42,8 +43,9 @@ const Record = ({
               <ModeStr mode={log.md} /> in {STAGE[log.st]}
             </div>
             <div>
-              {RESULT[log.rs]} - {RANK[log.rk]}{log.pt}
+              {RESULT[log.rs]} → {RANK[log.rk]}{log.pt}
             </div>
+            <div>{WEAPON[log.wp]}</div>
             <div className="log-item__action">
               <a onClick={() => { event.onClickOpenModLogModal(log); }}>[修正]</a>
               <span> </span>
