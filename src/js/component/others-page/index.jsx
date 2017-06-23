@@ -29,7 +29,11 @@ const OthersPage = ({
 
     <h2>つかいかた</h2>
     <p>
-      画面右上にある「<span className="ft-ika">キロクする</span>」から試合結果を記録すると、<span className="ft-ika">グラフ</span>や<span className="ft-ika">トウケイ</span>が見られるようになるぞ！
+      画面右上にある「<span className="ft-ika">キロクする</span>」から、バトル結果をキロクだ！
+    </p>
+    <p>
+      キロクした結果は、<span className="ft-ika">グラフ</span>や<span className="ft-ika">トウケイ</span>から見られるぞ！
+      ウデマエを上げるためにバトルのデータを研究しよう！
     </p>
 
     <h2>デバッグツール</h2>
