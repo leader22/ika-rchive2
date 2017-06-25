@@ -69,7 +69,7 @@ const StageByMode = ({
   record: RecordStore,
 }) => {
   const playCountSeries = {
-    name: 'しあいすう',
+    name: 'プレイすう',
     color: '#ED2772',
     data: [],
   };
