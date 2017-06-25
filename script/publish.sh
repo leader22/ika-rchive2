@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # npm version するために掃除
-gch .
+git checkout HEAD .
 
 # 先にバージョンあげてから
 npm version $1
@@ -9,6 +9,6 @@ npm version $1
 npm run build
 
 # それをpush
-ga .
-gc -m 'dist'
+git add .
+git commit -m 'dist'
 git push origin master
