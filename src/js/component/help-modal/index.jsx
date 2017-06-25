@@ -38,11 +38,11 @@ const HelpModal = ({
 
       <h2>つかいかた</h2>
       <p>
-        画面右上にある「<span className="ft-ika">キロクする</span>」から、バトル結果をキロクだ！
+        <span className="ft-ika">キロクする</span>からバトル結果をキロクだ！
       </p>
       <p>
-        キロクした結果は、<span className="ft-ika">グラフ</span>や<span className="ft-ika">トウケイ</span>から見られるぞ！
-        ウデマエを上げるためにバトルのデータを研究しよう！
+        キロクすると、<span className="ft-ika">グラフ</span>や<span className="ft-ika">トウケイ</span>が見られるようになるぞ！
+        ウデマエを上げるために、データを貯めて研究しよう！
       </p>
 
       <h2>デバッグツール</h2>

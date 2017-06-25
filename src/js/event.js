@@ -46,6 +46,11 @@ class Event {
   }
 
   onBoot(): void {
+    // 初回起動時だけ、ヘルプを
+    if (this.record.noItem) {
+      this.ui.setHelpModalOpen(true);
+    }
+
     this.addLog.copyLastRankAndPoint(this.record.lastRankAndPoint);
 
     reaction(
