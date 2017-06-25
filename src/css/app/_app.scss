@@ -1,20 +1,19 @@
-$footer-height: 40px;
-
-.app {
-  position: relative;
-}
+$bar-height: 40px;
 
 .app-header {
-  position: relative;
-  height: 40px;
-  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $bar-height;
   background-color: #000;
   text-align: center;
+  z-index: 1;
 
   &__title {
     &__icon {
       width: 40px;
-      height: 40px;
+      height: $bar-height;
     }
   }
   &__left {
@@ -22,19 +21,20 @@ $footer-height: 40px;
     left: 0;
     top: 0;
     color: #fff;
-    height: 40px;
+    height: $bar-height;
   }
   &__right {
     position: absolute;
     right: 0;
     top: 0;
     color: #fff;
-    height: 40px;
+    height: $bar-height;
   }
 }
 
 .app-tabs {
-  padding-bottom: $footer-height;
+  padding-top: $bar-height;
+  padding-bottom: $bar-height;
 }
 
 .app-tabpanel {
@@ -46,7 +46,8 @@ $footer-height: 40px;
   left: 0;
   right: 0;
   bottom: 0;
-  height: $footer-height;
+  z-index: 1;
+  height: $bar-height;
   display: flex;
   align-items: center;
   justify-content: space-around;

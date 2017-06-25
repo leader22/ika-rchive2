@@ -4,6 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 10;
   transition: transform .3s cubic-bezier(0.65, 0.05, 0.36, 1);
   transform: translate3d(0, 150vh, 0);
   background-color: #000;
