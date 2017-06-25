@@ -17,7 +17,14 @@ $footer-height: 40px;
       height: 40px;
     }
   }
-  &__action {
+  &__left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    height: 40px;
+  }
+  &__right {
     position: absolute;
     right: 0;
     top: 0;

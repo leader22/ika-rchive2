@@ -35,7 +35,7 @@ class App extends React.Component {
           </div>
           <button
             type="button"
-            className="app-header__action"
+            className="app-header__right"
             onClick={onClickOpenAddLogModal}
           >
             <span className="ft-ika">キロクする</span>

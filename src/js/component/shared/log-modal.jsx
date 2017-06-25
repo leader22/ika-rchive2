@@ -14,7 +14,7 @@ const LogModal = ({
   <div className={`log-modal ${isOpen ? 'log-modal--opened' : ''}`}>
     <header className="app-header">
       <button
-        className="app-header__action"
+        className="app-header__right"
         type="button"
         onClick={onClickClose}
       >
