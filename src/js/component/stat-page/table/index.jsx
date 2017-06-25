@@ -51,7 +51,7 @@ const StatPage = ({
           <tr>
             <td></td>
             <td>割合</td>
-            <td>試合数</td>
+            <td>プレイ数</td>
           </tr>
           <tr>
             <td><ModeStr mode={0} /></td>
