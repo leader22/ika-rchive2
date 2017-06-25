@@ -92,9 +92,9 @@ const RateByMode = ({
   config.series.push(seriesData);
   return (
     <div className="graph-item">
-      <div className="graph-item__note">
-        ※ドラッグ・ピンチインで表示範囲の絞込ができます<
-      /div>
+      <p className="app-note">
+        ※ドラッグ・ピンチインで表示範囲の絞込ができます
+      </p>
       <ReactHighcharts config={config} />
     </div>
   );

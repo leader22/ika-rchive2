@@ -39,6 +39,7 @@ const ShareText = ({
       <h2>そうごう</h2>
       <CopyTextarea text={totalText} />
 
+      <h2>ルールべつ</h2>
       <Tabs>
         <TabList className="mode-tablist">
           <Tab className="mode-tab" selectedClassName="mode-tab--selected">
@@ -64,9 +65,7 @@ const ShareText = ({
         </TabPanel>
       </Tabs>
 
-      <div>
-        <p>テキストをコピーしてシェアしよう！</p>
-      </div>
+      <p className="app-note">※テキストをコピーしてシェアしよう！</p>
     </div>
   );
 };
