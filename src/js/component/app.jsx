@@ -6,7 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import GraphPage from './graph-page';
 import LogPage from './log-page';
 import StatPage from './stat-page';
-import OthersPage from './others-page';
+import SharePage from './share-page';
 import AddLogModal from './add-log-modal';
 import ModLogModal from './mod-log-modal';
 import HelpModal from './help-modal';
@@ -65,7 +65,7 @@ const App = ({
           <LogPage />
         </TabPanel>
         <TabPanel className="app-tabpanel">
-          <OthersPage />
+          <SharePage />
         </TabPanel>
         <TabList className="app-tablist">
           <Tab className="app-tab" selectedClassName="app-tab--selected">
@@ -78,7 +78,7 @@ const App = ({
             <span className="ft-ika">ログ</span>
           </Tab>
           <Tab className="app-tab" selectedClassName="app-tab--selected">
-            <span className="ft-ika">ソノタ</span>
+            <span className="ft-ika">シェア</span>
           </Tab>
         </TabList>
       </Tabs>

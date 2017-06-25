@@ -3,11 +3,11 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 
 
-const OthersPage = () => (
-  <div className="others-page">
-  TODO
+const SharePage = () => (
+  <div className="share-page">
+    TODO
   </div>
 );
 
 export default inject(
-)(observer(OthersPage));
+)(observer(SharePage));
