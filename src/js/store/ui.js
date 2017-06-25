@@ -8,7 +8,8 @@ import {
 class UiStore {
   isAddLogModalOpen: boolean;
   isModLogModalOpen: boolean;
-  isModalOpen: boolean;
+  isHelpModalOpen: boolean;
+  isScrollPrevented: boolean;
   logPage: number;
 
   constructor() {
@@ -16,10 +17,12 @@ class UiStore {
       // formの要素が競合しないために、それぞれ必要
       isAddLogModalOpen: false,
       isModLogModalOpen: false,
-      // 見た目的には同時に開かないけど
-      isModalOpen: computed(() => {
-        return this.isAddLogModalOpen || this.isModLogModalOpen;
+      isHelpModalOpen: false,
+
+      isScrollPrevented: computed(() => {
+        return this.isAddLogModalOpen || this.isModLogModalOpen || this.isHelpModalOpen;
       }),
+
       logPage: 1,
     });
   }
@@ -29,6 +32,9 @@ class UiStore {
   }
   setModLogModalOpen(bool: boolean): void {
     this.isModLogModalOpen = bool;
+  }
+  setHelpModalOpen(bool: boolean): void {
+    this.isHelpModalOpen = bool;
   }
 
   logShowMore(): void {

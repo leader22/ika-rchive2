@@ -9,6 +9,7 @@ import StatPage from './stat-page';
 import OthersPage from './others-page';
 import AddLogModal from './add-log-modal';
 import ModLogModal from './mod-log-modal';
+import HelpModal from './help-modal';
 
 import type UserStore from '../store/user';
 import type Event from '../event';
@@ -23,6 +24,7 @@ const App = ({
 }) => {
   const { visibleTab } = user;
   const {
+    onClickOpenHelpModal,
     onClickOpenAddLogModal,
     onChangeTab,
   } = event;
@@ -30,6 +32,13 @@ const App = ({
   return (
     <div>
       <header className="app-header">
+        <button
+          type="button"
+          className="app-header__left"
+          onClick={onClickOpenHelpModal}
+        >
+          <span className="ft-ika">ヘルプ</span>
+        </button>
         <div className="app-header__title">
           <img className="app-header__title__icon" src="./static/img/icon.png" alt="ウデマエアーカイブ2" />
         </div>
@@ -73,6 +82,7 @@ const App = ({
           </Tab>
         </TabList>
       </Tabs>
+      <HelpModal />
       <AddLogModal />
       <ModLogModal />
     </div>

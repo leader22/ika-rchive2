@@ -80,6 +80,10 @@ $bar-height: 40px;
   &--opened {
     transform: translate3d(0, 0, 0);
   }
+
+  .app-header {
+    position: static;
+  }
 }
 
 // イカ、汎用的に使われるもの

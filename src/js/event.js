@@ -49,7 +49,7 @@ class Event {
     this.addLog.copyLastRankAndPoint(this.record.lastRankAndPoint);
 
     reaction(
-      () => this.ui.isModalOpen,
+      () => this.ui.isScrollPrevented,
       isOpen => {
         window.ontouchmove = isOpen ? ev => { ev.preventDefault(); } : () => {};
       }
@@ -66,6 +66,13 @@ class Event {
 
   onChangeTab(idx: number): void {
     this.user.setVisibleTab(idx);
+  }
+
+  onClickOpenHelpModal(): void {
+    this.ui.setHelpModalOpen(true);
+  }
+  onClickCloseHelpModal(): void {
+    this.ui.setHelpModalOpen(false);
   }
 
   onClickOpenAddLogModal(): void {

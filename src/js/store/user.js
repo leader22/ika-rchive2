@@ -19,8 +19,7 @@ class UserStore {
   constructor(key: string) {
     extendObservable(this, {
       ver: '',
-      // 最初はソノタのタブ
-      visibleTab: 3,
+      visibleTab: 0,
     });
 
     this._syncStorage(key);
