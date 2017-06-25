@@ -36,6 +36,10 @@ export function formatDate(time: number): string {
   return `${YYYY}/${MM}/${DD} ${hh}:${mm}`;
 }
 
+export function rankAndPointToRate(rank: number, point: number): number {
+  return (rank * 100) + point;
+}
+
 export function rateToRateStr(rate: number, rankTable: *): string {
   const point = rate % 100;
   const rank = (rate - point) / 100;

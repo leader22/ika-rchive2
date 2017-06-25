@@ -9,8 +9,8 @@ import {
 import {
   encodeTime,
   getGlobal,
-} from '../util';
-import recordToView from '../util/record-to-view';
+} from '../../util';
+import recordToView from './to-view';
 
 import type { IObservableArray } from 'mobx';
 

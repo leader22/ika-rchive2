@@ -1,5 +1,5 @@
 // @flow
-import { percentage } from '../../util';
+import { percentage } from '../../../util';
 
 
 export default {
