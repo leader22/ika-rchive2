@@ -1,5 +1,8 @@
 // @flow
-import { percentage } from '../../../util';
+import {
+  percentage,
+  rankAndPointToRate,
+} from '../../../util';
 
 
 export default {
@@ -59,7 +62,7 @@ export default {
   },
 
   assignBestRate(stat: Stat, item: Log): void {
-    const rate = (item.rk * 100) + item.pt;
+    const rate = rankAndPointToRate(item.rk, item.pt);
     item.md === 0 && (stat.areaBestRate = Math.max(stat.areaBestRate, rate));
     item.md === 1 && (stat.yaguraBestRate = Math.max(stat.yaguraBestRate, rate));
     item.md === 2 && (stat.hokoBestRate = Math.max(stat.hokoBestRate, rate));

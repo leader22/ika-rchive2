@@ -1,5 +1,8 @@
 // @flow
-import { percentage } from '../../../util';
+import {
+  percentage,
+  rankAndPointToRate,
+} from '../../../util';
 
 
 export default {
@@ -16,7 +19,7 @@ export default {
   },
 
   assignRate(graph: Graph, item: Log): void {
-    const rate = (item.rk * 100) + item.pt;
+    const rate = rankAndPointToRate(item.rk, item.pt);
     item.md === 0 && graph.areaRate.push(rate);
     item.md === 1 && graph.yaguraRate.push(rate);
     item.md === 2 && graph.hokoRate.push(rate);
