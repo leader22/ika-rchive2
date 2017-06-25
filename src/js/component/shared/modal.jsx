@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-const LogModal = ({
+const Modal = ({
   isOpen,
   onClickClose,
   children,
@@ -11,7 +11,7 @@ const LogModal = ({
   onClickClose: () => void,
   children: React$Element<*>,
 }) => (
-  <div className={`log-modal ${isOpen ? 'log-modal--opened' : ''}`}>
+  <div className={`app-modal ${isOpen ? 'app-modal--opened' : ''}`}>
     <header className="app-header">
       <button
         className="app-header__right"
@@ -25,4 +25,4 @@ const LogModal = ({
   </div>
 );
 
-export default LogModal;
+export default Modal;

@@ -2,7 +2,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import LogModal from '../shared/log-modal';
+import Modal from '../shared/modal';
 import ModLogForm from './form';
 
 import type UiStore from '../../store/ui';
@@ -16,12 +16,12 @@ const ModLogModal = ({
   ui: UiStore,
   event: Event,
 }) => (
-  <LogModal
+  <Modal
     isOpen={ui.isModLogModalOpen}
     onClickClose={event.onClickCloseModLogModal}
   >
     <ModLogForm />
-  </LogModal>
+  </Modal>
 );
 
 export default inject(

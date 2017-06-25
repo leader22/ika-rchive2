@@ -2,7 +2,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import LogModal from '../shared/log-modal';
+import Modal from '../shared/modal';
 import AddLogForm from './form';
 import RecentLog from './recent-log';
 
@@ -16,13 +16,13 @@ const AddLogModal = ({
   ui: UiStore,
   event: Event,
 }) => (
-  <LogModal
+  <Modal
     isOpen={ui.isAddLogModalOpen}
     onClickClose={event.onClickCloseAddLogModal}
   >
     <AddLogForm />
     <RecentLog />
-  </LogModal>
+  </Modal>
 );
 
 export default inject(

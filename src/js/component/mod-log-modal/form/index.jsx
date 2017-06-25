@@ -43,7 +43,7 @@ const ModLogForm = ({
   }
 
   return (
-    <div>
+    <div className="log-form">
       <h2>キロクのシュウセイ</h2>
       <ModeInput
         mode={mode}

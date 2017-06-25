@@ -42,7 +42,7 @@ const AddLogForm = ({
   }
 
   return (
-    <div>
+    <div className="log-form">
       <h2>ウデマエのキロク</h2>
       <div className="input-group">
         <ModeInput
