@@ -32,9 +32,9 @@ export default class Debug {
 
   _addRecord(mode, num) {
     const record = this.store.record;
+    const lastRP = record.lastRankAndPoint.get(mode);
+    let [ rank, point ] = lastRP || [0, 0];
 
-    let point = 0;
-    let rank = 0;
     runInAction(() => {
       for (let i = 0; i < num; i++) {
         const isWin = Boolean(__oneOrZero());
