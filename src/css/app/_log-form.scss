@@ -33,6 +33,10 @@
     &__lane {
       margin-right: 10px;
     }
+
+    &--checked select {
+      font-weight: bold;
+    }
   }
 }
 

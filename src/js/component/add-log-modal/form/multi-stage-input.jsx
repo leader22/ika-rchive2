@@ -18,7 +18,10 @@ const MultiStageInput = ({
 }) => (
   <div className="multi-stage-input">
     { [0, 1].map(lane => (
-    <div key={lane} className="multi-stage-input__row">
+    <div
+      key={lane}
+      className={`multi-stage-input__row ${stageLane === lane ? 'multi-stage-input__row--checked' : ''}`}
+    >
       <input
         className="multi-stage-input__row__lane"
         type="radio"
