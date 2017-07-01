@@ -20,8 +20,8 @@ const ByWeapon = ({
         .sort((a, b) => a[1].playCount < b[1].playCount)
         .map(([key, v]) => (
         <tr key={key}>
-          <td>{WEAPON[key]}</td>
-          <td>{v.playCount}</td>
+          <td className="elp">{WEAPON[key] || '未登録'}</td>
+          <td className="min">{v.playCount}</td>
         </tr>
       )) }
       { Object.entries(byWeapon).length === 0 && (

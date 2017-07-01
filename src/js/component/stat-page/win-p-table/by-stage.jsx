@@ -13,8 +13,8 @@ const ByStage = ({
   <table className="stat-table stat-table--fixed">
     <tbody>
       <tr>
-        <td></td>
-        <td>勝率</td>
+        <td className="elp"></td>
+        <td className="min">勝率</td>
         <td>内訳</td>
       </tr>
       { STAGE.map((stageName, idx) => {
