@@ -1,6 +1,6 @@
 {
   "name": "ika-rchive2",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Archive your UDEMAE2!",
   "scripts": {
     "dev": "npm run start & npm run _dev:js & npm run _dev:css & wait",
