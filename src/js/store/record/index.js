@@ -56,22 +56,39 @@ class RecordStore {
     this._syncStorage(key);
   }
 
-  add(seed: LogSeed): void {
-    const log = Object.assign({}, seed, {
-      id: encodeTime(Date.now()),
+  add(seed: LogSeed): Promise<*> {
+    return this._toAsyncPromise(() => {
+      const log = Object.assign({}, seed, {
+        id: encodeTime(Date.now()),
+      });
+      this.items.push(log);
     });
-    this.items.push(log);
+  }
+
+  mod(log: Log): Promise<*> {
+    return this._toAsyncPromise(() => {
+      const targetIdx = this.items.findIndex(item => item.id === log.id);
+      if (targetIdx !== -1) {
+        this.items.splice(targetIdx, 1, log);
+      }
+    });
   }
 
   del(log: Log): void {
     this.items.remove(log);
   }
 
-  mod(log: Log): void {
-    const targetIdx = this.items.findIndex(item => item.id === log.id);
-    if (targetIdx !== -1) {
-      this.items.splice(targetIdx, 1, log);
-    }
+  _toAsyncPromise(func: Function): Promise<*> {
+    return new Promise((resolve, reject) => {
+      requestAnimationFrame(() => {
+        try {
+          func();
+          resolve();
+        } catch(err) {
+          reject();
+        }
+      });
+    });
   }
 
   _syncStorage(key: string): void {

@@ -85,8 +85,8 @@ class Event {
   onChangeAddLog(key: string, valObj: Object): void {
     this.addLog.update(key, valObj);
   }
-  onClickAddLog(): void {
-    this.record.add(this.addLog.asSeed);
+  onClickAddLog(): Promise<*> {
+    return this.record.add(this.addLog.asSeed);
   }
 
   onClickOpenModLogModal(log: Log): void {
@@ -96,9 +96,8 @@ class Event {
   onChangeModLog(key: string, valObj: Object): void {
     this.modLog.update(key, valObj);
   }
-  onClickModLog(): void {
-    this.record.mod(this.modLog.asLog);
-    this.ui.setModLogModalOpen(false);
+  onClickModLog(): Promise<*> {
+    return this.record.mod(this.modLog.asLog);
   }
   onClickCloseModLogModal(): void {
     this.ui.setModLogModalOpen(false);

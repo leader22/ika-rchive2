@@ -70,6 +70,7 @@ const ModLogForm = ({
         onClick={onClickModLog}
         disabled={canMod === false}
         text="これでシュウセイ"
+        textProcessing="ショリチュウ..."
         textClicked="カンリョウ!"
       />
     </div>

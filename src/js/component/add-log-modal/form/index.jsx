@@ -75,6 +75,7 @@ const AddLogForm = ({
         onClick={onClickAddLog}
         disabled={canAdd === false}
         text="これでキロク"
+        textProcessing="ショリチュウ..."
         textClicked="カンリョウ!"
       />
     </div>
