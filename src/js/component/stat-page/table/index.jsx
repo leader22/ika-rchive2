@@ -75,7 +75,7 @@ const StatPage = ({
         </tbody>
       </table>
 
-      <h2>しょうりつ・プレイすう</h2>
+      <h2>しょうりつ</h2>
       <table className="stat-table">
         <tbody>
           <tr>
@@ -106,7 +106,6 @@ const StatPage = ({
         </tbody>
       </table>
 
-      <h2>ルール・ステージべつ</h2>
       <Tabs>
         <TabList className="mode-tablist">
           <Tab className="mode-tab" selectedClassName="mode-tab--selected">
