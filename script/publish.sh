@@ -11,4 +11,4 @@ npm run build
 # それをpush
 git add .
 git commit -m 'dist'
-git push origin master
+git push origin master --tags
