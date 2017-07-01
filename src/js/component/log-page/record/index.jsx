@@ -46,7 +46,7 @@ const Record = ({
             <div>
               {RESULT[log.rs]} → {RANK[log.rk]}{log.pt}
             </div>
-            <div>{WEAPON[log.wp]}</div>
+            <div>{WEAPON[log.wp] || 'ブキ登録なし'}</div>
             <div className="log-item__action">
               <a onClick={() => { event.onClickOpenModLogModal(log); }}>[修正]</a>
               <span> </span>

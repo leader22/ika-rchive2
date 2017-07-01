@@ -20,7 +20,7 @@ const ByWeapon = ({
         .sort((a, b) => a[1].playCount < b[1].playCount)
         .map(([key, v]) => (
         <tr key={key}>
-          <td className="elp">{WEAPON[key] || '未登録'}</td>
+          <td className="elp">{WEAPON[key]}</td>
           <td className="min">{v.playCount}</td>
         </tr>
       )) }

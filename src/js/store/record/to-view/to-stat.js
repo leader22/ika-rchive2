@@ -97,6 +97,9 @@ export default {
 
   assignWeaponPlayAndWinCount(stat: Stat, item: Log): void {
     const { wp, md } = item;
+    // キロクなしは省く
+    if (!wp) { return; }
+
     if (md === 0) {
       wp in stat.areaByWeapon || (stat.areaByWeapon[wp] = __getByWeapon());
       stat.areaByWeapon[wp].playCount++;
