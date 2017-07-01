@@ -49,7 +49,7 @@ const Record = ({
             <div className="log-item__action">
               <a onClick={() => { event.onClickOpenModLogModal(log); }}>[修正]</a>
               <span> </span>
-              <a onClick={() => { event.onClickDelLog(log); }}>[削除]</a>
+              <a onClick={() => { event.record.onClickDelLog(log); }}>[削除]</a>
             </div>
           </div>
         </li>
@@ -57,7 +57,7 @@ const Record = ({
       </ul>
       { canShowMore && (
         <div className="log-showmore">
-          <a onClick={event.onClickLogShowMore}>[もっとみる]</a>
+          <a onClick={event.ui.onClickLogShowMore}>[もっとみる]</a>
         </div>
       ) }
     </div>

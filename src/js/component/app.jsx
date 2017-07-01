@@ -26,8 +26,10 @@ const App = ({
   const {
     onClickOpenHelpModal,
     onClickOpenAddLogModal,
+  } = event.ui;
+  const {
     onChangeTab,
-  } = event;
+  } = event.user;
 
   return (
     <div>

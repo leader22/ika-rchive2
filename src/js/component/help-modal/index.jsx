@@ -20,7 +20,7 @@ const HelpModal = ({
 }) => (
   <Modal
     isOpen={ui.isHelpModalOpen}
-    onClickClose={event.onClickCloseHelpModal}
+    onClickClose={event.ui.onClickCloseHelpModal}
   >
     <div className="help">
       { /*

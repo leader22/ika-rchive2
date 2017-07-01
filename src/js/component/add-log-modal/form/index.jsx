@@ -32,10 +32,8 @@ const AddLogForm = ({
     result,
     canAdd,
   } = addLog;
-  const {
-    onClickAddLog,
-    onChangeAddLog,
-  } = event;
+  const { onClickAddLog } = event;
+  const { onChangeAddLog } = event.addLog;
 
   if (isAddLogModalOpen === false) {
     return null;

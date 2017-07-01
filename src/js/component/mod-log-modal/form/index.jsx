@@ -24,10 +24,8 @@ const ModLogForm = ({
   event: Event,
 }) => {
   const { isModLogModalOpen } = ui;
-  const {
-    onChangeModLog,
-    onClickModLog,
-  } = event;
+  const { onClickModLog } = event;
+  const { onChangeModLog } = event.modLog;
   const {
     mode,
     weapon,

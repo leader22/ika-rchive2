@@ -18,7 +18,7 @@ const ModLogModal = ({
 }) => (
   <Modal
     isOpen={ui.isModLogModalOpen}
-    onClickClose={event.onClickCloseModLogModal}
+    onClickClose={event.ui.onClickCloseModLogModal}
   >
     <ModLogForm />
   </Modal>

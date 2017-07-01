@@ -18,7 +18,7 @@ const AddLogModal = ({
 }) => (
   <Modal
     isOpen={ui.isAddLogModalOpen}
-    onClickClose={event.onClickCloseAddLogModal}
+    onClickClose={event.ui.onClickCloseAddLogModal}
   >
     <AddLogForm />
     <RecentLog />
