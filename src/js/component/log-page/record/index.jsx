@@ -8,8 +8,9 @@ import {
   RESULT,
   RANK,
   WEAPON,
+  MODE_COLOR,
 } from '../../../setting';
-import ModeStr from '../../shared/mode-str';
+import ModeStr from './mode-str';
 import LogTime from './log-time';
 
 import type UiStore from '../../../store/ui';
@@ -35,7 +36,7 @@ const Record = ({
       <ul>
         { record.items.slice(-showItemsLen).reverse().map((log, idx) => (
         <li key={`${log.id}-${idx}`}>
-          <div className="log-item">
+          <div className="log-item" style={{ borderColor: MODE_COLOR[log.md] }}>
             <div>
               [{itemsLen - idx}] <LogTime time={log.id} />
             </div>

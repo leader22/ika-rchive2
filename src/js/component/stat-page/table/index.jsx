@@ -3,7 +3,6 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import ModeStr from '../../shared/mode-str';
 import RateStr from './rate-str';
 import ByStage from './by-stage';
 
@@ -28,17 +27,17 @@ const StatPage = ({
             <td>平均</td>
           </tr>
           <tr>
-            <td><ModeStr mode={0} /></td>
+            <td>エリア</td>
             <td><RateStr rate={stat.areaBestRate} /></td>
             <td><RateStr rate={stat.areaAvgRate} /></td>
           </tr>
           <tr>
-            <td><ModeStr mode={1} /></td>
+            <td>ヤグラ</td>
             <td><RateStr rate={stat.yaguraBestRate} /></td>
             <td><RateStr rate={stat.yaguraAvgRate} /></td>
           </tr>
           <tr>
-            <td><ModeStr mode={2} /></td>
+            <td>ホコ</td>
             <td><RateStr rate={stat.hokoBestRate} /></td>
             <td><RateStr rate={stat.hokoAvgRate} /></td>
           </tr>
@@ -54,17 +53,17 @@ const StatPage = ({
             <td>プレイ数</td>
           </tr>
           <tr>
-            <td><ModeStr mode={0} /></td>
+            <td>エリア</td>
             <td>{stat.areaPlayP}%</td>
             <td>{stat.areaPlayCount}戦</td>
           </tr>
           <tr>
-            <td><ModeStr mode={1} /></td>
+            <td>ヤグラ</td>
             <td>{stat.yaguraPlayP}%</td>
             <td>{stat.yaguraPlayCount}戦</td>
           </tr>
           <tr>
-            <td><ModeStr mode={2} /></td>
+            <td>ホコ</td>
             <td>{stat.hokoPlayP}%</td>
             <td>{stat.hokoPlayCount}戦</td>
           </tr>
@@ -85,17 +84,17 @@ const StatPage = ({
             <td>内訳</td>
           </tr>
           <tr>
-            <td><ModeStr mode={0} /></td>
+            <td>エリア</td>
             <td>{stat.areaWinP}%</td>
             <td>{stat.areaWinCount}勝{stat.areaLoseCount}敗</td>
           </tr>
           <tr>
-            <td><ModeStr mode={1} /></td>
+            <td>ヤグラ</td>
             <td>{stat.yaguraWinP}%</td>
             <td>{stat.yaguraWinCount}勝{stat.yaguraLoseCount}敗</td>
           </tr>
           <tr>
-            <td><ModeStr mode={2} /></td>
+            <td>ホコ</td>
             <td>{stat.hokoWinP}%</td>
             <td>{stat.hokoWinCount}勝{stat.hokoLoseCount}敗</td>
           </tr>

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import { MODE, MODE_COLOR } from '../../setting';
+import { MODE, MODE_COLOR } from '../../../setting';
 
 
 const ModeStr = ({
