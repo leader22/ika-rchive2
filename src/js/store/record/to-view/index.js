@@ -19,6 +19,7 @@ export default function recordToView(items: IObservableArray<Log>) {
     toStat.assignWinCount(stat, item);
     toStat.assignBestRate(stat, item);
     toStat.assignStagePlayAndWinCount(stat, item);
+    toStat.assignWeaponPlayAndWinCount(stat, item);
   }
 
   toGraph.assignStageWinP(graph);

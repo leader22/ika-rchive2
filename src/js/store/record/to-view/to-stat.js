@@ -44,6 +44,11 @@ export default {
       areaByStage: {},
       yaguraByStage: {},
       hokoByStage: {},
+
+      byWeapon: {},
+      areaByWeapon: {},
+      yaguraByWeapon: {},
+      hokoByWeapon: {},
     };
   },
 
@@ -88,6 +93,25 @@ export default {
       stat.hokoByStage[st].playCount++;
       rs && stat.hokoByStage[st].winCount++;
     }
+  },
+
+  assignWeaponPlayAndWinCount(stat: Stat, item: Log): void {
+    const { wp, md } = item;
+    if (md === 0) {
+      wp in stat.areaByWeapon || (stat.areaByWeapon[wp] = __getByWeapon());
+      stat.areaByWeapon[wp].playCount++;
+    }
+    if (md === 1) {
+      wp in stat.yaguraByWeapon || (stat.yaguraByWeapon[wp] = __getByWeapon());
+      stat.yaguraByWeapon[wp].playCount++;
+    }
+    if (md === 2) {
+      wp in stat.hokoByWeapon || (stat.hokoByWeapon[wp] = __getByWeapon());
+      stat.hokoByWeapon[wp].playCount++;
+    }
+
+    wp in stat.byWeapon || (stat.byWeapon[wp] = __getByWeapon());
+    stat.byWeapon[wp].playCount++;
   },
 
   assignWinP(stat: Stat): void {
@@ -161,5 +185,11 @@ function __getByStage(): ByStage {
     winCount: 0,
     loseCount: 0,
     winP: 0,
+  };
+}
+
+function __getByWeapon(): ByWeapon {
+  return {
+    playCount: 0,
   };
 }
