@@ -3,7 +3,9 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 
 import NoItem from '../shared/no-item';
-import StatTable from './table';
+import RateTable from './rate-table';
+import PlayTable from './play-table';
+import WinPTable from './win-p-table';
 
 import type RecordStore from '../../store/record';
 
@@ -19,7 +21,9 @@ const StatPage = ({
 
   return (
     <div className="stat-page">
-      <StatTable />
+      <RateTable />
+      <PlayTable />
+      <WinPTable />
     </div>
   );
 };
